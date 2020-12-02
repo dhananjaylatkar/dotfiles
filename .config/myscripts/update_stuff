@@ -1,0 +1,31 @@
+#!/bin/bash
+
+GDRIVE=$HOME"/gdrive"
+mkdir -p $GDRIVE
+TVSHOWS="/tmp/tvshows_index.txt"
+MOVIES="/tmp/movies_index.txt"
+TVSHOWS_REMOTE="Stuff/Entertainment/TV"
+MOVIES_REMOTE="Stuff/Entertainment/Movies"
+
+echo "Mounting on "$GDRIVE
+rclone mount gdrive: $GDRIVE --read-only --no-modtime --daemon
+sleep 3
+
+echo "Creating index for TV Shows"
+tree $GDRIVE/$TVSHOWS_REMOTE -Q -o $TVSHOWS
+
+echo "Creating index for Movies"
+tree $GDRIVE/$MOVIES_REMOTE -Q -o $MOVIES
+
+umount $GDRIVE
+
+sed -i "" "1s/.*/TV/" $TVSHOWS
+sed -i "" "1s/.*/Movies/" $MOVIES
+
+echo "Copying TV index to remote"
+rclone copy $TVSHOWS gdrive:"Stuff/Entertainment" -P
+
+echo "Copying Movie index to remote"
+rclone copy $MOVIES gdrive:"Stuff/Entertainment" -P
+
+echo "Done."
