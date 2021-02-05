@@ -1,24 +1,28 @@
 set nocompatible
 call plug#begin('~/.vim/plugged')
-Plug 'mhinz/vim-startify'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-sleuth'
-Plug 'preservim/nerdcommenter'
-Plug 'raimondi/delimitmate'
-Plug 'preservim/nerdtree'
-Plug 'tjdevries/colorbuddy.vim'
-Plug 'tjdevries/gruvbuddy.nvim'
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'sbdchd/neoformat'
-Plug 'ryanoasis/vim-devicons'
+Plug 'mhinz/vim-startify'                       " Beautiful start page
+Plug 'neovim/nvim-lspconfig'                    " LSP
+Plug 'nvim-lua/completion-nvim'                 " Completion
+Plug 'nvim-treesitter/nvim-treesitter'          " Better syntax highlighting
+Plug 'vim-airline/vim-airline'                  " Better Statusline
+Plug 'vim-airline/vim-airline-themes'           " Airline themes
+Plug 'tpope/vim-fugitive'                       " Everything Git
+Plug 'airblade/vim-gitgutter'                   " Git marker in file
+Plug 'tpope/vim-sleuth'                         " Indentation based on file
+Plug 'preservim/nerdcommenter'                  " Commenting with ease
+Plug 'raimondi/delimitmate'                     " Autoclose quotes/brackets
+Plug 'preservim/nerdtree'                       " File browser
+Plug 'tjdevries/colorbuddy.vim'                 " Lua based colors
+Plug 'tjdevries/gruvbuddy.nvim'                 " tj's colorscheme
+Plug 'humanoid-colors/vim-humanoid-colorscheme' " colorscheme
+Plug 'dracula/vim', { 'as': 'dracula' }         " colorscheme
+Plug 'chriskempson/base16-vim'                  " base16 colors
+Plug 'nvim-lua/popup.nvim'                      " Telescope dep
+Plug 'nvim-lua/plenary.nvim'                    " Telescope dep
+Plug 'nvim-telescope/telescope.nvim'            " Search using the Force!!!
+Plug 'sbdchd/neoformat'                         " Format files with ease
+Plug 'ThePrimeagen/harpoon'                     " Terminal manager
+Plug 'ryanoasis/vim-devicons'                   " Icons!!!
 call plug#end()
 
 " Basic Config
@@ -39,6 +43,7 @@ set noerrorbells
 set mouse=a
 set title
 set splitbelow splitright
+set updatetime=100
 
 " Leadeer Key
 let mapleader = "\<Space>"
@@ -51,6 +56,7 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+nnoremap <silent> <Leader>et :set expandtab!<CR>
 
 " Invisible Chars
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
@@ -86,13 +92,16 @@ set wildignore+=__pycache__
 set wildignore+=node_modules
 
 " Colorscheme
+" let base16colorspace=256
+set termguicolors
 set background=dark
-" colorscheme dracula
-lua require('colorbuddy').colorscheme('gruvbuddy')
+" lua require('colorbuddy').colorscheme('gruvbuddy')
+colorscheme humanoid
+" colorscheme base16-tomorrow-night
 
 " Text
 set encoding=utf-8
-set linebreak
+" set linebreak
 set scrolloff=3
 syntax enable
 set textwidth=80
@@ -124,6 +133,7 @@ nnoremap N Nzz
 map <C-K> :bprev<CR>
 map <C-J> :bnext<CR>
 map <Leader>x :bd<CR>
+
 " Move visual selection
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
@@ -154,18 +164,24 @@ nmap <silent> ,/ :nohlsearch<CR>
 " highlight trailing whitespace
 match ErrorMsg '\s\+$'
 " remove trailing whitespaces automatically
-autocmd BufWritePre * :%s/\s\+$//e
+nnoremap <Leader>ws :%s/\s\+$//e<CR>
 
 " Airline Config
+" let g:airline_disable_statusline = 1
 let g:airline_theme='base16_spacemacs'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-" let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 let g:airline_detect_paste=1
 let g:airline_detect_modified=1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#format = 2
 let g:airline#extensions#branch#displayed_head_limit = 10
+let g:airline_skip_empty_sections = 1
+let g:airline_left_sep = "\uE0B4"
+let g:airline_left_alt_sep = "\uE0B5"
+let g:airline_right_sep = "\uE0B6"
+let g:airline_right_alt_sep = "\uE0B7"
 
 " NerdCommenter
 let g:NERDSpaceDelims = 1
@@ -219,6 +235,7 @@ let g:startify_session_before_save = [
         \ ]
 let g:startify_session_persistence = 1
 let g:startify_change_to_vcs_root = 1
+highlight Startifyfile ctermfg=8 guifg=#02d849 " Tweak for Humanoid colorscheme
 
 " Telescope
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<CR>
@@ -227,7 +244,18 @@ nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<CR>
 nnoremap <leader>fl <cmd>lua require('telescope.builtin').live_grep()<CR>
 nnoremap <leader>ft <cmd>lua require('telescope.builtin').treesitter()<CR>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<CR>
+nnoremap <leader>fc <cmd>lua require('telescope.builtin').colorscheme()<CR>
 " nnoremap <Leader>ff :lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({}))<CR>
 
 " Neoformat
 nnoremap <Leader>nf  :Neoformat<CR>
+
+" source $HOME/.config/nvim/stausline.vim
+" source $HOME/.config/nvim/stuff.vim
+
+" Harpoon (Terminals!!!)
+nmap <leader>tq :call GotoBuffer(0)<CR>
+nmap <leader>tw :call GotoBuffer(1)<CR>
+nmap <leader>te :call GotoBuffer(2)<CR>
+nmap <leader>tr :call GotoBuffer(3)<CR>
+
