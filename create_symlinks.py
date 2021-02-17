@@ -22,7 +22,7 @@ CURR_PATH = os.getcwd()
 
 for file in files:
     dot_path = file.split(FULL_PATH + '/')[1]
-    if dot_path == 'create_symlinks.py':
+    if dot_path == 'create_symlinks.py' or 'emacs' in dot_path:
         continue
     cmd = 'ln -s -F ' + file + ' ' + dot_path
     print(cmd)
