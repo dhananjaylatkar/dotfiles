@@ -121,6 +121,16 @@
 
 #+end_src
 
+* tmp files
+
+#+begin_src emacs-lisp
+
+(setq create-lockfiles nil)
+(setq auto-save-default nil)
+(setq make-backup-files nil)
+
+#+end_src
+
 * Keybindings
 
 ** Basic
@@ -419,9 +429,11 @@ Try these commands with =M-x=:
   (dha/leader-keys
     "p" '(projectile-command-map :which-key "Projectile")
     ))
- 
+
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
+
+(setq projectile-enable-caching t)
 
 #+end_src
 

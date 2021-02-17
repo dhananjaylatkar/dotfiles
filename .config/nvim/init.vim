@@ -259,3 +259,5 @@ nmap <leader>tw :call GotoBuffer(1)<CR>
 nmap <leader>te :call GotoBuffer(2)<CR>
 nmap <leader>tr :call GotoBuffer(3)<CR>
 
+" Cscope
+source $HOME/.config/nvim/cscope_maps.vim

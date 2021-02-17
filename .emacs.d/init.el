@@ -75,6 +75,10 @@
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
 
+(setq create-lockfiles nil)
+(setq auto-save-default nil)
+(setq make-backup-files nil)
+
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit) ; Make ESC quit prompts
 
 (use-package general
@@ -255,9 +259,11 @@
   (dha/leader-keys
     "p" '(projectile-command-map :which-key "Projectile")
     ))
- 
+
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
+
+(setq projectile-enable-caching t)
 
 (use-package magit)
 

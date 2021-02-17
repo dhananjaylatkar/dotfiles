@@ -7,7 +7,7 @@ bindkey -v
 export EDITOR='nvim'
 
 export PATH=$HOME/bin:/usr/local/bin/:$PATH
-export PATH=/usr/local//Cellar/llvm/11.0.0/bin/:$PATH
+export PATH=/usr/local/Cellar/llvm/11.0.0_1/bin/:$PATH
 export PATH=$HOME/Library/Python/3.8/bin:$PATH
 export PATH=$HOME/Library/Python/3.9/bin:$PATH
 export PATH=$HOME/.config/myscripts:$PATH
