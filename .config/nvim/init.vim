@@ -190,9 +190,9 @@ let g:NERDCompactSexyComs = 1
 
 " LSP
 lua << EOF
-    require'nvim_lsp'.jedi_language_server.setup{on_attach=require'completion'.on_attach}
-    require'nvim_lsp'.clangd.setup{on_attach=require'completion'.on_attach}
-    require'nvim_lsp'.tsserver.setup{on_attach=require'completion'.on_attach}
+    require'lspconfig'.jedi_language_server.setup{on_attach=require'completion'.on_attach}
+    require'lspconfig'.clangd.setup{on_attach=require'completion'.on_attach}
+    require'lspconfig'.tsserver.setup{on_attach=require'completion'.on_attach}
 EOF
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
@@ -214,7 +214,7 @@ set shortmess+=c " Avoid showing message extra message when using completion
 " Treesitter
 lua <<EOF
   require'nvim-treesitter.configs'.setup {
-    ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     highlight = {
       enable = true,              -- false will disable the whole extension
     },
@@ -254,10 +254,10 @@ nnoremap <Leader>nf  :Neoformat<CR>
 " source $HOME/.config/nvim/stuff.vim
 
 " Harpoon (Terminals!!!)
-nmap <leader>tq :call GotoBuffer(0)<CR>
-nmap <leader>tw :call GotoBuffer(1)<CR>
-nmap <leader>te :call GotoBuffer(2)<CR>
-nmap <leader>tr :call GotoBuffer(3)<CR>
+nmap <leader>tq :call Harpoon_GotoTerminal(0)<CR>
+nmap <leader>tw :call Harpoon_GotoTerminal(1)<CR>
+nmap <leader>te :call Harpoon_GotoTerminal(2)<CR>
+nmap <leader>tr :call Harpoon_GotoTerminal(3)<CR>
 
 " Cscope
 source $HOME/.config/nvim/cscope_maps.vim
