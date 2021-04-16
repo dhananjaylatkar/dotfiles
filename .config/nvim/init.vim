@@ -44,6 +44,7 @@ set mouse=a
 set title
 set splitbelow splitright
 set updatetime=100
+set guifont=FiraCode\ Nerd\ Font\ Mono:h16
 
 " Leadeer Key
 let mapleader = "\<Space>"
@@ -193,6 +194,7 @@ lua << EOF
     require'lspconfig'.jedi_language_server.setup{on_attach=require'completion'.on_attach}
     require'lspconfig'.clangd.setup{on_attach=require'completion'.on_attach}
     require'lspconfig'.tsserver.setup{on_attach=require'completion'.on_attach}
+    require'lspconfig'.rust_analyzer.setup{on_attach=require'completion'.on_attach}
 EOF
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
