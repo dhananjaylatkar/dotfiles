@@ -8,20 +8,16 @@ export EDITOR='nvim'
 
 export PATH=$HOME/bin:/usr/local/bin/:$PATH
 export PATH=/usr/local/opt/llvm/bin:$PATH
-export PATH=/usr/local/opt/python@3.9/bin/:$PATH
 export PATH=$HOME/.config/myscripts:$PATH
-export PATH=/usr/local/opt/ruby/bin:$PATH
 
-export LDFLAGS="-L/usr/local/opt/ruby/lib"
-export CPPFLAGS="-I/usr/local/opt/ruby/include"
-
-# Path to your oh-my-zsh installation.
+# Path to oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
 
 [ -f $HOME/.config/zsh/omz_vars ] && source $HOME/.config/zsh/omz_vars
 [ -f $HOME/.config/zsh/aliasrc ] && source $HOME/.config/zsh/aliasrc
 [ -f $HOME/.config/zsh/conda ] && source $HOME/.config/zsh/conda
 [ -f $HOME/.config/zsh/nsalias ] && source $HOME/.config/zsh/nsalias
+
 # omz plugins
 plugins=(git osx last-working-dir npm perl pip python zsh-syntax-highlighting)
 eval $(thefuck --alias)
@@ -30,6 +26,9 @@ export RPS1="%{$reset_color%}"
 source $ZSH/oh-my-zsh.sh
 
 ctags=/usr/local/bin/ctags
+
+# pyenv
+eval "$(pyenv init -)"
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -45,3 +44,4 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
+
