@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-startify'                       " Beautiful start page
 Plug 'neovim/nvim-lspconfig'                    " LSP
 Plug 'nvim-lua/completion-nvim'                 " Completion
+Plug 'hrsh7th/nvim-compe'                       " Completion
 Plug 'nvim-treesitter/nvim-treesitter'          " Better syntax highlighting
 Plug 'vim-airline/vim-airline'                  " Better Statusline
 Plug 'vim-airline/vim-airline-themes'           " Airline themes
@@ -22,6 +23,7 @@ Plug 'nvim-lua/plenary.nvim'                    " Telescope dep
 Plug 'nvim-telescope/telescope.nvim'            " Search using the Force!!!
 Plug 'sbdchd/neoformat'                         " Format files with ease
 Plug 'ThePrimeagen/harpoon'                     " Terminal manager
+Plug 'folke/which-key.nvim'                     " emacs like which-key
 Plug 'ryanoasis/vim-devicons'                   " Icons!!!
 call plug#end()
 
@@ -140,10 +142,10 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " Folding
-set foldenable "Enable folding
-set foldlevelstart=10 "Open most of the folds by default. If set to 0, all folds will be closed.
-set foldnestmax=10 "Folds can be nested. Setting a max value protects you from too many folds.
-set foldmethod=indent "Defines the type of folding.
+" set foldenable "Enable folding
+" set foldlevelstart=10 "Open most of the folds by default. If set to 0, all folds will be closed.
+" set foldnestmax=10 "Folds can be nested. Setting a max value protects you from too many folds.
+" set foldmethod=indent "Defines the type of folding.
 " set foldcolumn=2
 
 " Rel numbers only in normal mode
@@ -185,6 +187,12 @@ let g:airline_right_sep = "\uE0B6"
 let g:airline_right_alt_sep = "\uE0B7"
 
 " NerdCommenter
+lua << EOF
+local wk = require("which-key")
+wk.register({
+  ["<leader>c"] = { name = "+NerdCommenter" },
+})
+EOF
 let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
 let g:NERDCompactSexyComs = 1
@@ -195,12 +203,19 @@ lua << EOF
     require'lspconfig'.clangd.setup{on_attach=require'completion'.on_attach}
     require'lspconfig'.tsserver.setup{on_attach=require'completion'.on_attach}
     require'lspconfig'.rust_analyzer.setup{on_attach=require'completion'.on_attach}
+    -- Keymaps
+    local wk = require("which-key")
+    wk.register({
+      ["g"] = {
+        name = "+g",
+        d = { "<cmd>lua vim.lsp.buf.definition()<CR>" , "Goto defination" },
+        r = { "<cmd>lua vim.lsp.buf.references()<CR>" , "Goto references" },
+        D = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto implementation" },
+        W = { "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>", "Goto workspace_symbol" },
+      },
+      ["K"] = {"<cmd>lua vim.lsp.buf.hover()<CR>", "Show implematation"},
+    })
 EOF
-nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 
 " completion-nvim
 " Use <Tab> and <S-Tab> to navigate through popup menu
@@ -211,7 +226,7 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy', 'all']
 let g:completion_trigger_keyword_length = 3 " default = 1
 let g:completion_trigger_on_delete = 1
 set completeopt=menuone,noinsert,noselect " Set completeopt to have a better completion experience
-set shortmess+=c " Avoid showing message extra message when using completion
+set shortmess+=c " Avoid showing extra message when using completion
 
 " Treesitter
 lua <<EOF
@@ -227,10 +242,6 @@ lua <<EOF
 EOF
 
 " Startify
-nnoremap <Leader>S  :Startify<CR>
-nnoremap <Leader>ss :SSave!<CR>
-nnoremap <Leader>sl :SLoad<CR>
-nnoremap <Leader>sc :SClose<CR>
 let g:startify_session_before_save = [
         \ 'echo "Cleaning up before saving.."',
         \ 'silent! NERDTreeTabsClose'
@@ -238,19 +249,49 @@ let g:startify_session_before_save = [
 let g:startify_session_persistence = 1
 let g:startify_change_to_vcs_root = 1
 highlight Startifyfile ctermfg=8 guifg=#02d849 " Tweak for Humanoid colorscheme
+lua << EOF
+local wk = require("which-key")
+wk.register({
+  ["<leader>"] = {
+    s = {
+      name = "+startify",
+      o = { "<cmd>Startify<CR>", "Open startify" },
+      s = { "<cmd>SSave!<CR>", "Save session" },
+      l = { "<cmd>SLoad<CR>", "Load session" },
+      c = { "<cmd>SClose<CR>", "Close session" },
+    },
+  },
+})
+EOF
 
 " Telescope
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<CR>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').git_files()<CR>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<CR>
-nnoremap <leader>fl <cmd>lua require('telescope.builtin').live_grep()<CR>
-nnoremap <leader>ft <cmd>lua require('telescope.builtin').treesitter()<CR>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<CR>
-nnoremap <leader>fc <cmd>lua require('telescope.builtin').colorscheme()<CR>
-" nnoremap <Leader>ff :lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({}))<CR>
+lua << EOF
+local wk = require("which-key")
+wk.register({
+  ["<leader>"] = {
+    f = {
+      name = "+file",
+      f = { "<cmd>lua require('telescope.builtin').git_files()<CR>", "Find files" },
+      r = { "<cmd>lua require('telescope.builtin').oldfiles()<CR>", "Recent files" },
+      n = { "<cmd>enew<cr>", "New file" },
+      b = { "<cmd>lua require('telescope.builtin').buffers()<CR>", "Buffers" },
+      s = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>", "Search buffer" },
+      d = { "<cmd>lua require('telescope.builtin').live_grep()<CR>", "Search directory" },
+      v = { "<cmd>lua require('telescope.builtin').help_tags()<CR>", "Vim help" },
+      t = { "<cmd>lua require('telescope.builtin').colorscheme()<CR>", "Colorschemes/Themes" },
+    },
+  },
+  ["<leader><leader>"] = { "<cmd>lua require('telescope.builtin').git_files()<CR>", "Find files" },
+})
+EOF
 
 " Neoformat
-nnoremap <Leader>nf  :Neoformat<CR>
+lua << EOF
+local wk = require("which-key")
+wk.register({
+  ["<leader>nf"] = { "<cmd>Neoformat<CR>", "Format code" },
+})
+EOF
 
 " source $HOME/.config/nvim/stausline.vim
 " source $HOME/.config/nvim/stuff.vim
@@ -263,3 +304,17 @@ nmap <leader>tr :call Harpoon_GotoTerminal(3)<CR>
 
 " Cscope
 source $HOME/.config/nvim/cscope_maps.vim
+
+" Which-key
+lua << EOF
+  require("which-key").setup {
+  window = {
+    margin = { 0, 0, 0, 0 }, -- extra window margin [top, right, bottom, left]
+    padding = { 1, 0, 1, 0 }, -- extra window padding [top, right, bottom, left]
+  },
+  layout = {
+    spacing = 1, -- spacing between columns
+  },
+  hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ ", "<Plug>"}, -- hide mapping boilerplate
+}
+EOF
