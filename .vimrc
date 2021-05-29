@@ -87,10 +87,10 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " Folding
-set foldenable "Enable folding
-set foldlevelstart=10 "Open most of the folds by default. If set to 0, all folds will be closed.
-set foldnestmax=10 "Folds can be nested. Setting a max value protects you from too many folds.
-set foldmethod=indent "Defines the type of folding.
+" set foldenable "Enable folding
+" set foldlevelstart=10 "Open most of the folds by default. If set to 0, all folds will be closed.
+" set foldnestmax=10 "Folds can be nested. Setting a max value protects you from too many folds.
+" set foldmethod=indent "Defines the type of folding.
 " set foldcolumn=2
 
 " Rel numbers only in normal mode
