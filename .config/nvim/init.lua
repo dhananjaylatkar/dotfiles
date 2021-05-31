@@ -26,7 +26,6 @@ require('packer').startup(function()
   use 'airblade/vim-rooter'          -- Change directory to project root
   -- UI to select things (files, grep results, open buffers...)
   use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}} }
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'joshdick/onedark.vim'         -- Theme inspired by Atom
   use 'itchyny/lightline.vim'        -- Fancier statusline
   use 'folke/which-key.nvim'         -- emacs like Which-key
@@ -313,10 +312,3 @@ vim.g.gutentags_define_advanced_commands = 1
 -- Vim rooter
 vim.g.rooter_patterns = {'.git', '!Makefile', '.projectile',}
 
--- Treesitter
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-  },
-}
