@@ -19,8 +19,8 @@ export ZSH="${HOME}/.oh-my-zsh"
 [ -f $HOME/.config/zsh/nsalias ] && source $HOME/.config/zsh/nsalias
 
 # omz plugins
-plugins=(git osx last-working-dir npm perl pip python zsh-syntax-highlighting)
-eval $(thefuck --alias)
+plugins=(git osx last-working-dir npm pip python zsh-syntax-highlighting thefuck)
+eval $(thefuck --alias please)
 
 export RPS1="%{$reset_color%}"
 source $ZSH/oh-my-zsh.sh
