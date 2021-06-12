@@ -8,8 +8,8 @@
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
-;; (package! xcscope)
-(package! ggtags)
+(package! xcscope)
+;; (package! ggtags)
 (package! tree-sitter)
 (package! tree-sitter-langs)
 (package! mixed-pitch)
