@@ -9,6 +9,7 @@ export EDITOR='nvim'
 export PATH=$HOME/bin:/usr/local/bin/:$PATH
 export PATH=/usr/local/opt/llvm/bin:$PATH
 export PATH=$HOME/.config/myscripts:$PATH
+export PATH=$HOME/.emacs.d/bin:$PATH
 
 # Path to oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
@@ -19,7 +20,7 @@ export ZSH="${HOME}/.oh-my-zsh"
 [ -f $HOME/.config/zsh/nsalias ] && source $HOME/.config/zsh/nsalias
 
 # omz plugins
-plugins=(git osx last-working-dir npm pip python zsh-syntax-highlighting thefuck)
+plugins=(git osx last-working-dir npm pip python zsh-syntax-highlighting thefuck alias-finder)
 eval $(thefuck --alias please)
 
 export RPS1="%{$reset_color%}"

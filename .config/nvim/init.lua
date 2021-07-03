@@ -18,24 +18,23 @@ local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'       -- Package manager
   use 'tpope/vim-fugitive'           -- Git commands in nvim
-  use 'airblade/vim-gitgutter'       -- Git
   use 'tpope/vim-rhubarb'            -- Fugitive-companion to interact with github
   use 'tpope/vim-commentary'         -- "gc" to comment visual regions/lines
-  use 'ludovicchabant/vim-gutentags' -- Automatic tags management
-  use 'skywind3000/gutentags_plus'   -- Cscope support
   use 'airblade/vim-rooter'          -- Change directory to project root
   -- UI to select things (files, grep results, open buffers...)
   use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}} }
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use 'joshdick/onedark.vim'         -- Theme inspired by Atom
   use 'itchyny/lightline.vim'        -- Fancier statusline
   use 'folke/which-key.nvim'         -- emacs like Which-key
   use {'ThePrimeagen/harpoon', requires = {{'nvim-lua/plenary.nvim'}, {'nvim-lua/popup.nvim'}}}
   -- Add indentation guides even on blank lines
-  use { 'lukas-reineke/indent-blankline.nvim', branch="lua" }
+  use { 'lukas-reineke/indent-blankline.nvim'}
   -- Add git related info in the signs columns and popups
   use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'} }
   use 'neovim/nvim-lspconfig'        -- Collection of configurations for built-in LSP client
   use 'hrsh7th/nvim-compe'           -- Autocompletion plugin
+  use 'dhananjaylatkar/cscope_maps.nvim' -- cscope keymaps
 end)
 
 --Incremental live completion
@@ -68,6 +67,21 @@ vim.o.smartcase = true
 vim.o.updatetime = 250
 vim.wo.signcolumn="yes"
 
+vim.opt.clipboard = "unnamedplus"
+vim.opt.cursorline = true
+vim.opt.cmdheight = 1
+vim.opt.scrolloff = 3
+
+-- Tabs
+vim.opt.autoindent = true
+vim.opt.cindent = true
+vim.opt.wrap = true
+
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+
+
 -- Invisible Chars
 vim.cmd[[set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<]]
 vim.cmd[[set list]]
@@ -81,7 +95,7 @@ vim.cmd[[colorscheme onedark]]
 vim.g.lightline = { colorscheme = 'onedark';
       active = { 
 	      left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } },
-	      right = {{ 'lineinfo' }, { 'percent' }, { 'gutentags', 'fileformat', 'fileencoding', 'filetype' } }
+	      right = {{ 'lineinfo' }, { 'percent' }, { 'fileformat', 'fileencoding', 'filetype' } }
       };
       component_function = { gitbranch = 'fugitive#head', gutentags = 'gutentags#statusline'};
 }
@@ -242,6 +256,10 @@ require'compe'.setup {
   source = {
     path = true;
     nvim_lsp = true;
+    buffer = true;
+    spell = true;
+    calc = true;
+    nvim_lua = true;
   };
 }
 
@@ -301,14 +319,22 @@ vim.api.nvim_set_keymap('n', '<leader>ht', [[<cmd>lua require("harpoon.term").go
 vim.api.nvim_set_keymap('n', '<leader>ha', [[<cmd>lua require("harpoon.mark").add_file()<cr>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>ho', [[<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>]], opts)
 
--- Gutentags
-vim.g.gutentags_modules = {'gtags_cscope'}
-vim.g.gutentags_ctags_exclude = {'usr.src/contrib/*'}
-vim.g.gutentags_project_root = {'.projectile'}
-vim.g.gutentags_cache_dir= '~/gutentags'
-vim.g.gutentags_plus_switch = 1
-vim.g.gutentags_define_advanced_commands = 1
-
 -- Vim rooter
-vim.g.rooter_patterns = {'.git', '!Makefile', '.projectile',}
+vim.g.rooter_patterns = {'!Makefile', '.myproject', '.git',  }
+
+-- Treesitter
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  -- ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    -- disable = { "haskell" },  -- list of language that will be disabled
+  },
+}
+
+-- Gitsigns
+require('gitsigns').setup()
+
+-- Cscope
+require('cscope_maps').setup()
 
