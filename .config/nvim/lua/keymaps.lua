@@ -7,6 +7,10 @@ wk.register({
 		['`'] = {"<C-^>", "Switch to last buffer"},
 		[',']  = {"<cmd>lua require('telescope.builtin').buffers()<cr>", "Switch buffer"},
 		['<space>'] = {"<cmd>lua require('telescope.builtin').find_files({hidden = true})<cr>", "Find files"},
+		p = {
+			name = "+project",
+			p = {"<cmd>lua require('telescope').extensions.project.project{}<cr>", "Open project"}
+		},
 		f = {
 			name = "+file",
 			f = {"<cmd>lua require('telescope.builtin').find_files({hidden = true})<cr>", "Find files"},

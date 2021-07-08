@@ -10,7 +10,8 @@ require('utils')
 -- Load plugin configs
 require('plugin_config.lightline')  -- Statusbar
 require('plugin_config.telescope')  -- Telescope
-require('plugin_config.lspconfig')  -- lspconfig
+require('plugin_config.telescope-project')
+-- require('plugin_config.lspconfig')  -- lspconfig
 require('plugin_config.nvim-compe') -- nvim-compe
 require('plugin_config.which-key')  -- Which-key
 require('plugin_config.treesitter') -- Treesitter

@@ -10,6 +10,7 @@ export PATH=$HOME/bin:/usr/local/bin/:$PATH
 export PATH=/usr/local/opt/llvm/bin:$PATH
 export PATH=$HOME/.config/myscripts:$PATH
 export PATH=$HOME/.emacs.d/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 # Path to oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
@@ -20,7 +21,7 @@ export ZSH="${HOME}/.oh-my-zsh"
 [ -f $HOME/.config/zsh/nsalias ] && source $HOME/.config/zsh/nsalias
 
 # omz plugins
-plugins=(git osx last-working-dir npm pip python zsh-syntax-highlighting thefuck alias-finder)
+plugins=(git osx last-working-dir python zsh-syntax-highlighting thefuck alias-finder)
 eval $(thefuck --alias please)
 
 export RPS1="%{$reset_color%}"
@@ -39,6 +40,9 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# zoxide
+eval "$(zoxide init zsh)"
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
