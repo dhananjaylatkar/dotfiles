@@ -36,5 +36,7 @@ require('packer').startup(function()
 	use 'hrsh7th/nvim-compe'           -- Autocompletion plugin
 	use 'dhananjaylatkar/cscope_maps.nvim' -- cscope keymaps
 	use {'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons'}}
+	use 'norcalli/nvim-colorizer.lua'  -- Hex colors
+	use 'mhartington/formatter.nvim'   -- Code formatter
 end)
 
