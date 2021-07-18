@@ -33,7 +33,7 @@ vim.o.smartcase = true
 
 --Decrease update time
 vim.o.updatetime = 250
-vim.wo.signcolumn="yes"
+vim.wo.signcolumn = "yes"
 
 -- copy to system clipboard
 vim.opt.clipboard = "unnamedplus"
@@ -60,19 +60,18 @@ vim.opt.splitbelow = true
 vim.opt.confirm = true
 
 -- Invisible Chars
-vim.opt.listchars = {tab = '› ', eol = '↩', trail = '␣', lead = '␣'}
+vim.opt.listchars = { tab = "› ", eol = "↩", trail = "␣", lead = "␣" }
 vim.o.list = true
 
 -- highlight trailing whitespace
-vim.cmd[[match ErrorMsg '\s\+$']]
+vim.cmd([[match ErrorMsg '\s\+$']])
 
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true
 vim.g.onedark_terminal_italics = 2
-vim.cmd[[colorscheme onedark]]
+vim.cmd([[colorscheme onedark]])
 
 --Remap space as leader key
-vim.api.nvim_set_keymap('', '<Space>', '<Nop>', {noremap = true, silent=true})
+vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-

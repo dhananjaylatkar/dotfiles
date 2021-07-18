@@ -3,8 +3,12 @@
 vim.g.lightline = {
   colorscheme = "onedark",
   active = {
-    left = {{"mode", "paste"}, {"gitbranch", "readonly", "filename", "modified"}},
-    right = {{"lineinfo"}, {"percent"}, {"fileformat", "fileencoding", "filetype"}}
+    left = { { "mode", "paste" }, { "gitbranch", "readonly", "relativepath", "modified" } },
+    right = { { "lineinfo" }, { "percent" }, { "fileformat", "fileencoding", "filetype" } },
   },
-  component_function = {gitbranch = "fugitive#head"}
+  subseparator = {
+    left = "│",
+    right = "│",
+  },
+  component_function = { gitbranch = "fugitive#head" },
 }

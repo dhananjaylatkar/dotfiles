@@ -1,3 +1,2 @@
 -- Vim rooter
-vim.g.rooter_patterns = {'!Makefile', '.myproject', '.git',}
-
+vim.g.rooter_patterns = { "!Makefile", ".myproject", ".git" }
