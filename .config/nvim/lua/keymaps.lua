@@ -48,6 +48,7 @@ wk.register({
       f = { "<cmd>lua require('telescope.builtin').git_files()<cr>", "Git files" },
       b = { "<cmd>lua require('telescope.builtin').git_branches()<cr>", "Branches" },
       s = { "<cmd>lua require('telescope.builtin').git_status()<cr>", "Status in Telescope" },
+      g = { "<cmd>lua require('neogit').open()<cr>", "Neogit" },
       c = { "<cmd>lua require('telescope.builtin').git_bcommits()<cr>", "Commits for current buffer" },
       C = { "<cmd>lua require('telescope.builtin').git_commits()<cr>", "Commits for current directory" },
     },

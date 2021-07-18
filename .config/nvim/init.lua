@@ -18,6 +18,7 @@ require("plugin_config.treesitter") -- Treesitter
 require("plugin_config.vim_rooter") -- Vim rooter
 require("plugin_config.nvim-colorizer") -- Hex colors
 require("plugin_config.formatter") -- Code formatter
+require("plugin_config.neogit") -- Magit?
 require("gitsigns").setup() -- Gitsigns
 require("cscope_maps") -- Cscope
 

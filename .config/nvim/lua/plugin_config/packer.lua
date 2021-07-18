@@ -22,7 +22,8 @@ vim.api.nvim_exec(
 local use = require("packer").use
 require("packer").startup(function()
   use("wbthomason/packer.nvim") -- Package manager
-  use("tpope/vim-fugitive") -- Git commands in nvim
+  -- use("tpope/vim-fugitive") -- Git commands in nvim
+  use({'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'})
   use("tpope/vim-commentary") -- "gc" to comment visual regions/lines
   use("airblade/vim-rooter") -- Change directory to project root
   -- UI to select things (files, grep results, open buffers...)
