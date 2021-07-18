@@ -22,7 +22,6 @@ vim.api.nvim_exec(
 local use = require("packer").use
 require("packer").startup(function()
   use("wbthomason/packer.nvim") -- Package manager
-  -- use("tpope/vim-fugitive") -- Git commands in nvim
   use({'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'})
   use("tpope/vim-commentary") -- "gc" to comment visual regions/lines
   use("airblade/vim-rooter") -- Change directory to project root
@@ -32,6 +31,7 @@ require("packer").startup(function()
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
   use("joshdick/onedark.vim") -- Theme inspired by Atom
   use("itchyny/lightline.vim") -- Fancier statusline
+  use("itchyny/vim-gitbranch") -- Git branch for statusline
   use("folke/which-key.nvim") -- emacs like Which-key
   use({ "ThePrimeagen/harpoon", requires = { { "nvim-lua/plenary.nvim" }, { "nvim-lua/popup.nvim" } } })
   -- Add git related info in the signs columns and popups

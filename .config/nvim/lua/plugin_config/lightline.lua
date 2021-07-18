@@ -10,5 +10,5 @@ vim.g.lightline = {
     left = "│",
     right = "│",
   },
-  component_function = { gitbranch = "fugitive#head" },
+  component_function = { gitbranch = "gitbranch#name" },
 }
