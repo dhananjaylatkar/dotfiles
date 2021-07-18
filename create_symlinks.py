@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import os
 
 FULL_PATH = os.getcwd()
@@ -25,5 +26,9 @@ for file in files:
     if dot_path == 'create_symlinks.py' or 'emacs' in dot_path:
         continue
     cmd = 'ln -s -F ' + file + ' ' + dot_path
+    try:
+        os.makedirs(os.path.dirname(os.path.abspath(dot_path)))
+    except FileExistsError:
+        pass
     print(cmd)
     os.system(cmd)
