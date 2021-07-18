@@ -11,6 +11,7 @@ export PATH=/usr/local/opt/llvm/bin:$PATH
 export PATH=$HOME/.config/myscripts:$PATH
 export PATH=$HOME/.emacs.d/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
+export PATH="$HOME/.poetry/bin:$PATH"
 
 # Path to oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
