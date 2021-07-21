@@ -8,6 +8,7 @@ require("vim_config")
 require("utils")
 
 -- Load plugin configs
+require("plugin_config.dashboard") -- Doom like dashboard
 require("plugin_config.lightline") -- Statusbar
 require("plugin_config.telescope") -- Telescope
 require("plugin_config.telescope-project")

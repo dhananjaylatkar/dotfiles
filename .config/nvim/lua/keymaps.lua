@@ -56,8 +56,8 @@ wk.register({
       name = "+recent",
       f = { "<cmd>lua require('telescope.builtin').oldfiles()<cr>", "Recent files" },
       c = { "<cmd>lua require('telescope.builtin').command_history()<cr>", "Recent commands" },
-      s = { "<cmd>lua require('telescope.builtin').search_history()<cr>", "Recent searches" },
-      j = { "<cmd>lua require('telescope.builtin').search_history()<cr>", "Jumplist" },
+      s = { "<cmd>SessionLoad<cr>", "Recent sessions" },
+      j = { "<cmd>lua require('telescope.builtin').jumplist()<cr>", "Jumplist" },
     },
     h = {
       name = "+harpoon",
@@ -81,7 +81,8 @@ wk.register({
       r = { "<cmd>set relativenumber!<cr>", "Relative line numbers" },
       s = { "<cmd>set expandtab!<cr>", "Spaces/Tabs" },
       m = { "<cmd>lua ToggleMouse()<cr>", "Mouse mode" },
-      c = { "<cmd>ColorizerToggle<cr>", "Colorizer" },
+      C = { "<cmd>ColorizerToggle<cr>", "Colorizer" },
+      c = { "<cmd>lua require('telescope.builtin').colorscheme()<cr>", "Colorscheme" },
     },
     l = {
       name = "+lsp",

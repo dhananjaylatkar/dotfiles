@@ -42,4 +42,5 @@ require("packer").startup(function()
   use({ "kyazdani42/nvim-tree.lua", requires = { "kyazdani42/nvim-web-devicons" } })
   use("norcalli/nvim-colorizer.lua") -- Hex colors
   use("mhartington/formatter.nvim") -- Code formatter
+  use("glepnir/dashboard-nvim") -- dashboard-nvim
 end)
