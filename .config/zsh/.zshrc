@@ -21,8 +21,11 @@ export ZSH="${HOME}/.oh-my-zsh"
 [ -f $HOME/.config/zsh/conda ] && source $HOME/.config/zsh/conda
 [ -f $HOME/.config/zsh/nsalias ] && source $HOME/.config/zsh/nsalias
 
+# zsh-autosuggestions
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+
 # omz plugins
-plugins=(git osx last-working-dir python zsh-syntax-highlighting thefuck alias-finder)
+plugins=(git osx last-working-dir zsh-syntax-highlighting zsh-autosuggestions)
 eval $(thefuck --alias please)
 
 export RPS1="%{$reset_color%}"
@@ -41,9 +44,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# zoxide
-eval "$(zoxide init zsh)"
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
