@@ -19,7 +19,7 @@ export ZSH="${HOME}/.oh-my-zsh"
 
 [ -f $HOME/.config/zsh/omz_vars ] && source $HOME/.config/zsh/omz_vars
 [ -f $HOME/.config/zsh/aliasrc ] && source $HOME/.config/zsh/aliasrc
-[ -f $HOME/.config/zsh/nsalias ] && source $HOME/.config/zsh/nsalias
+[ -f $HOME/.config/zsh-work/nsalias ] && source $HOME/.config/zsh-work/nsalias
 
 # zsh-autosuggestions
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20

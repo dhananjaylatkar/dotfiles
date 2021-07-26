@@ -4,7 +4,8 @@ STOW_DIRS = \
 			scripts \
 			tmux \
 			vim \
-			zsh
+			zsh \
+			work
 
 nothing:
 	@echo "Usage:"
