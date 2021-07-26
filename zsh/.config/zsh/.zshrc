@@ -11,14 +11,14 @@ export PATH=/usr/local/opt/llvm/bin:$PATH
 export PATH=$HOME/.config/scripts:$PATH
 export PATH=$HOME/.emacs.d/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
-export PATH="$HOME/.poetry/bin:$PATH"
+export PATH=$HOME/.poetry/bin:$PATH
+export PATH=$HOME/opt/anaconda3/bin:$PATH
 
 # Path to oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
 
 [ -f $HOME/.config/zsh/omz_vars ] && source $HOME/.config/zsh/omz_vars
 [ -f $HOME/.config/zsh/aliasrc ] && source $HOME/.config/zsh/aliasrc
-[ -f $HOME/.config/zsh/conda ] && source $HOME/.config/zsh/conda
 [ -f $HOME/.config/zsh/nsalias ] && source $HOME/.config/zsh/nsalias
 
 # zsh-autosuggestions

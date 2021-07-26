@@ -1,0 +1,23 @@
+# Editor
+alias vi="nvim"
+alias em="emacsclient"
+alias cat=bat
+
+# Workspace
+alias ws="$HOME/.config/scripts/tmux2"
+
+# Python
+alias python=python3
+alias py=python3
+alias pip=pip3
+alias pya=". ./venv/bin/activate"
+alias pyd="deactivate"
+
+# Lua
+stylua="stylua --indent-type=Spaces --indent-width=2 --line-endings=unix --quote-style=AutoPreferDouble"
+
+# Config alias
+alias zshconfig="vi $ZDOTDIR/.zshrc"
+alias zshsource="source $ZDOTDIR/.zshrc"
+alias spotdlconfig='vi ~/Library/Application\ Support/spotdl/config.yml'
+
