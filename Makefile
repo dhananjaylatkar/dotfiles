@@ -1,11 +1,11 @@
 STOW_DIRS = \
-			doom \
-			nvim \
-			scripts \
-			tmux \
-			vim \
-			zsh \
-			work
+	doom \
+	nvim \
+	scripts \
+	tmux \
+	vim \
+	zsh \
+	work
 
 nothing:
 	@echo "Usage:"
