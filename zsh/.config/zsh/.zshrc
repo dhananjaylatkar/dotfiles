@@ -8,7 +8,7 @@ export EDITOR='nvim'
 
 export PATH=$HOME/bin:/usr/local/bin/:$PATH
 export PATH=/usr/local/opt/llvm/bin:$PATH
-export PATH=$HOME/.config/myscripts:$PATH
+export PATH=$HOME/.config/scripts:$PATH
 export PATH=$HOME/.emacs.d/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH="$HOME/.poetry/bin:$PATH"
@@ -25,13 +25,15 @@ export ZSH="${HOME}/.oh-my-zsh"
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
 # omz plugins
-plugins=(git osx last-working-dir zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git osx last-working-dir zsh-syntax-highlighting vi-mode)
 eval $(thefuck --alias please)
 
 export RPS1="%{$reset_color%}"
 source $ZSH/oh-my-zsh.sh
 
 ctags=/usr/local/bin/ctags
+
+unsetopt nomatch # disable annoying nomatch found error
 
 # pyenv
 eval "$(pyenv init -)"
