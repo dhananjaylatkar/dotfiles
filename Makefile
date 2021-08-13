@@ -22,3 +22,10 @@ clean:
 		 stow --target=$${HOME} --delete -v $${DIR}; \
 	done
 
+tmux:
+	@echo ">>> tmux >>>"
+	TMUX_DIR=${HOME}/.config/tmux
+	git clone https://github.com/gpakosz/.tmux.git ${TMUX_DIR}
+	ln -s -f ${TMUX_DIR}/.tmux.conf ~/.tmux.conf
+	@echo "<<< tmux <<<"
+
