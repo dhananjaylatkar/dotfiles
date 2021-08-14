@@ -52,6 +52,7 @@ compinit
 
 # Case insensitive
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
+unsetopt nomatch # disable annoying nomatch found error
 
 # Key-bindings
 bindkey -s '^o' 'ranger^M'
