@@ -49,7 +49,7 @@ alias la='ls -lAh'
 setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
-alias cd='z'
+#alias cd='z'
 alias -- -='\cd -'
 alias 1='\cd -'
 alias 2='\cd -2'
