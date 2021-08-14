@@ -311,7 +311,7 @@ tmux_conf_battery_status_discharging="↓"    # U+2193
 # clock style (when you hit <prefix> + t)
 # you may want to use %I:%M %p in place of %R in tmux_conf_theme_status_right
 tmux_conf_theme_clock_colour="$tmux_conf_theme_colour_4"
-tmux_conf_theme_clock_style="12"
+tmux_conf_theme_clock_style="24"
 
 
 # -- clipboard -----------------------------------------------------------------
