@@ -426,7 +426,7 @@ RPROMPT=''
 PROMPT=$''
 [ -n "$SSH_CLIENT" ] \
     && [ -n "$SSH_TTY" ] \
-    && PROMPT+='%B%F{red}@%m%f%b · '   # Hostname, if in SSH session
+    && PROMPT+='%B[%F{178}%n%f@%F{161}%m%f]%b '   # Hostname, if in SSH session
 PROMPT+='%B%F{39}%40<… <%~%<<%f%b'     # Path truncated to 30 characters
 PROMPT+='%(12V. · %F{244} %12v%f.)'   # Python virtualenv name
 PROMPT+='$(gitprompt)'                 # Git status
