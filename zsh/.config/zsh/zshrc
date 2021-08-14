@@ -65,7 +65,12 @@ bindkey "^j" down-line-or-beginning-search # Down
 bindkey -r "^u"
 bindkey -r "^d"
 
-# Edit line in vim with ctrl-e:
+# Edit line in vim with ctrl-xe:
 autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
+bindkey '^x^e' edit-command-line
+
+bindkey -M viins '^a' vi-beginning-of-line
+bindkey -M vicmd '^a' vi-beginning-of-line
+bindkey -M viins '^e' vi-end-of-line
+bindkey -M vicmd '^e' vi-end-of-line
 
