@@ -15,6 +15,7 @@ STOW_DIRS_WORK = \
 	zsh \
 	work
 
+TMUX_DIR=${HOME}/.config/tmux
 nothing:
 	@echo "Usage:"
 	@echo "    make all      stow all files"
@@ -44,7 +45,6 @@ clean_work:
 .PHONY: tmux
 tmux:
 	@echo ">>> tmux >>>"
-	TMUX_DIR=${HOME}/.config/tmux
 	@if [ -f "${TMUX_DIR}/.tmux.conf" ]; then \
 		git --git-dir ${TMUX_DIR}/.git/ --work-tree=${TMUX_DIR} pull; \
 	else \
