@@ -16,6 +16,7 @@ STOW_DIRS_WORK = \
 	work
 
 TMUX_DIR=${HOME}/.config/tmux
+PYENV_DIR=${HOME}/.config/pyenv
 nothing:
 	@echo "Usage:"
 	@echo "    make all      stow all files"
@@ -52,4 +53,14 @@ tmux:
 		ln -s -f ${TMUX_DIR}/.tmux.conf ${HOME}/.tmux.conf; \
 	fi
 	@echo "<<< tmux <<<"
+
+.PHONY: pyenv
+pyenv:
+	@echo ">>> pyenv >>>"
+	@if [ -d "${PYENV_DIR}" ]; then \
+		git --git-dir ${PYENV_DIR}/.git/ --work-tree=${PYENV_DIR} pull; \
+	else \
+		git clone https://github.com/pyenv/pyenv.git ${PYENV_DIR}; \
+	fi
+	@echo "<<< pyenv <<<"
 
