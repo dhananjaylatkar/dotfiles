@@ -7,6 +7,7 @@ export PATH="$HOME/.local/bin":$PATH
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 eval "$(zoxide init zsh)"
+eval "$(pyenv init -)"
 # eval "`pip completion --zsh`"
 
 # >>> conda initialize >>>

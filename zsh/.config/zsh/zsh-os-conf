@@ -1,0 +1,19 @@
+
+case "$(uname -s)" in
+   Darwin)
+     # echo 'Mac OS X'
+     PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+     PATH=/usr/local/opt/llvm/bin:$PATH
+     PATH=$HOME/.config/scripts:$PATH
+     PATH=$HOME/.emacs.d/bin:$PATH
+     PATH=$HOME/.poetry/bin:$PATH
+     ;;
+   Linux)
+     ;;
+   CYGWIN*|MINGW32*|MSYS*|MINGW*)
+     # echo 'MS Windows'
+     ;;
+   *)
+     # echo 'Other OS'
+     ;;
+esac

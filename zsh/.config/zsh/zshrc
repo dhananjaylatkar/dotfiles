@@ -1,5 +1,3 @@
-#!/bin/sh
-
 # some useful options (man zshoptions)
 setopt autocd extendedglob nomatch menucomplete
 setopt interactive_comments
@@ -33,7 +31,9 @@ zsh_add_file "zsh-exports"
 zsh_add_file "zsh-vim-mode"
 zsh_add_file "zsh-aliases"
 zsh_add_file "zsh-prompt"
-zsh_add_file "zsh-keybindings"
+zsh_add_file "zsh-omz-goodies"
+zsh_add_file "zsh-os-conf"
+[ -f $HOME/.config/zsh-work/nsalias ] && source $HOME/.config/zsh-work/nsalias
 
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
@@ -43,7 +43,7 @@ zsh_add_completion "esc/conda-zsh-completion" false
 # For more plugins: https://github.com/unixorn/awesome-zsh-plugins
 # More completions https://github.com/zsh-users/zsh-completions
 
-# FZF 
+# FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_COMPLETION_TRIGGER='~~'
 export FZF_DEFAULT_COMMAND='fd --type file --color=always --follow --hidden --exclude .git'
@@ -52,4 +52,19 @@ compinit
 
 # Case insensitive
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
+
+# Key-bindings
+bindkey -s '^o' 'ranger^M'
+bindkey -s '^f' 'zi^M'
+bindkey '^[[P' delete-char
+bindkey "^p" up-line-or-beginning-search # Up
+bindkey "^n" down-line-or-beginning-search # Down
+bindkey "^k" up-line-or-beginning-search # Up
+bindkey "^j" down-line-or-beginning-search # Down
+bindkey -r "^u"
+bindkey -r "^d"
+
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
 

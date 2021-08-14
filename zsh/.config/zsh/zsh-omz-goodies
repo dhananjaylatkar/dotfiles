@@ -1,0 +1,87 @@
+# The MIT License (MIT)
+# Copyright (c) 2009-2018 Robby Russell and contributors
+# See the full list at https://github.com/robbyrussell/oh-my-zsh/contributors
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+# Best thing from omz
+if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
+  function zle-line-init() {
+    echoti smkx
+  }
+  function zle-line-finish() {
+    echoti rmkx
+  }
+  zle -N zle-line-init
+  zle -N zle-line-finish
+fi
+
+# Start typing + [Up-Arrow] - fuzzy find history forward
+if [[ -n "${terminfo[kcuu1]}" ]]; then
+  autoload -U up-line-or-beginning-search
+  zle -N up-line-or-beginning-search
+
+  bindkey -M emacs "${terminfo[kcuu1]}" up-line-or-beginning-search
+  bindkey -M viins "${terminfo[kcuu1]}" up-line-or-beginning-search
+  bindkey -M vicmd "${terminfo[kcuu1]}" up-line-or-beginning-search
+fi
+# Start typing + [Down-Arrow] - fuzzy find history backward
+if [[ -n "${terminfo[kcud1]}" ]]; then
+  autoload -U down-line-or-beginning-search
+  zle -N down-line-or-beginning-search
+
+  bindkey -M emacs "${terminfo[kcud1]}" down-line-or-beginning-search
+  bindkey -M viins "${terminfo[kcud1]}" down-line-or-beginning-search
+  bindkey -M vicmd "${terminfo[kcud1]}" down-line-or-beginning-search
+fi
+
+# Last working directory
+# Flag indicating if we've previously jumped to last directory
+typeset -g ZSH_LAST_WORKING_DIRECTORY
+
+# Ensure cache directory exists.
+if [ -z "$ZSH_CACHE_DIR" -o ! -d "$ZSH_CACHE_DIR" ]; then
+    ZSH_CACHE_DIR="${XDG_DATA_HOME}/zsh/.cache"
+    mkdir -p "$ZSH_CACHE_DIR"
+fi
+
+# Updates the last directory once directory is changed
+autoload -U add-zsh-hook
+add-zsh-hook chpwd chpwd_last_working_dir
+chpwd_last_working_dir() {
+	if [ "$ZSH_SUBSHELL" = 0 ]; then
+		local cache_file="$ZSH_CACHE_DIR/last-working-dir"
+		pwd >| "$cache_file"
+	fi
+}
+
+# Changes directory to the last working directory
+lwd() {
+	local cache_file="$ZSH_CACHE_DIR/last-working-dir"
+	[[ -r "$cache_file" ]] && cd "$(cat "$cache_file")"
+}
+
+# Jump to last directory automatically unless:
+# - this isn't the first time the plugin is loaded
+# - it's not in $HOME directory
+[[ -n "$ZSH_LAST_WORKING_DIRECTORY" ]] && return
+[[ "$PWD" != "$HOME" ]] && return
+
+lwd 2>/dev/null && ZSH_LAST_WORKING_DIRECTORY=1 || true
+
