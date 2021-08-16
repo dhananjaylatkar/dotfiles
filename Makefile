@@ -15,6 +15,8 @@ STOW_DIRS_WORK = \
 	zsh \
 	work
 
+ZSH_DIR=${HOME}/.config/zsh
+NVIM_DIR=${HOME}/.config/nvim
 TMUX_DIR=${HOME}/.config/tmux
 PYENV_DIR=${HOME}/.config/pyenv
 nothing:
@@ -23,12 +25,12 @@ nothing:
 	@echo "    make clean    unstow all files"
 	@echo "    make tmux     fetch tmux config"
 
-all:
+all: prep
 	@for DIR in ${STOW_DIRS}; do \
 		 stow --target=$${HOME} -v $${DIR}; \
 	done
 
-all_work:
+all_work: prep
 	@for DIR in ${STOW_DIRS_WORK}; do \
 		 stow --target=$${HOME} -v $${DIR}; \
 	done
@@ -42,6 +44,11 @@ clean_work:
 	@for DIR in ${STOW_DIRS_WORK}; do \
 		 stow --target=$${HOME} --delete -v $${DIR}; \
 	done
+
+prep:
+	# Create tmp files so that whole folder does't get linked by stow.
+	@mkdir -p ${ZSH_DIR} ${NVIM_DIR}
+	@touch ${ZSH_DIR}/.tmp ${NVIM_DIR}/.tmp
 
 .PHONY: tmux
 tmux:
