@@ -24,23 +24,29 @@ require("packer").startup(function()
   use("wbthomason/packer.nvim") -- Package manager
   use({'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'})
   use("tpope/vim-commentary") -- "gc" to comment visual regions/lines
+  use("tpope/vim-surround") -- surround text with yas, cas, das, etc
   use("airblade/vim-rooter") -- Change directory to project root
   -- UI to select things (files, grep results, open buffers...)
-  use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } } })
-  use({ "nvim-telescope/telescope-project.nvim", requires = { "nvim-telescope/telescope.nvim" } })
-  use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-  use("joshdick/onedark.vim") -- Theme inspired by Atom
-  use("itchyny/lightline.vim") -- Fancier statusline
+  use({"nvim-telescope/telescope.nvim", requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}})
+  use({"nvim-telescope/telescope-project.nvim", requires = {"nvim-telescope/telescope.nvim"}})
+  use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+  use({"hoob3rt/lualine.nvim", requires = {"kyazdani42/nvim-web-devicons"}}) -- Fancier statusline
   use("itchyny/vim-gitbranch") -- Git branch for statusline
   use("folke/which-key.nvim") -- emacs like Which-key
-  use({ "ThePrimeagen/harpoon", requires = { { "nvim-lua/plenary.nvim" }, { "nvim-lua/popup.nvim" } } })
+  use({"ThePrimeagen/harpoon", requires = {{"nvim-lua/plenary.nvim"}, {"nvim-lua/popup.nvim"}}})
   -- Add git related info in the signs columns and popups
-  use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
+  use({"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}})
   use("neovim/nvim-lspconfig") -- Collection of configurations for built-in LSP client
   use("hrsh7th/nvim-compe") -- Autocompletion plugin
   use("dhananjaylatkar/cscope_maps.nvim") -- cscope keymaps
-  use({ "kyazdani42/nvim-tree.lua", requires = { "kyazdani42/nvim-web-devicons" } })
+  use({"kyazdani42/nvim-tree.lua", requires = {"kyazdani42/nvim-web-devicons"}})
   use("norcalli/nvim-colorizer.lua") -- Hex colors
   use("mhartington/formatter.nvim") -- Code formatter
   use("glepnir/dashboard-nvim") -- dashboard-nvim
+  -- Colorschemes
+  use("joshdick/onedark.vim") -- Theme inspired by Atom
+  use("sainnhe/gruvbox-material")
+  use("sainnhe/everforest")
+  use("folke/tokyonight.nvim")
+
 end)
