@@ -7,17 +7,20 @@ vim.o.termguicolors = true
 -- vim.g.lightline.colorscheme = 'onedark'
 
 -- Everforest
--- vim.g.everforest_background = 'hard' -- soft, medium
+-- vim.g.everforest_background = 'hard' -- hard, soft, medium
 -- vim.g.everforest_enable_italic = 1
--- vim.g.lightline.colorscheme = 'everforest'
 -- vim.cmd([[colorscheme everforest]])
 
 -- Tokyonight
-vim.g.tokyonight_style = "night" -- storm, day
+vim.g.tokyonight_style = "night" -- night, storm, day
 vim.g.tokyonight_italic_functions = true
 vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
--- vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
 vim.cmd[[colorscheme tokyonight]]
--- vim.g.lightline.colorscheme = 'tokyonight'
+-- vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
 
+-- Gruvbox
+-- vim.g.gruvbox_material_enable_italic = 1
+-- vim.g.gruvbox_material_background = 'hard' -- hard, soft, medium
+-- vim.g.gruvbox_material_palette = 'original' -- original, mix, material
+-- vim.cmd[[colorscheme gruvbox-material]]
 
