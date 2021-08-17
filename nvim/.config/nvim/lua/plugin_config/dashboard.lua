@@ -3,12 +3,12 @@ vim.g.dashboard_default_executive = "telescope"
 
 vim.g.dashboard_custom_section = {
   a = {
-    description = { "  Open Project         SPC p p" },
-    command = "lua require('telescope').extensions.project.project{}",
-  },
-  b = {
     description = { "  Find File            SPC f f" },
     command = "lua require('telescope.builtin').find_files({hidden = true})",
+  },
+  b = {
+    description = { "  Open Project         SPC p p" },
+    command = "lua require('telescope').extensions.project.project{}",
   },
   c = {
     description = { "ﭯ  Recent Files         SPC r f" },
