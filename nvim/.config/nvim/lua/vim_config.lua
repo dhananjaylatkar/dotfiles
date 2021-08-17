@@ -60,7 +60,8 @@ vim.opt.splitbelow = true
 vim.opt.confirm = true
 
 -- Invisible Chars
-vim.opt.listchars = { tab = "› ", eol = "↩", trail = "␣", lead = "␣" }
+-- vim.opt.listchars = { tab = "› ", eol = "↩", trail = "␣", lead = "␣" }
+vim.opt.listchars = { tab = "› ", eol = "↩", trail = "␣" }
 vim.o.list = true
 
 -- highlight trailing whitespace
