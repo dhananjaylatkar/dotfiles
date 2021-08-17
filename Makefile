@@ -1,4 +1,5 @@
 STOW_DIRS = \
+	alacritty \
 	doom \
 	nvim \
 	scripts \
