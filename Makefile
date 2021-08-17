@@ -24,31 +24,27 @@ nothing:
 	@echo "    make all      stow all files"
 	@echo "    make clean    unstow all files"
 	@echo "    make tmux     fetch tmux config"
+	@echo "    make pyenv    install pyenv"
 
-all: prep
+all:
 	@for DIR in ${STOW_DIRS}; do \
-		 stow --target=$${HOME} -v $${DIR}; \
+		 stow --target=$${HOME} -v --no-folding $${DIR}; \
 	done
 
-all_work: prep
+all_work:
 	@for DIR in ${STOW_DIRS_WORK}; do \
-		 stow --target=$${HOME} -v $${DIR}; \
+		 stow --target=$${HOME} -v --no-folding $${DIR}; \
 	done
 
 clean:
 	@for DIR in ${STOW_DIRS}; do \
-		 stow --target=$${HOME} --delete -v $${DIR}; \
+		 stow --target=$${HOME} --delete -v --no-folding $${DIR}; \
 	done
 
 clean_work:
 	@for DIR in ${STOW_DIRS_WORK}; do \
-		 stow --target=$${HOME} --delete -v $${DIR}; \
+		 stow --target=$${HOME} --delete -v --no-folding $${DIR}; \
 	done
-
-prep:
-	# Create tmp files so that whole folder does't get linked by stow.
-	@mkdir -p ${ZSH_DIR} ${NVIM_DIR}
-	@touch ${ZSH_DIR}/.tmp ${NVIM_DIR}/.tmp
 
 .PHONY: tmux
 tmux:
