@@ -2,10 +2,11 @@
 case "$(uname -s)" in
    Darwin)
      # echo 'Mac OS X'
-     PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
-     PATH=/usr/local/opt/llvm/bin:$PATH
-     PATH=$HOME/.emacs.d/bin:$PATH
-     PATH=$HOME/.poetry/bin:$PATH
+     PATH=$PATH:/usr/local/opt/make/libexec/gnubin
+     PATH=$PATH:/usr/local/opt/llvm/bin
+     PATH=$PATH:$HOME/.emacs.d/bin
+     PATH=$PATH:$HOME/.poetry/bin
+     PATH=$PATH:/usr/local/opt/riscv-gnu-toolchain/bin
      ;;
    Linux)
      ;;
