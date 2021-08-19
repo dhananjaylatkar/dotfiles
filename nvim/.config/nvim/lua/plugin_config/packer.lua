@@ -25,10 +25,10 @@ require("packer").startup(function()
   use({'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'})
   use("tpope/vim-commentary") -- "gc" to comment visual regions/lines
   use("tpope/vim-surround") -- surround text with yas, cas, das, etc
-  use("airblade/vim-rooter") -- Change directory to project root
   -- UI to select things (files, grep results, open buffers...)
   use({"nvim-telescope/telescope.nvim", requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}})
   use({"nvim-telescope/telescope-project.nvim", requires = {"nvim-telescope/telescope.nvim"}})
+  use("ahmedkhalf/project.nvim") -- Change directory to project root
   use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
   use({"hoob3rt/lualine.nvim", requires = {"kyazdani42/nvim-web-devicons"}}) -- Fancier statusline
   use("itchyny/vim-gitbranch") -- Git branch for statusline
