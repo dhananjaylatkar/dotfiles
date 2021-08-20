@@ -12,8 +12,10 @@ vim.o.termguicolors = true
 -- vim.cmd([[colorscheme everforest]])
 
 -- Tokyonight
-vim.g.tokyonight_style = "night" -- night, storm, day
+vim.g.tokyonight_style = "storm" -- night, storm, day
 vim.g.tokyonight_italic_functions = true
+vim.g.tokyonight_italic_comments = true
+vim.g.tokyonight_terminal_colors = true
 vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
 vim.cmd[[colorscheme tokyonight]]
 -- vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
@@ -21,6 +23,10 @@ vim.cmd[[colorscheme tokyonight]]
 -- Gruvbox
 -- vim.g.gruvbox_material_enable_italic = 1
 -- vim.g.gruvbox_material_background = 'hard' -- hard, soft, medium
--- vim.g.gruvbox_material_palette = 'original' -- original, mix, material
+-- vim.g.gruvbox_material_palette = 'mix' -- original, mix, material
+-- vim.g.gruvbox_material_enable_italic = 1
 -- vim.cmd[[colorscheme gruvbox-material]]
+
+-- gruvbuddy
+-- require('colorbuddy').colorscheme('gruvbuddy')
 

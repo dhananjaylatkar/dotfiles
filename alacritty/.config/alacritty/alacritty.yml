@@ -16,9 +16,9 @@ font:
     family: JetBrainsMono Nerd Font Mono
     style: Italic
 
-  use_thin_strokes: true
+  # use_thin_strokes: true
 
-  size: 14.0
+  size: 15.0
 
   ligatures: true
 

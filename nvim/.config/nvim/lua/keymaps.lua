@@ -5,6 +5,7 @@ local opts = { noremap = true, silent = true }
 wk.register({
   ["<leader>"] = {
     ["`"] = { "<C-^>", "Switch to last buffer" },
+    ["<Tab>"] = { "<C-^>", "Switch to last buffer" },
     [","] = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Switch buffer" },
     ["<space>"] = { "<cmd>lua require('telescope.builtin').find_files({hidden = true})<cr>", "Find files" },
     p = {

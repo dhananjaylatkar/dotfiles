@@ -48,5 +48,6 @@ require("packer").startup(function()
   use("sainnhe/gruvbox-material")
   use("sainnhe/everforest")
   use("folke/tokyonight.nvim")
+  use({"tjdevries/gruvbuddy.nvim", requires = "tjdevries/colorbuddy.vim"})
 
 end)
