@@ -11,6 +11,7 @@ wk.register({
     p = {
       name = "+project",
       p = { "<cmd>lua require('telescope').extensions.project.project{}<cr>", "Open project" },
+	  w = { "<cmd>lua require('telescope.builtin').grep_string{search = vim.fn.expand('<cword>')}<cr>", "Word search" },
     },
     f = {
       name = "+file",
@@ -43,6 +44,7 @@ wk.register({
       s = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Search buffer" },
       B = { "<cmd>lua require('telescope.builtin').live_grep({grep_open_files = true})<cr>", "Search open buffers" },
       p = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Search in directory" },
+	  w = { "<cmd>lua require('telescope.builtin').grep_string{search = vim.fn.expand('<cword>')}<cr>", "Search word" },
     },
     g = {
       name = "+git",
