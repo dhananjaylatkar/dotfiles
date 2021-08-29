@@ -22,6 +22,7 @@ vim.api.nvim_exec(
 local use = require("packer").use
 require("packer").startup(function()
   use("wbthomason/packer.nvim") -- Package manager
+  use("justinmk/vim-sneak") -- 2 char search
   use({'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'})
   use("tpope/vim-commentary") -- "gc" to comment visual regions/lines
   use("tpope/vim-surround") -- surround text with yas, cas, das, etc
