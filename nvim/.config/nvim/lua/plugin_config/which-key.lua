@@ -7,6 +7,16 @@ require("which-key").setup({
   layout = {
     spacing = 1, -- spacing between columns
   },
-  hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ ", "<Plug>" }, -- hide mapping boilerplate
+  hidden = {
+    "<silent>",
+    "<cmd>",
+    "<Cmd>",
+    "<CR>",
+    "call",
+    "lua",
+    "^:",
+    "^ ",
+    "<Plug>",
+  }, -- hide mapping boilerplate
 })
 vim.opt.timeoutlen = 500 -- controls when WhichKey opens

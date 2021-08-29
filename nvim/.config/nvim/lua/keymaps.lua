@@ -6,24 +6,48 @@ wk.register({
   ["<leader>"] = {
     ["`"] = { "<C-^>", "Switch to last buffer" },
     ["<Tab>"] = { "<C-^>", "Switch to last buffer" },
-    [","] = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Switch buffer" },
-    ["<space>"] = { "<cmd>lua require('telescope.builtin').find_files({hidden = true})<cr>", "Find files" },
+    [","] = {
+      "<cmd>lua require('telescope.builtin').buffers()<cr>",
+      "Switch buffer",
+    },
+    ["<space>"] = {
+      "<cmd>lua require('telescope.builtin').find_files({hidden = true})<cr>",
+      "Find files",
+    },
     p = {
       name = "+project",
-      p = { "<cmd>lua require('telescope').extensions.project.project{}<cr>", "Open project" },
-	  w = { "<cmd>lua require('telescope.builtin').grep_string{search = vim.fn.expand('<cword>')}<cr>", "Word search" },
+      p = {
+        "<cmd>lua require('telescope').extensions.project.project{}<cr>",
+        "Open project",
+      },
+      w = {
+        "<cmd>lua require('telescope.builtin').grep_string{search = vim.fn.expand('<cword>')}<cr>",
+        "Word search",
+      },
     },
     f = {
       name = "+file",
-      f = { "<cmd>lua require('telescope.builtin').find_files({hidden = true})<cr>", "Find files" },
-      r = { "<cmd>lua require('telescope.builtin').oldfiles()<cr>", "Recent files" },
+      f = {
+        "<cmd>lua require('telescope.builtin').find_files({hidden = true})<cr>",
+        "Find files",
+      },
+      r = {
+        "<cmd>lua require('telescope.builtin').oldfiles()<cr>",
+        "Recent files",
+      },
       g = { "<cmd>lua require('telescope.builtin').git_files()<cr>", "Git files" },
       s = { "<cmd>NvimTreeFindFile<cr>", "Open in sidebar" },
     },
     b = {
       name = "+buffer",
-      b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Switch buffer" },
-      t = { "<cmd>lua require('telescope.builtin').treesitter()<cr>", "Symbols in file" },
+      b = {
+        "<cmd>lua require('telescope.builtin').buffers()<cr>",
+        "Switch buffer",
+      },
+      t = {
+        "<cmd>lua require('telescope.builtin').treesitter()<cr>",
+        "Symbols in file",
+      },
       k = { "<cmd>bd<cr>", "Kill buffer" },
       d = { "<cmd>bd<cr>", "Kill buffer" },
       p = { "<cmd>bprev<cr>", "Previous buffer" },
@@ -40,38 +64,83 @@ wk.register({
     },
     s = {
       name = "+search",
-      b = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Search buffer" },
-      s = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Search buffer" },
-      B = { "<cmd>lua require('telescope.builtin').live_grep({grep_open_files = true})<cr>", "Search open buffers" },
-      p = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Search in directory" },
-	  w = { "<cmd>lua require('telescope.builtin').grep_string{search = vim.fn.expand('<cword>')}<cr>", "Search word" },
+      b = {
+        "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>",
+        "Search buffer",
+      },
+      s = {
+        "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>",
+        "Search buffer",
+      },
+      B = {
+        "<cmd>lua require('telescope.builtin').live_grep({grep_open_files = true})<cr>",
+        "Search open buffers",
+      },
+      p = {
+        "<cmd>lua require('telescope.builtin').live_grep()<cr>",
+        "Search in directory",
+      },
+      w = {
+        "<cmd>lua require('telescope.builtin').grep_string{search = vim.fn.expand('<cword>')}<cr>",
+        "Search word",
+      },
     },
     g = {
       name = "+git",
       f = { "<cmd>lua require('telescope.builtin').git_files()<cr>", "Git files" },
-      b = { "<cmd>lua require('telescope.builtin').git_branches()<cr>", "Branches" },
-      s = { "<cmd>lua require('telescope.builtin').git_status()<cr>", "Status in Telescope" },
+      b = {
+        "<cmd>lua require('telescope.builtin').git_branches()<cr>",
+        "Branches",
+      },
+      s = {
+        "<cmd>lua require('telescope.builtin').git_status()<cr>",
+        "Status in Telescope",
+      },
       g = { "<cmd>lua require('neogit').open()<cr>", "Neogit" },
-      c = { "<cmd>lua require('telescope.builtin').git_bcommits()<cr>", "Commits for current buffer" },
-      C = { "<cmd>lua require('telescope.builtin').git_commits()<cr>", "Commits for current directory" },
+      c = {
+        "<cmd>lua require('telescope.builtin').git_bcommits()<cr>",
+        "Commits for current buffer",
+      },
+      C = {
+        "<cmd>lua require('telescope.builtin').git_commits()<cr>",
+        "Commits for current directory",
+      },
     },
     r = {
       name = "+recent",
-      f = { "<cmd>lua require('telescope.builtin').oldfiles()<cr>", "Recent files" },
-      c = { "<cmd>lua require('telescope.builtin').command_history()<cr>", "Recent commands" },
+      f = {
+        "<cmd>lua require('telescope.builtin').oldfiles()<cr>",
+        "Recent files",
+      },
+      c = {
+        "<cmd>lua require('telescope.builtin').command_history()<cr>",
+        "Recent commands",
+      },
       s = { "<cmd>SessionLoad<cr>", "Recent sessions" },
       j = { "<cmd>lua require('telescope.builtin').jumplist()<cr>", "Jumplist" },
     },
     h = {
       name = "+harpoon",
-      t = { "<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>", "Open terminal" },
+      t = {
+        "<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>",
+        "Open terminal",
+      },
       a = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Add file" },
-      o = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Quick menu" },
+      o = {
+        "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>",
+        "Quick menu",
+      },
     },
     o = {
       name = "+open",
-      t = { "<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>", "Open terminal" },
-      h = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Harpoon quick menu" },
+      t = {
+        "<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>",
+        "Open terminal",
+      },
+      h = {
+        "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>",
+        "Harpoon quick menu",
+      },
       p = { "<cmd>NvimTreeToggle<cr>", "Project sidebar" },
       f = { "<cmd>NvimTreeFindFile<cr>", "Open file in sidebar" },
     },
@@ -85,19 +154,49 @@ wk.register({
       s = { "<cmd>set expandtab!<cr>", "Spaces/Tabs" },
       m = { "<cmd>lua ToggleMouse()<cr>", "Mouse mode" },
       C = { "<cmd>ColorizerToggle<cr>", "Colorizer" },
-      c = { "<cmd>lua require('telescope.builtin').colorscheme()<cr>", "Colorscheme" },
+      c = {
+        "<cmd>lua require('telescope.builtin').colorscheme()<cr>",
+        "Colorscheme",
+      },
     },
     l = {
       name = "+lsp",
-      r = { "<cmd>lua require('telescope.builtin').lsp_references()<cr>", "List referneces" },
-      d = { "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>", "Goto defination" },
-      i = { "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>", "Goto implementation" },
-      c = { "<cmd>lua require('telescope.builtin').lsp_code_actions()<cr>", "Code actions" },
-      C = { "<cmd>lua require('telescope.builtin').lsp_range_code_actions()<cr>", "Code actions on range" },
-      s = { "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", "Symbols in buffer" },
-      S = { "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>", "Symbols in project" },
-      e = { "<cmd>lua require('telescope.builtin').lsp_document_diagnostics()<cr>", "Buffer diagnostics" },
-      E = { "<cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<cr>", "Project diagnostics" },
+      r = {
+        "<cmd>lua require('telescope.builtin').lsp_references()<cr>",
+        "List referneces",
+      },
+      d = {
+        "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>",
+        "Goto defination",
+      },
+      i = {
+        "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>",
+        "Goto implementation",
+      },
+      c = {
+        "<cmd>lua require('telescope.builtin').lsp_code_actions()<cr>",
+        "Code actions",
+      },
+      C = {
+        "<cmd>lua require('telescope.builtin').lsp_range_code_actions()<cr>",
+        "Code actions on range",
+      },
+      s = {
+        "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>",
+        "Symbols in buffer",
+      },
+      S = {
+        "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>",
+        "Symbols in project",
+      },
+      e = {
+        "<cmd>lua require('telescope.builtin').lsp_document_diagnostics()<cr>",
+        "Buffer diagnostics",
+      },
+      E = {
+        "<cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<cr>",
+        "Project diagnostics",
+      },
       R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename symbol" },
       f = { "<cmd>Format<cr>", "Format buffer" },
     },
@@ -128,11 +227,20 @@ wk.register({
     },
   },
   -- common lsp bindings
-  ["gd"] = { "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>", "Goto symbol defination" },
+  ["gd"] = {
+    "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>",
+    "Goto symbol defination",
+  },
   ["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Goto symbol declaration" },
   ["K"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover defination" },
-  ["gi"] = { "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>", "Goto symbol implementation" },
-  ["gr"] = { "<cmd>lua require('telescope.builtin').lsp_references()<cr>", "Show symbol referneces" },
+  ["gi"] = {
+    "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>",
+    "Goto symbol implementation",
+  },
+  ["gr"] = {
+    "<cmd>lua require('telescope.builtin').lsp_references()<cr>",
+    "Show symbol referneces",
+  },
   -- Functions keys
   ["<F5>"] = { "<cmd>set list!<cr>", "Indent guides" },
   ["<F2>"] = { "<cmd>NvimTreeToggle<cr>", "Project sidebar" },
@@ -163,8 +271,18 @@ vim.cmd([[nnoremap <A-k> <C-W>+]])
 vim.cmd([[nnoremap <A-j> <C-W>-]])
 
 --Remap for dealing with word wrap
-vim.api.nvim_set_keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
-vim.api.nvim_set_keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
+vim.api.nvim_set_keymap(
+  "n",
+  "k",
+  "v:count == 0 ? 'gk' : 'k'",
+  { noremap = true, expr = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+  "n",
+  "j",
+  "v:count == 0 ? 'gj' : 'j'",
+  { noremap = true, expr = true, silent = true }
+)
 
 --Remap escape to leave terminal mode
 vim.api.nvim_exec(
@@ -179,7 +297,7 @@ augroup Terminal
 )
 
 -- Sneak remaps
-vim.cmd[[
+vim.cmd([[
 map f <Plug>Sneak_s
 map F <Plug>Sneak_S
-]]
+]])
