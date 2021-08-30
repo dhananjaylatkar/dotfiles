@@ -1,11 +1,14 @@
 -- Code formatter
 
-vim.api.nvim_exec([[
+vim.api.nvim_exec(
+  [[
 augroup FormatAutogroup
   autocmd!
   autocmd BufWritePost *.js,*.lua FormatWrite
 augroup END
-]], true)
+]],
+  true
+)
 
 require("formatter").setup({
   logging = false,

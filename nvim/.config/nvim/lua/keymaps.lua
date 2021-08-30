@@ -7,17 +7,17 @@ wk.register({
     ["`"] = { "<C-^>", "Switch to last buffer" },
     ["<Tab>"] = { "<C-^>", "Switch to last buffer" },
     [","] = {
-      "<cmd>lua require('telescope.builtin').buffers()<cr>",
+      "<cmd>Telescope buffers<cr>",
       "Switch buffer",
     },
     ["<space>"] = {
-      "<cmd>lua require('telescope.builtin').find_files({hidden = true})<cr>",
+      "<cmd>Telescope find_files hidden=true<cr>",
       "Find files",
     },
     p = {
       name = "+project",
       p = {
-        "<cmd>lua require('telescope').extensions.project.project{}<cr>",
+        "<cmd>Telescope project<cr>",
         "Open project",
       },
       w = {
@@ -28,24 +28,24 @@ wk.register({
     f = {
       name = "+file",
       f = {
-        "<cmd>lua require('telescope.builtin').find_files({hidden = true})<cr>",
+        "<cmd>Telescope find_files hidden=true<cr>",
         "Find files",
       },
       r = {
-        "<cmd>lua require('telescope.builtin').oldfiles()<cr>",
+        "<cmd>Telescope oldfiles<cr>",
         "Recent files",
       },
-      g = { "<cmd>lua require('telescope.builtin').git_files()<cr>", "Git files" },
+      g = { "<cmd>Telescope git_files<cr>", "Git files" },
       s = { "<cmd>NvimTreeFindFile<cr>", "Open in sidebar" },
     },
     b = {
       name = "+buffer",
       b = {
-        "<cmd>lua require('telescope.builtin').buffers()<cr>",
+        "<cmd>Telescope buffers<cr>",
         "Switch buffer",
       },
       t = {
-        "<cmd>lua require('telescope.builtin').treesitter()<cr>",
+        "<cmd>Telescope treesitter<cr>",
         "Symbols in file",
       },
       k = { "<cmd>bd<cr>", "Kill buffer" },
@@ -65,19 +65,19 @@ wk.register({
     s = {
       name = "+search",
       b = {
-        "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>",
+        "<cmd>Telescope current_buffer_fuzzy_find<cr>",
         "Search buffer",
       },
       s = {
-        "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>",
+        "<cmd>Telescope current_buffer_fuzzy_find<cr>",
         "Search buffer",
       },
       B = {
-        "<cmd>lua require('telescope.builtin').live_grep({grep_open_files = true})<cr>",
+        "<cmd>Telescope live_grep grep_open_files=true<cr>",
         "Search open buffers",
       },
       p = {
-        "<cmd>lua require('telescope.builtin').live_grep()<cr>",
+        "<cmd>Telescope live_grep<cr>",
         "Search in directory",
       },
       w = {
@@ -87,37 +87,37 @@ wk.register({
     },
     g = {
       name = "+git",
-      f = { "<cmd>lua require('telescope.builtin').git_files()<cr>", "Git files" },
+      f = { "<cmd>Telescope git_files<cr>", "Git files" },
       b = {
-        "<cmd>lua require('telescope.builtin').git_branches()<cr>",
+        "<cmd>Telescope git_branches<cr>",
         "Branches",
       },
       s = {
-        "<cmd>lua require('telescope.builtin').git_status()<cr>",
+        "<cmd>Telescope git_status<cr>",
         "Status in Telescope",
       },
-      g = { "<cmd>lua require('neogit').open()<cr>", "Neogit" },
+      g = { "<cmd>Neogit<cr>", "Neogit" },
       c = {
-        "<cmd>lua require('telescope.builtin').git_bcommits()<cr>",
+        "<cmd>Telescope git_bcommits<cr>",
         "Commits for current buffer",
       },
       C = {
-        "<cmd>lua require('telescope.builtin').git_commits()<cr>",
+        "<cmd>Telescope git_commits<cr>",
         "Commits for current directory",
       },
     },
     r = {
       name = "+recent",
       f = {
-        "<cmd>lua require('telescope.builtin').oldfiles()<cr>",
+        "<cmd>Telescope oldfiles<cr>",
         "Recent files",
       },
       c = {
-        "<cmd>lua require('telescope.builtin').command_history()<cr>",
+        "<cmd>Telescope command_history<cr>",
         "Recent commands",
       },
       s = { "<cmd>SessionLoad<cr>", "Recent sessions" },
-      j = { "<cmd>lua require('telescope.builtin').jumplist()<cr>", "Jumplist" },
+      j = { "<cmd>Telescope jumplist<cr>", "Jumplist" },
     },
     h = {
       name = "+harpoon",
@@ -155,14 +155,14 @@ wk.register({
       m = { "<cmd>lua ToggleMouse()<cr>", "Mouse mode" },
       C = { "<cmd>ColorizerToggle<cr>", "Colorizer" },
       c = {
-        "<cmd>lua require('telescope.builtin').colorscheme()<cr>",
+        "<cmd>Telescope colorscheme<cr>",
         "Colorscheme",
       },
     },
     l = {
       name = "+lsp",
       r = {
-        "<cmd>lua require('telescope.builtin').lsp_references()<cr>",
+        "<cmd>Telescope lsp_references<cr>",
         "List referneces",
       },
       d = {
@@ -170,31 +170,31 @@ wk.register({
         "Goto defination",
       },
       i = {
-        "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>",
+        "<cmd>Telescope lsp_implementations<cr>",
         "Goto implementation",
       },
       c = {
-        "<cmd>lua require('telescope.builtin').lsp_code_actions()<cr>",
+        "<cmd>Telescope lsp_code_actions<cr>",
         "Code actions",
       },
       C = {
-        "<cmd>lua require('telescope.builtin').lsp_range_code_actions()<cr>",
+        "<cmd>Telescope lsp_range_code_actions<cr>",
         "Code actions on range",
       },
       s = {
-        "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>",
+        "<cmd>Telescope lsp_document_symbols<cr>",
         "Symbols in buffer",
       },
       S = {
-        "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>",
+        "<cmd>Telescope lsp_workspace_symbols<cr>",
         "Symbols in project",
       },
       e = {
-        "<cmd>lua require('telescope.builtin').lsp_document_diagnostics()<cr>",
+        "<cmd>Telescope lsp_document_diagnostics<cr>",
         "Buffer diagnostics",
       },
       E = {
-        "<cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<cr>",
+        "<cmd>Telescope lsp_workspace_diagnostics<cr>",
         "Project diagnostics",
       },
       R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename symbol" },
@@ -228,17 +228,17 @@ wk.register({
   },
   -- common lsp bindings
   ["gd"] = {
-    "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>",
+    "<cmd>Telescope lsp_definitions<cr>",
     "Goto symbol defination",
   },
   ["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Goto symbol declaration" },
   ["K"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover defination" },
   ["gi"] = {
-    "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>",
+    "<cmd>Telescope lsp_implementations<cr>",
     "Goto symbol implementation",
   },
   ["gr"] = {
-    "<cmd>lua require('telescope.builtin').lsp_references()<cr>",
+    "<cmd>Telescope lsp_references<cr>",
     "Show symbol referneces",
   },
   -- Functions keys

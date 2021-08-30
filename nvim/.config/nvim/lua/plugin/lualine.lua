@@ -1,4 +1,4 @@
--- luatline
+-- lualine
 
 --                                     
 require("lualine").setup({
