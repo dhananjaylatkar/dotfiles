@@ -150,6 +150,13 @@ require("packer").startup(function()
     run = ":TSUpdate",
   })
 
+  use({
+    "nvim-treesitter/nvim-treesitter-refactor",
+    after = "nvim-treesitter",
+    config = function()
+      require("plugin.nvim-treesitter-refactor")
+    end,
+  })
   -- Code formatter
   use({
     "mhartington/formatter.nvim",
