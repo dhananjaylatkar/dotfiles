@@ -134,6 +134,12 @@ require("packer").startup(function()
     end,
   })
 
+  -- A tree like view for symbols
+  use({
+    "simrat39/symbols-outline.nvim",
+    after = "nvim-lspconfig",
+  })
+
   -- Treesitter
   use({
     "nvim-treesitter/nvim-treesitter",

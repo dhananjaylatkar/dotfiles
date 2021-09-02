@@ -199,6 +199,7 @@ wk.register({
       },
       R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename symbol" },
       f = { "<cmd>Format<cr>", "Format buffer" },
+      t = { "<cmd>SymbolsOutline<cr>", "Tree view" },
     },
     w = {
       name = "+window",
