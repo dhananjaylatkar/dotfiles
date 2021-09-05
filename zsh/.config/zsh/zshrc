@@ -12,6 +12,7 @@ autoload -Uz compinit
 zstyle ':completion:*' menu select
 # zstyle ':completion::complete:lsof:*' menu yes select
 zmodload zsh/complist
+setopt nomenucomplete # Don't autopick first match
 # compinit
 _comp_options+=(globdots)		# Include hidden files.
 
@@ -29,10 +30,10 @@ source "$ZDOTDIR/zsh-functions"
 # Normal files to source
 zsh_add_file "zsh-exports"
 zsh_add_file "zsh-vim-mode"
-zsh_add_file "zsh-prompt"
-zsh_add_file "zsh-aliases"
 zsh_add_file "zsh-omz-goodies"
 zsh_add_file "zsh-os-conf"
+zsh_add_file "zsh-aliases"
+zsh_add_file "zsh-prompt"
 [ -f $HOME/.config/zsh-work/nsalias ] && source $HOME/.config/zsh-work/nsalias
 
 # Plugins
