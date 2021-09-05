@@ -415,26 +415,51 @@ ZSH_THEME_GIT_PROMPT_UNSTAGED=" %F{178}!"
 ZSH_THEME_GIT_PROMPT_UNTRACKED=" %F{39}?"
 ZSH_THEME_GIT_PROMPT_STASHED=" %F{76}*"
 ZSH_THEME_GIT_PROMPT_CLEAN=" %F{76}✔"
-ZSH_THEME_GIT_PROMPT_TAGS_PREFIX=" · %F{76}#"
+ZSH_THEME_GIT_PROMPT_TAGS_PREFIX=" %F{76}#"
 # Upstream branch
 # ZSH_GIT_PROMPT_SHOW_UPSTREAM="full"
 # ZSH_THEME_GIT_PROMPT_UPSTREAM_SYMBOL="%{$fg_bold[yellow]%}⟳ "
 # ZSH_THEME_GIT_PROMPT_UPSTREAM_PREFIX="%{$fg[yellow]%} ⤳ "
 # ZSH_THEME_GIT_PROMPT_UPSTREAM_SUFFIX=""
 
+function truncated_pwd() {
+  n=$1 # n = number of directories to show in full (n = 3, /a/b/c/dee/ee/eff)
+  path=$(pwd | sed -e "s,^$HOME,~,")
+
+  # split our path on /
+  dirs=(${(s:/:)path})
+  dirs_length=$#dirs
+
+  if [[ $dirs_length -ge $n ]]; then
+    # we have more dirs than we want to show in full, so compact those down
+    ((max=dirs_length - n))
+    for (( i = 1; i <= $max; i++ )); do
+      step="$dirs[$i]"
+      if [[ -z $step ]]; then
+        continue
+      fi
+      if [[ $step =~ "^\." ]]; then
+        dirs[$i]=$step[0,2] #make .mydir => .m
+      else
+        dirs[$i]=$step[0,1] # make mydir => m
+      fi
+    done
+  fi
+
+  echo ${(j:/:)dirs}
+}
 RPROMPT=''
 PROMPT=$''
 [ -n "$SSH_CLIENT" ] \
     && [ -n "$SSH_TTY" ] \
     && PROMPT+='[%F{178}%n%f@%F{161}%m%f] '   # Hostname, if in SSH session
-PROMPT+='%F{39}%40<… <%~%<<%f'     # Path truncated to 30 characters
-PROMPT+='%(12V. · %F{244} %12v%f.)'   # Python virtualenv name
+PROMPT+='%F{39}$(truncated_pwd 3)%f'   # Path truncated to 30 characters
+PROMPT+='%(12V. %F{244} %12v%f.)'     # Python virtualenv name
 PROMPT+='$(gitprompt)'                 # Git status
 PROMPT+='$(gitprompt_secondary)'       # Git status secondary info
 PROMPT+=$'\n'                          # Newline
 
-# _PROMPT_END='%(?.%(!.%F{white}❯%F{yellow}❯%F{red}.%F{blue}❯%F{cyan}❯%F{green})❯%f.%F{red}❯❯❯%f) '
-_PROMPT_END='%B%F{76}❯%f%b '
+_PROMPT_END='%(?.%F{76}❯%f.%F{161}❯%f) '
 PROMPT+=$_PROMPT_END
 
 
