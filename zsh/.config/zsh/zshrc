@@ -57,21 +57,5 @@ unsetopt nomatch # disable annoying nomatch found error
 
 # Key-bindings
 bindkey -s '^o' 'ranger^M'
-bindkey -s '^f' 'zi^M'
-bindkey '^[[P' delete-char
-bindkey "^p" up-line-or-beginning-search # Up
-bindkey "^n" down-line-or-beginning-search # Down
-bindkey "^k" up-line-or-beginning-search # Up
-bindkey "^j" down-line-or-beginning-search # Down
-bindkey -r "^u"
-bindkey -r "^d"
-
-# Edit line in vim with ctrl-xe:
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^x^e' edit-command-line
-
-bindkey -M viins '^a' vi-beginning-of-line
-bindkey -M vicmd '^a' vi-beginning-of-line
-bindkey -M viins '^e' vi-end-of-line
-bindkey -M vicmd '^e' vi-end-of-line
+# bindkey -s '^f' 'zi^M'
 
