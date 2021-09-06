@@ -33,6 +33,7 @@ zsh_add_file "zsh-vim-mode"
 zsh_add_file "zsh-omz-goodies"
 zsh_add_file "zsh-os-conf"
 zsh_add_file "zsh-aliases"
+zsh_add_file "zsh-history"
 zsh_add_file "zsh-prompt"
 [ -f $HOME/.config/zsh-work/nsalias ] && source $HOME/.config/zsh-work/nsalias
 
