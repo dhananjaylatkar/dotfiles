@@ -28,13 +28,13 @@ autoload -Uz colors && colors
 source "$ZDOTDIR/zsh-functions"
 
 # Normal files to source
+zsh_add_file "zsh-prompt"
 zsh_add_file "zsh-exports"
 zsh_add_file "zsh-vim-mode"
 zsh_add_file "zsh-omz-goodies"
 zsh_add_file "zsh-os-conf"
 zsh_add_file "zsh-aliases"
 zsh_add_file "zsh-history"
-zsh_add_file "zsh-prompt"
 [ -f $HOME/.config/zsh-work/nsalias ] && source $HOME/.config/zsh-work/nsalias
 
 # Plugins
@@ -55,6 +55,12 @@ compinit
 # Case insensitive
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
 unsetopt nomatch # disable annoying nomatch found error
+zstyle ':completion:*' special-dirs true
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+zstyle ':completion:*' use-cache yes
+export ZSH_CACHE_DIR=$ZDOTDIR/.cache
+zstyle ':completion:*' cache-path $ZSH_CACHE_DIR
 
 # Key-bindings
 bindkey -s '^o' 'ranger^M'
