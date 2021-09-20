@@ -20,19 +20,24 @@ ZSH_DIR=${HOME}/.config/zsh
 NVIM_DIR=${HOME}/.config/nvim
 TMUX_DIR=${HOME}/.config/tmux
 PYENV_DIR=${HOME}/.config/pyenv
+
 nothing:
 	@echo "Usage:"
-	@echo "    make all      stow all files"
-	@echo "    make clean    unstow all files"
-	@echo "    make tmux     fetch tmux config"
-	@echo "    make pyenv    install pyenv"
+	@echo "    make all            stow all files"
+	@echo "    make clean          unstow all files"
+	@echo "    make nvim           stow neovim"
+	@echo "    make nvim_clean     unstow neovim"
+	@echo "    make pyenv          install pyenv"
+	@echo "    make tmux           fetch tmux config"
+	@echo "    make work           stow work files"
+	@echo "    make work_clean     unstow work files"
 
 all:
 	@for DIR in ${STOW_DIRS}; do \
 		 stow --target=$${HOME} -v --no-folding $${DIR}; \
 	done
 
-all_work:
+work:
 	@for DIR in ${STOW_DIRS_WORK}; do \
 		 stow --target=$${HOME} -v --no-folding $${DIR}; \
 	done
@@ -42,7 +47,7 @@ clean:
 		 stow --target=$${HOME} --delete -v --no-folding $${DIR}; \
 	done
 
-clean_work:
+work_clean:
 	@for DIR in ${STOW_DIRS_WORK}; do \
 		 stow --target=$${HOME} --delete -v --no-folding $${DIR}; \
 	done
@@ -68,3 +73,10 @@ pyenv:
 	fi
 	@echo "<<< pyenv <<<"
 
+.PHONY: nvim
+nvim:
+	stow --target=$${HOME} -v --no-folding nvim
+
+.PHONY: nvim_clean
+nvim_clean:
+	stow --target=$${HOME} --delete -v --no-folding nvim
