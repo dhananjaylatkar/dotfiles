@@ -133,11 +133,21 @@ require("packer").startup(function()
       require("plugin.nvim-cmp")
     end,
   })
-  use({ "hrsh7th/cmp-nvim-lsp" })
-  use({ "hrsh7th/cmp-buffer" })
-  use({ "hrsh7th/cmp-path" })
-  use({ "f3fora/cmp-spell" })
-  use({ "hrsh7th/cmp-emoji" })
+  use("hrsh7th/cmp-nvim-lsp")
+  use("hrsh7th/cmp-buffer")
+  use("hrsh7th/cmp-path")
+  use("f3fora/cmp-spell")
+  use("hrsh7th/cmp-emoji")
+
+  -- Snipets
+  use({
+    "L3MON4D3/LuaSnip",
+    config = function()
+      require("luasnip/loaders/from_vscode").lazy_load()
+    end,
+  })
+  use("rafamadriz/friendly-snippets")
+  use("saadparwaiz1/cmp_luasnip")
 
   -- A tree like view for symbols
   use({
