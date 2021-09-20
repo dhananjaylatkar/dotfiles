@@ -127,12 +127,17 @@ require("packer").startup(function()
 
   -- Autocompletion plugin
   use({
-    "hrsh7th/nvim-compe",
-    event = "InsertEnter",
+    "hrsh7th/nvim-cmp",
+    -- event = "InsertEnter",
     config = function()
-      require("plugin.nvim-compe")
+      require("plugin.nvim-cmp")
     end,
   })
+  use({ "hrsh7th/cmp-nvim-lsp" })
+  use({ "hrsh7th/cmp-buffer" })
+  use({ "hrsh7th/cmp-path" })
+  use({ "f3fora/cmp-spell" })
+  use({ "hrsh7th/cmp-emoji" })
 
   -- A tree like view for symbols
   use({
