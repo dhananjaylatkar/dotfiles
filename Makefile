@@ -16,6 +16,11 @@ STOW_DIRS_WORK = \
 	zsh \
 	work
 
+STOW_DIRS_FBSD = \
+	scripts \
+	vim \
+	zsh
+
 ZSH_DIR=${HOME}/.config/zsh
 NVIM_DIR=${HOME}/.config/nvim
 TMUX_DIR=${HOME}/.config/tmux
@@ -29,6 +34,8 @@ nothing:
 	@echo "    make nvim_clean     unstow neovim"
 	@echo "    make pyenv          install pyenv"
 	@echo "    make tmux           fetch tmux config"
+	@echo "    make freebsd        stow freebsd's config"
+	@echo "    make freebsd_clean  unstow freebsd's config"
 	@echo "    make work           stow work files"
 	@echo "    make work_clean     unstow work files"
 
@@ -42,6 +49,11 @@ work:
 		 stow --target=$${HOME} -v --no-folding $${DIR}; \
 	done
 
+freebsd:
+	@for DIR in ${STOW_DIRS_FBSD}; do \
+		 stow --target=$${HOME} -v --no-folding $${DIR}; \
+	done
+
 clean:
 	@for DIR in ${STOW_DIRS}; do \
 		 stow --target=$${HOME} --delete -v --no-folding $${DIR}; \
@@ -49,6 +61,11 @@ clean:
 
 work_clean:
 	@for DIR in ${STOW_DIRS_WORK}; do \
+		 stow --target=$${HOME} --delete -v --no-folding $${DIR}; \
+	done
+
+freebsd_clean:
+	@for DIR in ${STOW_DIRS_FBSD}; do \
 		 stow --target=$${HOME} --delete -v --no-folding $${DIR}; \
 	done
 
