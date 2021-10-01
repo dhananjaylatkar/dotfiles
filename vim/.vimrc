@@ -4,7 +4,7 @@ set history=1000
 set showcmd
 set showmode
 set number
-set relativenumber
+" set relativenumber
 set cursorline
 set autoread
 set hidden
@@ -13,22 +13,35 @@ set ruler
 set wildmenu
 set tabpagemax=40
 set noerrorbells
-set mouse=a
-set title
 
 " Leadeer Key
 let mapleader = "\<Space>"
 
+" Toggle mouse mode
+function! ToggleMouse()
+    " check if mouse is enabled
+    if &mouse == 'a'
+        " disable mouse
+        set mouse=
+        echo "Mouse: Disabled"
+    else
+        " enable mouse everywhere
+        set mouse=a
+        echo "Mouse: Enabled"
+    endif
+endfunc
+noremap <leader>m :call ToggleMouse()<CR>
+
 " Indnetation
 set autoindent
 filetype plugin indent on
-set expandtab
+" set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
 " Invisible Chars
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:.
 noremap <F5> :set list!<CR>
 inoremap <F5> <C-o>:set list!<CR>
 cnoremap <F5> <C-c>:set list!<CR>
@@ -98,6 +111,14 @@ vnoremap K :m '<-2<CR>gv=gv
 " autocmd InsertEnter * :setlocal norelativenumber
 " autocmd InsertLeave * :setlocal relativenumber
 
+" Remove hifhlights from search
+nmap <silent> ,/ :nohlsearch<CR>
+
+" highlight trailing whitespace
+match ErrorMsg '\s\+$'
+" remove trailing whitespaces automatically
+" autocmd BufWritePre * :%s/\s\+$//e
+
 " System Clipboard
 vmap <Leader>y "+y
 vmap <Leader>d "+d
@@ -106,11 +127,17 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
-" Remove hifhlights from search
-nmap <silent> ,/ :nohlsearch<CR>
+" Go to def
+nnoremap gd <C-]>
 
-" highlight trailing whitespace
-match ErrorMsg '\s\+$'
-" remove trailing whitespaces automatically
-autocmd BufWritePre * :%s/\s\+$//e
+" Go to last position
+augroup Reposition
+	autocmd!
+	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+augroup end
 
+" Highlight on yank
+augroup YankHighlight
+	autocmd!
+	autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+augroup end
