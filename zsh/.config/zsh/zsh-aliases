@@ -1,7 +1,11 @@
+#!/bin/sh
 # Editor
-alias vi="nvim"
+if which nvim > /dev/null; then
+	alias vi="nvim"
+else
+	alias vi="vim"
+fi
 alias em="emacsclient"
-alias cat=bat
 
 # Workspace
 alias ws="$HOME/.config/scripts/tmux2"
