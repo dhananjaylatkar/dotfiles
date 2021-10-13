@@ -122,9 +122,15 @@ require("packer").startup(function()
   -- LSP
   use({
     "neovim/nvim-lspconfig",
-    event = "BufRead",
     config = function()
       require("plugin.lspconfig")
+    end,
+  })
+
+  use({
+    "williamboman/nvim-lsp-installer",
+    config = function()
+      require("plugin.nvim-lsp-installer")
     end,
   })
 
