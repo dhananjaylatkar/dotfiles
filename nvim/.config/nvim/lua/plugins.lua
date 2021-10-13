@@ -78,6 +78,9 @@ require("packer").startup(function()
     "kyazdani42/nvim-tree.lua",
     event = "BufWinEnter",
     requires = { "kyazdani42/nvim-web-devicons" },
+    config = function()
+      require("plugin.nvim-tree")
+    end,
   })
 
   -- which-key
