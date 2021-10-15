@@ -1,3 +1,12 @@
+-- Custom config
+if pcall(require, "config") then
+  CONFIG = require("config")
+  CONFIG_FILE = "config.lua"
+else
+  CONFIG = require("config_default")
+  CONFIG_FILE = "config_default.lua"
+end
+
 -- Packer config
 require("plugins")
 
@@ -8,4 +17,4 @@ require("vim_config")
 require("utils")
 
 -- Colorschems
-require("plugin.colors").tokyonight()
+require("plugin.colors").setup(CONFIG.colorscheme)
