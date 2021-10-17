@@ -3,6 +3,7 @@
 
 local M = {}
 
+-- one of "onedark", "everforest", "tokyonight", "gruvbuddy" or "gruvbox"
 M.colorscheme = "gruvbox"
 
 -- Plugin config
@@ -13,7 +14,7 @@ M.colorscheme = "gruvbox"
 M.lsp = {
   -- List of LSP servers to enable
   -- Use :LspInstallInfo to check available servers
-  servers = { "clangd", "rust_analyzer", "pyright", "tsserver", "sumneko_lua" },
+  servers = { "sumneko_lua" },
 }
 -- Treesitter
 M.treesitter = {

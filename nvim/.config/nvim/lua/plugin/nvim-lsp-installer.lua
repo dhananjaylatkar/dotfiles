@@ -1,5 +1,14 @@
 local lsp_installer_servers = require("nvim-lsp-installer.servers")
 local servers = CONFIG.lsp.servers
+
+-- Uninstall removed servers
+for _, server in pairs(lsp_installer_servers.get_installed_servers()) do
+  if not vim.tbl_contains(servers, server.name) then
+    server:uninstall()
+  end
+end
+
+-- Install new servers
 for _, server in ipairs(servers) do
   local ok, server_info = lsp_installer_servers.get_server(server)
   if ok then
