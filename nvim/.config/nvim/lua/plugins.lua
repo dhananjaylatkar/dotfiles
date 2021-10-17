@@ -36,7 +36,13 @@ require("packer").startup(function()
   use({ "justinmk/vim-sneak", event = "BufRead" })
 
   -- "gc" to comment visual regions/lines
-  use({ "tpope/vim-commentary", event = "BufRead" })
+  use({
+    "numToStr/Comment.nvim",
+    event = "BufRead",
+    config = function()
+      require("plugin.comment")
+    end,
+  })
 
   -- surround text with ysiw", cs"', ds", etc
   use({ "tpope/vim-surround", event = "BufRead" })
