@@ -3,7 +3,7 @@
 
 local M = {}
 
--- one of "onedark", "everforest", "tokyonight", "gruvbuddy" or "gruvbox"
+-- one of "gruvbox", "onedark", "everforest", "tokyonight", "gruvbuddy", or "rose-pine"
 M.colorscheme = "gruvbox"
 
 -- Plugin config
