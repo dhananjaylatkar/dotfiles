@@ -235,6 +235,18 @@ require("packer").startup(function()
     requires = { "kyazdani42/nvim-web-devicons" },
   })
 
+  -- Markdown
+  use({ "junegunn/goyo.vim", cmd = "Goyo" })
+  use({ "junegunn/limelight.vim", cmd = "Limelight" })
+
+  use({ "godlygeek/tabular", event = "BufRead" })
+  use({
+    "plasticboy/vim-markdown",
+    config = function()
+      require("plugin.vim-markdown")
+    end,
+  })
+
   -- Colorschemes
   use("joshdick/onedark.vim")
   use("sainnhe/gruvbox-material")

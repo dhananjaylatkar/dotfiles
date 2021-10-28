@@ -158,6 +158,8 @@ wk.register({
         "<cmd>Telescope colorscheme<cr>",
         "Colorscheme",
       },
+      g = { "<cmd>Goyo<cr>", "Goyo" },
+      h = { "<cmd>Limelight!!<cr>", "Limelight" },
     },
     l = {
       name = "+lsp",
@@ -225,6 +227,20 @@ wk.register({
       -- ["-"] = {"<c-w>-", "Decrease height"},
       -- [">"] = {"<c-w>>", "Increase width"},
       -- ["<"] = {"<c-w><", "Decrease width"},
+    },
+    m = {
+      name = "+markdown",
+      [">"] = { "<cmd>'<,'>HeaderIncrease<cr>", "Header increase" },
+      ["<"] = { "<cmd>'<,'>HeaderDecrease<cr>", "Header decrease" },
+      t = { "<cmd>TableFormat<cr>", "Format table" },
+      l = { "<cmd>Toc<cr>", "Show ToC" },
+      i = { "<cmd>InsertToc<cr>", "Insert ToC" },
+      I = { "<cmd>InsertNToc<cr>", "Insert numbered ToC" },
+    },
+    n = {
+      name = "Notes",
+      f = { "<cmd>Telescope find_files cwd=~/code/roam<cr>", "Find notes" },
+      s = { "<cmd>Telescope live_grep cwd=~/code/roam<cr>", "Search notes" },
     },
   },
   -- common lsp bindings
