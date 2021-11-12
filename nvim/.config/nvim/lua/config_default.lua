@@ -44,40 +44,7 @@ M.wiki = {
   root_dir = "~/code/notes",
 }
 -- Vim options
--- NOTE: Add/Remove options as you please.
-M.vim = {
-  autoindent = true,
-  breakindent = true, -- Enable break indent
-  cindent = true,
-  clipboard = "unnamedplus", -- copy to system clipboard
-  cmdheight = 1,
-  confirm = true, -- confirm when exiting
-  cursorline = true,
-  hidden = true, --Do not save when switching buffers
-  hlsearch = true, -- Set highlight on search
-  ignorecase = true, -- Case insensitive searching
-  inccommand = "nosplit", -- Incremental live completion
-  incsearch = true,
-  list = true,
-  listchars = { tab = "› ", eol = "↩", trail = "␣" }, -- must enable `list`
-  -- listchars = { tab = "› ", eol = "↩", trail = "␣", lead = "␣" },
-  mouse = "a", -- enable mouse mode
-  number = true, -- enable line numbers
-  relativenumber = true, -- relative line numbers
-  scrolloff = 3,
-  shada = { "!", "'1000", "<50", "s10", "h" }, -- shada file
-  shiftwidth = 4,
-  signcolumn = "yes",
-  smartcase = true, -- UNLESS /C or capital in search
-  softtabstop = 4,
-  -- expandtab = true, -- convert tabs to spaces
-  splitbelow = true,
-  splitright = true,
-  swapfile = false, -- Disable swap files
-  tabstop = 4,
-  undofile = true, -- Save undo history
-  updatetime = 250, -- Decrease update time
-  wrap = true,
-}
+-- NOTE: Overide vim options using this table (defaults can be found in vim_config.lua).
+M.vim = {}
 
 return M
