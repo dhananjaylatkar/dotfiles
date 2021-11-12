@@ -39,6 +39,10 @@ M.dashboard = {
   },
 }
 
+-- Wiki
+M.wiki = {
+  root_dir = "~/code/notes",
+}
 -- Vim options
 -- NOTE: Add/Remove options as you please.
 M.vim = {

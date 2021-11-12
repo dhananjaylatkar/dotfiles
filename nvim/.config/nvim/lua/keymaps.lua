@@ -239,8 +239,20 @@ wk.register({
     },
     n = {
       name = "Notes",
-      f = { "<cmd>Telescope find_files cwd=~/code/roam<cr>", "Find notes" },
-      s = { "<cmd>Telescope live_grep cwd=~/code/roam<cr>", "Search notes" },
+      f = {
+        "<cmd>Telescope find_files cwd=" .. vim.g.wiki_root .. "<cr>",
+        "Find notes",
+      },
+      s = {
+        "<cmd>Telescope live_grep cwd=" .. vim.g.wiki_root .. "<cr>",
+        "Search notes",
+      },
+      n = { "<cmd>WikiOpen<cr>", "New note" },
+      i = { "<cmd>WikiIndex<cr>", "Index" },
+      j = {
+        name = "Journal",
+        n = { "<cmd>WikiJournal<cr>", "New journal" },
+      },
     },
   },
   -- common lsp bindings
