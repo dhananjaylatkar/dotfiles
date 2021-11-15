@@ -199,6 +199,7 @@ require("packer").startup(function()
   -- cscope keymaps
   use({
     "dhananjaylatkar/cscope_maps.nvim",
+    after = "which-key.nvim",
     config = function()
       require("cscope_maps")
     end,
