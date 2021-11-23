@@ -105,6 +105,25 @@ wk.register({
         "<cmd>Telescope git_commits<cr>",
         "Commits for current directory",
       },
+      l = { '<cmd>lua require"gitsigns".blame_line{full=true}<cr>', "Blame line" },
+      n = { '<cmd>lua require"gitsigns".next_hunk()<cr>', "Next hunk" },
+      N = { '<cmd>lua require"gitsigns".prev_hunk()<cr>', "Previous hunk" },
+      a = {
+        name = "+actions",
+        s = { '<cmd>lua require"gitsigns".stage_hunk()<cr>', "Stage hunk" },
+        u = {
+          '<cmd>lua require"gitsigns".undo_stage_hunk()<cr>',
+          "Undo stage hunk",
+        },
+        r = { '<cmd>lua require"gitsigns".reset_hunk()<cr>', "Reset hunk" },
+        R = { '<cmd>lua require"gitsigns".reset_buffer()<cr>', "Reset buffer" },
+        p = { '<cmd>lua require"gitsigns".preview_hunk()<cr>', "Preview hunk" },
+        S = { '<cmd>lua require"gitsigns".stage_buffer()<cr>', "Stage buffer" },
+        U = {
+          '<cmd>lua require"gitsigns".reset_buffer_index()<cr>',
+          "Rest buffer index",
+        },
+      },
     },
     r = {
       name = "+recent",

@@ -112,7 +112,7 @@ require("packer").startup(function()
     "lewis6991/gitsigns.nvim",
     event = "BufRead",
     config = function()
-      require("gitsigns").setup()
+      require("plugin.gitsigns")
     end,
     requires = { "nvim-lua/plenary.nvim" },
   })
