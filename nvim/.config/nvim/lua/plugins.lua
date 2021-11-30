@@ -33,7 +33,7 @@ require("packer").startup(function()
   use("nvim-lua/popup.nvim")
 
   -- 2 char search
-  use({ "justinmk/vim-sneak", event = "BufRead" })
+  use({ "ggandor/lightspeed.nvim", event = "BufRead" })
 
   -- "gc" to comment visual regions/lines
   use({
