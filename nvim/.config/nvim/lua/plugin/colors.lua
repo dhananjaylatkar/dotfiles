@@ -36,4 +36,8 @@ elseif color == "rose-pine" then
   vim.g.rose_pine_disable_background = false
   vim.g.rose_pine_bold_vertical_split_line = true
   vim.cmd([[colorscheme rose-pine]])
+elseif color == "ayu" then
+  -- ayu
+  vim.g.ayucolor = "mirage"
+  vim.cmd([[colorscheme ayu]])
 end
