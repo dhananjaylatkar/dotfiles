@@ -38,6 +38,8 @@ elseif color == "rose-pine" then
   vim.cmd([[colorscheme rose-pine]])
 elseif color == "ayu" then
   -- ayu
-  vim.g.ayucolor = "mirage"
+  require("ayu").setup({
+    mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+  })
   vim.cmd([[colorscheme ayu]])
 end
