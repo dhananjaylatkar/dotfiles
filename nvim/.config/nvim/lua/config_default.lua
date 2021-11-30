@@ -29,7 +29,7 @@ M.treesitter = {
 M.dashboard = {
   custom_footer = { "Dhananjay's Neovim Config" },
   custom_header = {
-    " ______       ___  _______  __   __ ",
+    " ______       ___  _______  __   __",
     "|      |     |   ||   _   ||  | |  |",
     "|  _    |    |   ||  |_|  ||  |_|  |",
     "| | |   |    |   ||       ||       |",

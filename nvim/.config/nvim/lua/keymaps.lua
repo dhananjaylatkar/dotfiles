@@ -351,3 +351,9 @@ vim.cmd([[
   nmap <expr> t reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_t" : "t"
   nmap <expr> T reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_T" : "T"
 ]])
+
+-- Delete word/line in insert mode
+vim.cmd([[
+  inoremap <C-U> <C-G>u<C-U>
+  inoremap <C-W> <C-G>u<C-W>
+]])
