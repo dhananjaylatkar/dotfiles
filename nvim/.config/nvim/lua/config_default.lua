@@ -3,12 +3,19 @@
 
 local M = {}
 
--- one of "gruvbox", "onedark", "everforest", "tokyonight", "gruvbuddy", or "rose-pine"
+--[[ Available colorschemes:
+  - gruvbox
+  - onedark
+  - everforest
+  - tokyonight
+  - gruvbuddy
+  - rose-pine
+  - ayu
+  - kanagawa
+--]]
 M.colorscheme = "gruvbox"
 
 -- Plugin config
--- NOTE: Do not remove variables from plugin section, instead change them in-place.
---       Deleting variables will result in startup failure.
 
 -- LSP
 M.lsp = {
@@ -18,7 +25,7 @@ M.lsp = {
 }
 -- Treesitter
 M.treesitter = {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "lua" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     disable = {}, -- List of parsers to disable

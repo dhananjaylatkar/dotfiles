@@ -1,6 +1,7 @@
 -- Set colorscheme (order is important here)
 vim.o.termguicolors = true
 local color = CONFIG.colorscheme
+
 if color == "onedark" then
   -- Onedark
   vim.g.onedark_terminal_italics = 2
@@ -19,16 +20,6 @@ elseif color == "tokyonight" then
   vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
   vim.cmd([[colorscheme tokyonight]])
   -- vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
-elseif color == "gruvbuddy" then
-  -- gruvbuddy
-  require("colorbuddy").colorscheme("gruvbuddy")
-elseif color == "gruvbox" then
-  -- Gruvbox
-  vim.g.gruvbox_material_enable_italic = 1
-  vim.g.gruvbox_material_background = "hard" -- hard, soft, medium
-  vim.g.gruvbox_material_palette = "mix" -- original, mix, material
-  vim.g.gruvbox_material_enable_italic = 1
-  vim.cmd([[colorscheme gruvbox-material]])
 elseif color == "rose-pine" then
   -- rose-pine
   vim.g.rose_pine_variant = "base" -- base, moon, dawn
@@ -42,4 +33,14 @@ elseif color == "ayu" then
     mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
   })
   vim.cmd([[colorscheme ayu]])
+elseif color == "kanagawa" then
+  -- kanagawa
+  vim.cmd([[colorscheme kanagawa]])
+else
+  -- Gruvbox
+  vim.g.gruvbox_material_enable_italic = 1
+  vim.g.gruvbox_material_background = "hard" -- hard, soft, medium
+  vim.g.gruvbox_material_palette = "mix" -- original, mix, material
+  vim.g.gruvbox_material_enable_italic = 1
+  vim.cmd([[colorscheme gruvbox-material]])
 end
