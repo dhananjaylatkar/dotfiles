@@ -52,7 +52,7 @@ autoload -U colors && colors
 : "${ZSH_THEME_GIT_PROMPT_TAGS_SEPARATOR=", "}"
 : "${ZSH_THEME_GIT_PROMPT_TAGS_PREFIX="🏷 "}"
 : "${ZSH_THEME_GIT_PROMPT_TAGS_SUFFIX=""}"
-: "${ZSH_THEME_GIT_PROMPT_TAG="%{$fg_bold[magenta]%}"}"
+: "${ZSH_THEME_GIT_PROMPT_TAG="%{$fg[magenta]%}"}"
 
 # Disable promptinit if it is loaded
 (( $+functions[promptinit] )) && {promptinit; prompt off}
@@ -406,7 +406,7 @@ ZSH_THEME_GIT_PROMPT_PREFIX=" on "
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_SEPARATOR=""
 ZSH_THEME_GIT_PROMPT_BRANCH="%F{76} "
-ZSH_THEME_GIT_PROMPT_DETACHED="@%F{196}"
+ZSH_THEME_GIT_PROMPT_DETACHED="%F{76}@"
 ZSH_THEME_GIT_PROMPT_BEHIND=" %F{76}⇣"
 ZSH_THEME_GIT_PROMPT_AHEAD=" %F{76}⇡"
 ZSH_THEME_GIT_PROMPT_UNMERGED=" %F{196}~"
@@ -415,7 +415,7 @@ ZSH_THEME_GIT_PROMPT_UNSTAGED=" %F{178}!"
 ZSH_THEME_GIT_PROMPT_UNTRACKED=" %F{39}?"
 ZSH_THEME_GIT_PROMPT_STASHED=" %F{76}*"
 ZSH_THEME_GIT_PROMPT_CLEAN=" %F{76}✔"
-ZSH_THEME_GIT_PROMPT_TAGS_PREFIX=" %F{76}#"
+ZSH_THEME_GIT_PROMPT_TAGS_PREFIX=" $fg[magenta]#"
 # Upstream branch
 # ZSH_GIT_PROMPT_SHOW_UPSTREAM="full"
 # ZSH_THEME_GIT_PROMPT_UPSTREAM_SYMBOL="%{$fg_bold[yellow]%}⟳ "
@@ -459,7 +459,9 @@ PROMPT+='$(gitprompt)'                 # Git status
 PROMPT+='$(gitprompt_secondary)'       # Git status secondary info
 PROMPT+=$'\n'                          # Newline
 
-_PROMPT_END='%(?.%F{76}❯%f.%F{161}❯%f) '
+# _PROMPT_END='%(?.%F{76}❯%f.%F{161}❯%f) '
+# _PROMPT_END='%(?.%F{76}⇢%f.%F{161}⇢%f)  '
+_PROMPT_END='%(?.%F{76}➜%f.%F{161}➜%f) '
 PROMPT+=$_PROMPT_END
 
 
