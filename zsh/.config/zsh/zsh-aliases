@@ -43,12 +43,18 @@ alias df='df -h'
 alias free='free -m'
 
 # Directory
-export LSCOLORS="Gxfxcxdxbxegedabagacad"
-alias ls='ls -G'
-alias lsa='ls -lah'
-alias l='ls -lah'
-alias ll='ls -lh'
-alias la='ls -lAh'
+if which exa > /dev/null; then
+	alias ls="exa --group-directories-first --no-user"
+	alias l="exa -la --icons --group-directories-first --no-user"
+	alias ll="exa -l --icons --group-directories-first --no-user"
+else
+	export LSCOLORS="Gxfxcxdxbxegedabagacad"
+	alias ls='ls -G'
+	alias lsa='ls -lah'
+	alias l='ls -lah'
+	alias ll='ls -lh'
+	alias la='ls -lAh'
+fi
 
 setopt auto_pushd
 setopt pushd_ignore_dups
