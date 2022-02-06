@@ -45,5 +45,23 @@ require("formatter").setup({
         }
       end,
     },
+    cpp = {
+      -- clang-format
+      function()
+        return {
+          exe = "clang-format",
+          stdin = true,
+        }
+      end,
+    },
+    c = {
+      -- clang-format
+      function()
+        return {
+          exe = "clang-format",
+          stdin = true,
+        }
+      end,
+    },
   },
 })
