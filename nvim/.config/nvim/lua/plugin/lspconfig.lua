@@ -2,7 +2,7 @@
 
 local nvim_lsp = require("lspconfig")
 local on_attach = function(_client, bufnr)
-  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
 -- nvim-cmp supports additional completion capabilities
