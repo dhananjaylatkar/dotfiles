@@ -154,6 +154,14 @@ require("packer").startup(function()
   use("f3fora/cmp-spell")
   use("hrsh7th/cmp-emoji")
 
+  use({
+    "ZhiyuanLck/smart-pairs",
+    event = "InsertEnter",
+    config = function()
+      require("pairs"):setup()
+    end,
+  })
+
   -- Snipets
   use({
     "L3MON4D3/LuaSnip",
