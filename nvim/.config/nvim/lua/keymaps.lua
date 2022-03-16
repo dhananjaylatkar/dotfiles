@@ -377,3 +377,10 @@ vim.cmd([[
   inoremap <C-U> <C-G>u<C-U>
   inoremap <C-W> <C-G>u<C-W>
 ]])
+
+-- Keep selection when indenting
+vim.cmd([[
+    vmap > >gv
+    vmap < <gv
+]])
+
