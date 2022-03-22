@@ -286,19 +286,14 @@ wk.register({
 		n = {
 			name = "Notes",
 			f = {
-				"<cmd>Telescope find_files cwd=" .. vim.g.wiki_root .. "<cr>",
+				"<cmd>Telescope find_files cwd=" .. CONFIG.notes.root_dir .. "<cr>",
 				"Find notes",
 			},
 			s = {
-				"<cmd>Telescope live_grep cwd=" .. vim.g.wiki_root .. "<cr>",
+				"<cmd>Telescope live_grep cwd=" .. CONFIG.notes.root_dir .. "<cr>",
 				"Search notes",
 			},
-			n = { "<cmd>WikiOpen<cr>", "New note" },
-			i = { "<cmd>WikiIndex<cr>", "Index" },
-			j = {
-				name = "Journal",
-				n = { "<cmd>WikiJournal<cr>", "New journal" },
-			},
+			n = { "<cmd>lua require('file_util').create_file(CONFIG.notes.root_dir)<cr>", "New note" },
 		},
 	},
 	-- common lsp bindings
@@ -383,4 +378,3 @@ vim.cmd([[
     vmap > >gv
     vmap < <gv
 ]])
-

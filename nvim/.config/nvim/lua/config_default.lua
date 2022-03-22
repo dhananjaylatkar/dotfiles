@@ -46,9 +46,9 @@ M.dashboard = {
 	},
 }
 
--- Wiki
-M.wiki = {
-	root_dir = "~/code/notes",
+-- Notes
+M.notes = {
+	root_dir = os.getenv("HOME") .. "/code/notes/",
 }
 -- Vim options
 -- NOTE: Overide vim options using this table (defaults can be found in vim_config.lua).

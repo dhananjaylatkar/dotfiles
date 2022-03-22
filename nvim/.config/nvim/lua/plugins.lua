@@ -253,13 +253,6 @@ require("packer").startup(function()
 		end,
 	})
 
-	use({
-		"lervag/wiki.vim",
-		config = function()
-			require("plugin.wiki")
-		end,
-	})
-
 	-- Colorschemes
 	use("joshdick/onedark.vim")
 	use("sainnhe/gruvbox-material")
