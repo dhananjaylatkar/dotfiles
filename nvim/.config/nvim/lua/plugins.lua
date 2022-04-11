@@ -200,6 +200,13 @@ require("packer").startup(function()
 			require("plugin.formatter")
 		end,
 	})
+	-- Detect indentation
+	use({
+		"nmac427/guess-indent.nvim",
+		config = function()
+			require("guess-indent").setup({})
+		end,
+	})
 
 	-- cscope keymaps
 	use({
