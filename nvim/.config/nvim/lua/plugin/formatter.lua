@@ -28,11 +28,11 @@ require("formatter").setup({
 			end,
 		},
 		python = {
-			-- yapf
+			-- black
 			function()
 				return {
-					exe = "yapf",
-					stdin = true,
+					exe = "black",
+					stdin = false,
 				}
 			end,
 		},
