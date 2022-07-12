@@ -44,6 +44,7 @@ all:
 		 stow --target=$${HOME} -v --no-folding $${DIR}; \
 	done
 
+.PHONY: work
 work:
 	@for DIR in ${STOW_DIRS_WORK}; do \
 		 stow --target=$${HOME} -v --no-folding $${DIR}; \
