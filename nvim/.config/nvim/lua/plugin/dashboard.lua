@@ -1,29 +1,39 @@
 -- Dashboard
-vim.g.dashboard_default_executive = "telescope"
+local db = require("dashboard")
 
-vim.g.dashboard_custom_section = {
-	a = {
-		description = { "ﭯ  Recent Files         SPC r f" },
-		command = "Telescope oldfiles",
+db.custom_header = CONFIG.dashboard.custom_header
+
+db.custom_center = {
+	{
+		icon = "ﭯ  ",
+		desc = "Recent Files         ",
+		shortcut = "SPC r f",
+		action = "Telescope oldfiles",
 	},
-	b = {
-		description = { "  Open Project         SPC p p" },
-		command = "Telescope project",
+	{
+		icon = "  ",
+		desc = "Open Project         ",
+		shortcut = "SPC p p",
+		action = "Telescope project",
 	},
-	c = {
-		description = { "  Find File            SPC f f" },
-		command = "Telescope find_files hidden=true)",
+	{
+		icon = "  ",
+		desc = "Find File            ",
+		shortcut = "SPC f f",
+		action = "Telescope find_files hidden=true)",
 	},
-	d = {
-		description = { "  Find Word            SPC s p" },
-		command = "Telescope live_grep",
+	{
+		icon = "  ",
+		desc = "Find Word            ",
+		shortcut = "SPC s p",
+		action = "Telescope live_grep",
 	},
-	e = {
-		description = { "  Settings                   ." },
-		command = ":e ~/.config/nvim/lua/" .. CONFIG_FILE,
+	{
+		icon = "  ",
+		desc = "Settings                  ",
+		shortcut = ".",
+		action = ":e ~/.config/nvim/lua/" .. CONFIG_FILE,
 	},
 }
 
-vim.g.dashboard_custom_footer = CONFIG.dashboard.custom_footer
-
-vim.g.dashboard_custom_header = CONFIG.dashboard.custom_header
+db.custom_footer = CONFIG.dashboard.custom_footer

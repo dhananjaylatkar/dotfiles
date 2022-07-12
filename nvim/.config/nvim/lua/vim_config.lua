@@ -40,7 +40,9 @@ for k, v in pairs(vim_opts) do
 end
 
 -- highlight trailing whitespace
-vim.cmd([[match ErrorMsg '\s\+$']])
+--if vim.bo.filetype ~= "dashboard" then
+--	vim.cmd([[match ErrorMsg '\s\+$']])
+--end
 
 --Remap space as leader key
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
