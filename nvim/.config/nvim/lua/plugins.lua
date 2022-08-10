@@ -30,7 +30,7 @@ require("packer").startup(function()
 	use("nvim-lua/popup.nvim")
 
 	-- 2 char search
-	use({ "ggandor/lightspeed.nvim", event = "BufRead" })
+	use({ "ggandor/lightspeed.nvim" })
 
 	-- "gc" to comment visual regions/lines
 	use({
