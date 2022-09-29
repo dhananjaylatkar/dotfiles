@@ -32,6 +32,7 @@ local vim_defaults = {
 	undofile = true, -- Save undo history
 	updatetime = 250, -- Decrease update time
 	wrap = true,
+	termguicolors = true,
 }
 
 local vim_opts = require("core").merge_table(vim_defaults, CONFIG.vim)

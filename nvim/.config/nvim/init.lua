@@ -1,6 +1,6 @@
 -- Custom config
-local ok, config_user = pcall(require, "config")
-if ok then
+local _ok, config_user = pcall(require, "config")
+if _ok then
 	local config_default = require("config_default")
 	CONFIG = require("core").merge_table(config_default, config_user)
 	CONFIG_FILE = "config.lua"
@@ -13,7 +13,7 @@ local modules = {
 	"plugins",
 	"vim_config",
 	"utils",
-	"plugin.colors",
+	"colors."..CONFIG.colorscheme,
 }
 for _, module in ipairs(modules) do
 	local ok, err = pcall(require, module)

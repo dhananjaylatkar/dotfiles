@@ -4,14 +4,14 @@
 local M = {}
 
 --[[ Available colorschemes:
-  - gruvbox
-  - onedark
-  - everforest
-  - tokyonight
-  - gruvbuddy
-  - rose-pine
   - ayu
+  - everforest
+  - gruvbox
   - kanagawa
+  - nord
+  - onedark
+  - rosepine
+  - tokyonight
 --]]
 M.colorscheme = "gruvbox"
 
