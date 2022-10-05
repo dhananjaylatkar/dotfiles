@@ -246,7 +246,12 @@ require("packer").startup(function()
 	-- Markdown
 	use({ "junegunn/goyo.vim", cmd = "Goyo" })
 	use({ "junegunn/limelight.vim", cmd = "Limelight" })
-
+	use({
+		"dkarter/bullets.vim",
+		config = function()
+			require("plugin.bullets")
+		end,
+	})
 	use({ "godlygeek/tabular", event = "BufRead" })
 	use({
 		"plasticboy/vim-markdown",
