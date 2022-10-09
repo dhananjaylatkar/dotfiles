@@ -3,7 +3,6 @@ local vim_defaults = {
 	autoindent = true,
 	breakindent = true, -- Enable break indent
 	cindent = true,
-	clipboard = "unnamedplus", -- copy to system clipboard
 	cmdheight = 1,
 	confirm = true, -- confirm when exiting
 	cursorline = true,
@@ -33,6 +32,7 @@ local vim_defaults = {
 	updatetime = 250, -- Decrease update time
 	wrap = true,
 	termguicolors = true,
+	colorcolumn = "80",
 }
 
 local vim_opts = require("core").merge_table(vim_defaults, CONFIG.vim)
