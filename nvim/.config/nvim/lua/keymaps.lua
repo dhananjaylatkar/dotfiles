@@ -315,8 +315,9 @@ wk.register({
 		"Show symbol referneces",
 	},
 	-- Functions keys
-	["<F5>"] = { "<cmd>set list!<cr>", "Indent guides" },
 	["<F2>"] = { "<cmd>NvimTreeToggle<cr>", "Project sidebar" },
+	["<F3>"] = { "<cmd>UndotreeToggle<cr>", "Toggle Undotree" },
+	["<F5>"] = { "<cmd>set list!<cr>", "Indent guides" },
 	["<F10>"] = { "<cmd>lua ToggleMouse()<cr>", "Toggle mouse mode" },
 }, opts)
 

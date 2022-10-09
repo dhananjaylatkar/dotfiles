@@ -175,6 +175,9 @@ require("packer").startup(function()
 		after = "nvim-lspconfig",
 	})
 
+	-- Undotree
+	use({ "mbbill/undotree" })
+
 	-- Treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
