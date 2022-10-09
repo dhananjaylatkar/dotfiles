@@ -5,6 +5,7 @@ local M = {}
 
 --[[ Available colorschemes:
   - ayu
+  - catppuccin
   - everforest
   - gruvbox
   - kanagawa
