@@ -30,7 +30,13 @@ require("packer").startup(function()
 	use("nvim-lua/popup.nvim")
 
 	-- 2 char search
-	use({ "ggandor/lightspeed.nvim" })
+	use({
+		"ggandor/lightspeed.nvim",
+		config = function()
+			require("plugin.lightspeed")
+		end,
+		disable = not CONFIG.enable.lightspeed,
+	})
 
 	-- "gc" to comment visual regions/lines
 	use({
@@ -39,10 +45,15 @@ require("packer").startup(function()
 		config = function()
 			require("plugin.comment")
 		end,
+		disable = not CONFIG.enable.Comment,
 	})
 
 	-- surround text with ysiw", cs"', ds", etc
-	use({ "tpope/vim-surround", event = "BufRead" })
+	use({
+		"tpope/vim-surround",
+		event = "BufRead",
+		disable = not CONFIG.enable.vim_surround,
+	})
 
 	-- Telescope
 	use({
@@ -51,10 +62,6 @@ require("packer").startup(function()
 		config = function()
 			require("plugin.telescope")
 		end,
-		requires = {
-			{ "nvim-lua/popup.nvim" },
-			{ "nvim-lua/plenary.nvim" },
-		},
 	})
 
 	-- Project manager
@@ -65,6 +72,7 @@ require("packer").startup(function()
 			require("plugin.telescope-project")
 		end,
 		requires = { "nvim-telescope/telescope.nvim" },
+		disable = not CONFIG.enable.telescope_project,
 	})
 
 	-- Change directory to project root
@@ -74,6 +82,7 @@ require("packer").startup(function()
 		config = function()
 			require("plugin.project_rooter")
 		end,
+		disable = not CONFIG.enable.project,
 	})
 
 	-- File browser
@@ -84,6 +93,7 @@ require("packer").startup(function()
 		config = function()
 			require("plugin.nvim-tree")
 		end,
+		disable = not CONFIG.enable.nvim_tree,
 	})
 
 	-- which-key
@@ -100,7 +110,7 @@ require("packer").startup(function()
 	use({
 		"ThePrimeagen/harpoon",
 		event = "BufWinEnter",
-		requires = { { "nvim-lua/plenary.nvim" }, { "nvim-lua/popup.nvim" } },
+		disable = not CONFIG.enable.harpoon,
 	})
 
 	--* Git *--
@@ -111,7 +121,7 @@ require("packer").startup(function()
 		config = function()
 			require("plugin.gitsigns")
 		end,
-		requires = { "nvim-lua/plenary.nvim" },
+		disable = not CONFIG.enable.gitsigns,
 	})
 
 	-- Neogit
@@ -119,6 +129,7 @@ require("packer").startup(function()
 		"TimUntersberger/neogit",
 		cmd = "Neogit",
 		requires = "nvim-lua/plenary.nvim",
+		disable = not CONFIG.enable.neogit,
 	})
 
 	--* Code *--
@@ -128,6 +139,7 @@ require("packer").startup(function()
 		config = function()
 			require("plugin.lspconfig")
 		end,
+		disable = not CONFIG.enable.nvim_lspconfig,
 	})
 
 	use({
@@ -135,6 +147,7 @@ require("packer").startup(function()
 		config = function()
 			require("plugin.nvim-lsp-installer")
 		end,
+		disable = not CONFIG.enable.nvim_lsp_installer or not CONFIG.enable.nvim_lspconfig,
 	})
 
 	-- Autocompletion plugin
@@ -144,12 +157,28 @@ require("packer").startup(function()
 		config = function()
 			require("plugin.nvim-cmp")
 		end,
+		disable = not CONFIG.enable.nvim_cmp,
 	})
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-path")
-	use("f3fora/cmp-spell")
-	use("hrsh7th/cmp-emoji")
+	use({
+		"hrsh7th/cmp-nvim-lsp",
+		disable = not CONFIG.enable.cmp_nvim_lsp or not CONFIG.enable.nvim_cmp,
+	})
+	use({
+		"hrsh7th/cmp-buffer",
+		disable = not CONFIG.enable.cmp_buffer or not CONFIG.enable.nvim_cmp,
+	})
+	use({
+		"hrsh7th/cmp-path",
+		disable = not CONFIG.enable.cmp_path or not CONFIG.enable.nvim_cmp,
+	})
+	use({
+		"f3fora/cmp-spell",
+		disable = not CONFIG.enable.cmp_spell or not CONFIG.enable.nvim_cmp,
+	})
+	use({
+		"hrsh7th/cmp-emoji",
+		disable = not CONFIG.enable.cmp_emoji or not CONFIG.enable.nvim_cmp,
+	})
 
 	use({
 		"ZhiyuanLck/smart-pairs",
@@ -157,6 +186,7 @@ require("packer").startup(function()
 		config = function()
 			require("pairs"):setup()
 		end,
+		disable = not CONFIG.enable.smart_pairs,
 	})
 
 	-- Snipets
@@ -165,18 +195,29 @@ require("packer").startup(function()
 		config = function()
 			require("luasnip/loaders/from_vscode").lazy_load()
 		end,
+		disable = not CONFIG.enable.LuaSnip or not CONFIG.enable.nvim_cmp,
 	})
-	use("rafamadriz/friendly-snippets")
-	use("saadparwaiz1/cmp_luasnip")
+	use({
+		"rafamadriz/friendly-snippets",
+		disable = not CONFIG.enable.friendly_snippets or not CONFIG.enable.LuaSnip or not CONFIG.enable.nvim_cmp,
+	})
+	use({
+		"saadparwaiz1/cmp_luasnip",
+		disable = not CONFIG.enable.cmp_luasnip or not CONFIG.enable.LuaSnip or not CONFIG.enable.nvim_cmp,
+	})
 
 	-- A tree like view for symbols
 	use({
 		"simrat39/symbols-outline.nvim",
 		after = "nvim-lspconfig",
+		disable = not CONFIG.enable.symbols_outline,
 	})
 
 	-- Undotree
-	use({ "mbbill/undotree" })
+	use({
+		"mbbill/undotree",
+		disable = not CONFIG.enable.undotree,
+	})
 
 	-- Treesitter
 	use({
@@ -186,6 +227,7 @@ require("packer").startup(function()
 			require("plugin.treesitter")
 		end,
 		run = ":TSUpdate",
+		disable = not CONFIG.enable.nvim_treesitter,
 	})
 
 	use({
@@ -194,6 +236,7 @@ require("packer").startup(function()
 		config = function()
 			require("plugin.nvim-treesitter-refactor")
 		end,
+		disable = not CONFIG.enable.nvim_treesitter_refactor or not CONFIG.enable.nvim_treesitter,
 	})
 	-- Code formatter
 	use({
@@ -202,9 +245,13 @@ require("packer").startup(function()
 		config = function()
 			require("plugin.formatter")
 		end,
+		disable = not CONFIG.enable.formatter,
 	})
 	-- Detect indentation
-	use("tpope/vim-sleuth")
+	use({
+		"tpope/vim-sleuth",
+		disable = not CONFIG.enable.vim_sleuth,
+	})
 
 	-- cscope keymaps
 	use({
@@ -213,11 +260,16 @@ require("packer").startup(function()
 		config = function()
 			require("cscope_maps")
 		end,
+		disable = not CONFIG.enable.cscope_maps,
 	})
 
 	--* Looks do matter *--
 	-- Dev Icons
-	use({ "kyazdani42/nvim-web-devicons", event = "BufWinEnter" })
+	use({
+		"kyazdani42/nvim-web-devicons",
+		event = "BufWinEnter",
+		disable = not CONFIG.enable.nvim_web_devicons,
+	})
 
 	-- Hex colors
 	use({
@@ -226,6 +278,7 @@ require("packer").startup(function()
 		config = function()
 			require("plugin.nvim-colorizer")
 		end,
+		disable = not CONFIG.enable.nvim_colorizer,
 	})
 
 	-- dashboard-nvim
@@ -235,6 +288,7 @@ require("packer").startup(function()
 		config = function()
 			require("plugin.dashboard")
 		end,
+		disable = not CONFIG.enable.dashboard,
 	})
 
 	-- Statusline
@@ -243,24 +297,38 @@ require("packer").startup(function()
 		config = function()
 			require("plugin.lualine")
 		end,
-		requires = { "kyazdani42/nvim-web-devicons" },
+		disable = not CONFIG.enable.lualine,
 	})
 
 	-- Markdown
-	use({ "junegunn/goyo.vim", cmd = "Goyo" })
-	use({ "junegunn/limelight.vim", cmd = "Limelight" })
+	use({
+		"junegunn/goyo.vim",
+		cmd = "Goyo",
+		disable = not CONFIG.enable.goyo,
+	})
+	use({
+		"junegunn/limelight.vim",
+		cmd = "Limelight",
+		disable = not CONFIG.enable.limelight,
+	})
 	use({
 		"dkarter/bullets.vim",
 		config = function()
 			require("plugin.bullets")
 		end,
+		disable = not CONFIG.enable.bullets,
 	})
-	use({ "godlygeek/tabular", event = "BufRead" })
+	use({
+		"godlygeek/tabular",
+		event = "BufRead",
+		disable = not CONFIG.enable.tabular or not CONFIG.enable.vim_markdown,
+	})
 	use({
 		"plasticboy/vim-markdown",
 		config = function()
 			require("plugin.vim-markdown")
 		end,
+		disable = not CONFIG.enable.vim_markdown,
 	})
 
 	-- Colorschemes
