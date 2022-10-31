@@ -1,15 +1,17 @@
 #!/bin/sh
 # Editor
-if which nvim > /dev/null; then
+if (( $+commands[nvim] )); then
 	alias vi="nvim"
-else
+elif (( $+commands[vim] )); then
 	alias vi="vim"
+else
+	alias vi="vi"
 fi
 alias em="emacsclient"
 
 # Workspace
 alias ws="$HOME/.config/scripts/tmux2"
-alias nvimrc='nvim ~/.config/nvim/'
+alias nvimrc='vi ~/.config/nvim/'
 
 # Python
 alias python=python3

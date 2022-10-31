@@ -1,10 +1,12 @@
 #!/bin/sh
-if which nvim > /dev/null; then
+if (( $+commands[nvim] )); then
 	export EDITOR=nvim
 	export MANPAGER='nvim +Man!'
 	export MANWIDTH=999
-else
+elif (( $+commands[vim] )); then
 	export EDITOR=vim
+else
+	export EDITOR=vi
 fi
 export PATH="$HOME/.local/bin":"$HOME/.config/scripts":$PATH
 #eval "$(zoxide init zsh)"
