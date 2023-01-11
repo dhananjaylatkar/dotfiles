@@ -22,7 +22,16 @@ M.colorscheme = "gruvbox"
 M.lsp = {
 	-- List of LSP servers to enable
 	-- Use :LspInstallInfo to check available servers
-	servers = { "sumneko_lua" },
+	-- Use empty table if no settings are required
+	servers = {
+		sumneko_lua = {
+			Lua = {
+				workspace = { checkThirdParty = false },
+				telemetry = { enable = false },
+				diagnostics = { globals = { "vim" } },
+			},
+		},
+	},
 }
 -- Treesitter
 M.treesitter = {
@@ -71,8 +80,7 @@ M.enable = {
 	harpoon = true, -- ThePrimeagen/harpoon
 	gitsigns = true, -- lewis6991/gitsigns.nvim
 	neogit = true, -- TimUntersberger/neogit
-	nvim_lspconfig = true, -- neovim/nvim-lspconfig
-	nvim_lsp_installer = true, -- williamboman/nvim-lsp-installer
+	lsp = true, -- neovim/nvim-lspconfig
 	nvim_cmp = true, -- hrsh7th/nvim-cmp
 	cmp_nvim_lsp = true, -- hrsh7th/cmp-nvim-lsp
 	cmp_buffer = true, -- hrsh7th/cmp-buffer

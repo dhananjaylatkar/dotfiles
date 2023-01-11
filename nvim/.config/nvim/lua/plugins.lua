@@ -137,17 +137,20 @@ require("packer").startup(function()
 	use({
 		"neovim/nvim-lspconfig",
 		config = function()
-			require("plugin.lspconfig")
+			require("plugin.lsp")
 		end,
-		disable = not CONFIG.enable.nvim_lspconfig,
-	})
+		requires = {
+			-- Automatically install LSPs to stdpath for neovim
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
 
-	use({
-		"williamboman/nvim-lsp-installer",
-		config = function()
-			require("plugin.nvim-lsp-installer")
-		end,
-		disable = not CONFIG.enable.nvim_lsp_installer or not CONFIG.enable.nvim_lspconfig,
+			-- Useful status updates for LSP
+			"j-hui/fidget.nvim",
+
+			-- Additional lua configuration, makes nvim stuff amazing
+			"folke/neodev.nvim",
+		},
+		disable = not CONFIG.enable.lsp,
 	})
 
 	-- Autocompletion plugin
