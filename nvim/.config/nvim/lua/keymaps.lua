@@ -88,9 +88,13 @@ wk.register({
 		g = {
 			name = "+git",
 			f = { "<cmd>Telescope git_files<cr>", "Git files" },
-			b = {
+			B = {
 				"<cmd>Telescope git_branches<cr>",
 				"Branches",
+			},
+			b = {
+				"<cmd>lua require('git_blame').run()<cr>",
+				"Blame",
 			},
 			s = {
 				"<cmd>Telescope git_status<cr>",

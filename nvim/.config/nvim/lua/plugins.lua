@@ -132,6 +132,9 @@ require("packer").startup(function()
 		disable = not CONFIG.enable.neogit,
 	})
 
+	-- Git Blame
+	use({ "bobrown101/git_blame.nvim" })
+
 	--* Code *--
 	-- LSP
 	use({
