@@ -44,7 +44,7 @@ M.treesitter = {
 
 -- Dashboard
 M.dashboard = {
-	custom_footer = { "Dhananjay's Neovim Config" },
+	custom_footer = { "", "Dhananjay's Neovim Config" },
 	custom_header = {
 		"",
 		"",

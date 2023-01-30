@@ -1,39 +1,40 @@
--- Dashboard
-local db = require("dashboard")
+-- Dashboard config
 
-db.custom_header = CONFIG.dashboard.custom_header
-
-db.custom_center = {
-	{
-		icon = "ﭯ  ",
-		desc = "Recent Files         ",
-		shortcut = "SPC r f",
-		action = "Telescope oldfiles",
+require("dashboard").setup({
+	theme = "hyper",
+	config = {
+		header = CONFIG.dashboard.custom_header,
+		footer = CONFIG.dashboard.custom_footer,
+		project = { limit = 5, action = 'Telescope find_files hidden=true cwd='},
+		mru = { limit = 5},
+		-- week_header = {
+		-- 	enable = true,
+		-- },
+		shortcut = {
+			{
+				desc = " Recents",
+				group = "String",
+				action = "Telescope oldfiles",
+				key = "1",
+			},
+			{
+				desc = " Files",
+				group = "Label",
+				action = "Telescope find_files hidden=true",
+				key = "2",
+			},
+			{
+				desc = " Project",
+				group = "DiagnosticHint",
+				action = "Telescope project",
+				key = "3",
+			},
+			{
+				desc = " Grep",
+				group = "Number",
+				action = "Telescope live_grep",
+				key = "4",
+			},
+		},
 	},
-	{
-		icon = "  ",
-		desc = "Open Project         ",
-		shortcut = "SPC p p",
-		action = "Telescope project",
-	},
-	{
-		icon = "  ",
-		desc = "Find File            ",
-		shortcut = "SPC f f",
-		action = "Telescope find_files hidden=true)",
-	},
-	{
-		icon = "  ",
-		desc = "Find Word            ",
-		shortcut = "SPC s p",
-		action = "Telescope live_grep",
-	},
-	{
-		icon = "  ",
-		desc = "Settings                  ",
-		shortcut = ".",
-		action = ":e ~/.config/nvim/lua/" .. CONFIG_FILE,
-	},
-}
-
-db.custom_footer = CONFIG.dashboard.custom_footer
+})
