@@ -23,7 +23,7 @@ require("dashboard").setup({
           {
             icon = ' ',
             desc = 'Find Files           ',
-            key = 'b',
+            key = 'f',
             keymap = 'SPC f f',
             action = 'Telescope find_files hidden=true'
           },
