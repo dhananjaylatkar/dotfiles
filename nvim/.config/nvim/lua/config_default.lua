@@ -24,7 +24,7 @@ M.lsp = {
 	-- Use :LspInstallInfo to check available servers
 	-- Use empty table if no settings are required
 	servers = {
-		sumneko_lua = {
+		lua_ls = {
 			Lua = {
 				workspace = { checkThirdParty = false },
 				telemetry = { enable = false },

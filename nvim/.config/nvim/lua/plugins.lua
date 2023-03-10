@@ -264,7 +264,7 @@ require("packer").startup(function()
 		"dhananjaylatkar/cscope_maps.nvim",
 		after = "which-key.nvim",
 		config = function()
-			require("cscope_maps")
+			require("cscope_maps").setup({})
 		end,
 		disable = not CONFIG.enable.cscope_maps,
 	})
