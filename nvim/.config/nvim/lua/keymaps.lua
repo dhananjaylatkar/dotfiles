@@ -299,6 +299,14 @@ wk.register({
 			},
 			n = { "<cmd>lua require('file_util').create_file(CONFIG.notes.root_dir)<cr>", "New note" },
 		},
+		k = {
+			name = "+config",
+			c = {
+				"<cmd>e ~/.config/nvim/lua/" .. CONFIG_FILE .. "<cr>",
+				"Config file",
+			},
+
+		}
 	},
 	-- common lsp bindings
 	["gd"] = {
