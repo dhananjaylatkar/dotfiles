@@ -58,7 +58,6 @@ require("packer").startup(function()
 	-- Telescope
 	use({
 		"nvim-telescope/telescope.nvim",
-		cmd = "Telescope",
 		config = function()
 			require("plugin.telescope")
 		end,
@@ -264,7 +263,7 @@ require("packer").startup(function()
 		"dhananjaylatkar/cscope_maps.nvim",
 		after = "which-key.nvim",
 		config = function()
-			require("cscope_maps").setup({})
+			require("cscope_maps").setup({cscope = {use_telescope = true}})
 		end,
 		disable = not CONFIG.enable.cscope_maps,
 	})
