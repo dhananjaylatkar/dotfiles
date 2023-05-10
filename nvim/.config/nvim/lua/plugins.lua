@@ -1,149 +1,150 @@
 -- Packer config
 
--- Install packer
-local execute = vim.api.nvim_command
-
-local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
+-- Install lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
+vim.opt.rtp:prepend(lazypath)
 
-vim.api.nvim_exec(
-	[[
-	augroup Packer
-		autocmd!
-		autocmd BufWritePost packer.lua PackerCompile
-	augroup end
-]],
-	false
-)
+local opts = {
+	defaults = {
+		lazy = true,
+	},
+}
 
-local use = require("packer").use
-
-require("packer").startup(function()
-	-- Package manager
-	use("wbthomason/packer.nvim")
-
+local plugins = {
 	-- Recurring Dependancies
-	use("nvim-lua/plenary.nvim")
-	use("nvim-lua/popup.nvim")
+	{ "nvim-lua/plenary.nvim" },
+	{ "nvim-lua/popup.nvim" },
 
 	-- 2 char search
-	use({
+	{
 		"ggandor/lightspeed.nvim",
+		event = "BufRead",
 		config = function()
 			require("plugin.lightspeed")
 		end,
-		disable = not CONFIG.enable.lightspeed,
-	})
+		enabled = CONFIG.enable.lightspeed,
+	},
 
 	-- "gc" to comment visual regions/lines
-	use({
+	{
 		"numToStr/Comment.nvim",
 		event = "BufRead",
 		config = function()
 			require("plugin.comment")
 		end,
-		disable = not CONFIG.enable.Comment,
-	})
+		enabled = CONFIG.enable.Comment,
+	},
 
 	-- surround text with ysiw", cs"', ds", etc
-	use({
+	{
 		"tpope/vim-surround",
 		event = "BufRead",
-		disable = not CONFIG.enable.vim_surround,
-	})
+		enabled = CONFIG.enable.vim_surround,
+	},
 
 	-- Telescope
-	use({
+	{
 		"nvim-telescope/telescope.nvim",
+		event = "BufWinEnter",
 		config = function()
 			require("plugin.telescope")
 		end,
-	})
+	},
 
 	-- Project manager
-	use({
+	{
 		"nvim-telescope/telescope-project.nvim",
-		after = "telescope.nvim",
+		event = "BufWinEnter",
 		config = function()
 			require("plugin.telescope-project")
 		end,
 		requires = { "nvim-telescope/telescope.nvim" },
-		disable = not CONFIG.enable.telescope_project,
-	})
+		enabled = CONFIG.enable.telescope_project,
+	},
 
 	-- Change directory to project root
-	use({
+	{
 		"ahmedkhalf/project.nvim",
 		event = "BufRead",
 		config = function()
 			require("plugin.project_rooter")
 		end,
-		disable = not CONFIG.enable.project,
-	})
+		enabled = CONFIG.enable.project,
+	},
 
 	-- File browser
-	use({
+	{
 		"kyazdani42/nvim-tree.lua",
-		event = "BufWinEnter",
+		cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
 		requires = { "kyazdani42/nvim-web-devicons" },
 		config = function()
 			require("plugin.nvim-tree")
 		end,
-		disable = not CONFIG.enable.nvim_tree,
-	})
+		enabled = CONFIG.enable.nvim_tree,
+	},
 
 	-- which-key
-	use({
+	{
 		"folke/which-key.nvim",
 		config = function()
 			require("plugin.which-key")
 			require("keymaps")
 		end,
 		event = "BufWinEnter",
-	})
+	},
 
 	-- Harpoon
-	use({
+	{
 		"ThePrimeagen/harpoon",
-		event = "BufWinEnter",
-		disable = not CONFIG.enable.harpoon,
-	})
+		enabled = CONFIG.enable.harpoon,
+	},
 
 	--* Git *--
 	-- Add git related info in the signs columns and popups
-	use({
+	{
 		"lewis6991/gitsigns.nvim",
 		event = "BufRead",
 		config = function()
 			require("plugin.gitsigns")
 		end,
-		disable = not CONFIG.enable.gitsigns,
-	})
+		enabled = CONFIG.enable.gitsigns,
+	},
 
 	-- Neogit
-	use({
+	{
 		"TimUntersberger/neogit",
 		cmd = "Neogit",
 		requires = "nvim-lua/plenary.nvim",
-		disable = not CONFIG.enable.neogit,
-	})
+		enabled = CONFIG.enable.neogit,
+	},
 
 	-- Git Blame
-	use({ "bobrown101/git_blame.nvim" })
+	{
+		"bobrown101/git_blame.nvim",
+		event = "BufRead",
+		enabled = CONFIG.enable.git_blame,
+	},
 
 	--* Code *--
 	-- LSP
-	use({
+	{
 		"neovim/nvim-lspconfig",
+		lazy = false,
 		config = function()
 			require("plugin.lsp")
 		end,
-		requires = {
+		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
-			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 
 			-- Useful status updates for LSP
@@ -152,199 +153,188 @@ require("packer").startup(function()
 			-- Additional lua configuration, makes nvim stuff amazing
 			"folke/neodev.nvim",
 		},
-		disable = not CONFIG.enable.lsp,
-	})
+		enabled = CONFIG.enable.lsp,
+	},
+
+	{
+		"williamboman/mason.nvim",
+		lazy = false,
+		enabled = CONFIG.enable.mason,
+	},
 
 	-- Autocompletion plugin
-	use({
+	{
 		"hrsh7th/nvim-cmp",
-		-- event = "InsertEnter",
+		event = "InsertEnter",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"f3fora/cmp-spell",
+			"hrsh7th/cmp-emoji",
+		},
 		config = function()
 			require("plugin.nvim-cmp")
 		end,
-		disable = not CONFIG.enable.nvim_cmp,
-	})
-	use({
-		"hrsh7th/cmp-nvim-lsp",
-		disable = not CONFIG.enable.cmp_nvim_lsp or not CONFIG.enable.nvim_cmp,
-	})
-	use({
-		"hrsh7th/cmp-buffer",
-		disable = not CONFIG.enable.cmp_buffer or not CONFIG.enable.nvim_cmp,
-	})
-	use({
-		"hrsh7th/cmp-path",
-		disable = not CONFIG.enable.cmp_path or not CONFIG.enable.nvim_cmp,
-	})
-	use({
-		"f3fora/cmp-spell",
-		disable = not CONFIG.enable.cmp_spell or not CONFIG.enable.nvim_cmp,
-	})
-	use({
-		"hrsh7th/cmp-emoji",
-		disable = not CONFIG.enable.cmp_emoji or not CONFIG.enable.nvim_cmp,
-	})
+		enabled = CONFIG.enable.nvim_cmp,
+	},
 
-	use({
+	{
 		"ZhiyuanLck/smart-pairs",
 		event = "InsertEnter",
 		config = function()
 			require("pairs"):setup()
 		end,
-		disable = not CONFIG.enable.smart_pairs,
-	})
+		enabled = CONFIG.enable.smart_pairs,
+	},
 
 	-- Snipets
-	use({
+	{
 		"L3MON4D3/LuaSnip",
+		event = "InsertEnter",
 		config = function()
 			require("luasnip/loaders/from_vscode").lazy_load()
 		end,
-		disable = not CONFIG.enable.LuaSnip or not CONFIG.enable.nvim_cmp,
-	})
-	use({
-		"rafamadriz/friendly-snippets",
-		disable = not CONFIG.enable.friendly_snippets or not CONFIG.enable.LuaSnip or not CONFIG.enable.nvim_cmp,
-	})
-	use({
-		"saadparwaiz1/cmp_luasnip",
-		disable = not CONFIG.enable.cmp_luasnip or not CONFIG.enable.LuaSnip or not CONFIG.enable.nvim_cmp,
-	})
-
-	-- A tree like view for symbols
-	use({
-		"simrat39/symbols-outline.nvim",
-		after = "nvim-lspconfig",
-		disable = not CONFIG.enable.symbols_outline,
-	})
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+			"saadparwaiz1/cmp_luasnip",
+		},
+		enabled = CONFIG.enable.LuaSnip and CONFIG.enable.nvim_cmp,
+	},
 
 	-- Undotree
-	use({
+	{
 		"mbbill/undotree",
-		disable = not CONFIG.enable.undotree,
-	})
+		cmd = "UndotreeToggle",
+		enabled = CONFIG.enable.undotree,
+	},
 
 	-- Treesitter
-	use({
+	{
 		"nvim-treesitter/nvim-treesitter",
 		event = "BufRead",
 		config = function()
 			require("plugin.treesitter")
 		end,
 		run = ":TSUpdate",
-		disable = not CONFIG.enable.nvim_treesitter,
-	})
+		enabled = CONFIG.enable.nvim_treesitter,
+	},
 
-	use({
+	{
 		"nvim-treesitter/nvim-treesitter-refactor",
-		after = "nvim-treesitter",
+		event = "BufRead",
 		config = function()
 			require("plugin.nvim-treesitter-refactor")
 		end,
-		disable = not CONFIG.enable.nvim_treesitter_refactor or not CONFIG.enable.nvim_treesitter,
-	})
+		enabled = CONFIG.enable.nvim_treesitter_refactor and CONFIG.enable.nvim_treesitter,
+	},
 	-- Code formatter
-	use({
+	{
 		"mhartington/formatter.nvim",
-		event = "BufWinEnter",
+		cmd = "Format",
 		config = function()
 			require("plugin.formatter")
 		end,
-		disable = not CONFIG.enable.formatter,
-	})
+		enabled = CONFIG.enable.formatter,
+	},
 	-- Detect indentation
-	use({
+	{
 		"tpope/vim-sleuth",
-		disable = not CONFIG.enable.vim_sleuth,
-	})
+		event = "BufRead",
+		enabled = CONFIG.enable.vim_sleuth,
+	},
 
 	-- cscope keymaps
-	use({
+	{
 		"dhananjaylatkar/cscope_maps.nvim",
-		after = "which-key.nvim",
+		ft = { "c", "h", "dashboard" },
+		cmd = "Cscope",
 		config = function()
-			require("cscope_maps").setup({cscope = {use_telescope = true}})
+			require("cscope_maps").setup({ cscope = { use_telescope = true } })
 		end,
-		disable = not CONFIG.enable.cscope_maps,
-	})
+		enabled = CONFIG.enable.cscope_maps,
+	},
 
 	--* Looks do matter *--
 	-- Dev Icons
-	use({
+	{
 		"kyazdani42/nvim-web-devicons",
-		event = "BufWinEnter",
-		disable = not CONFIG.enable.nvim_web_devicons,
-	})
+		enabled = CONFIG.enable.nvim_web_devicons,
+	},
 
 	-- Hex colors
-	use({
+	{
 		"norcalli/nvim-colorizer.lua",
-		event = "BufRead",
+		ft = { "css", "js", "html" },
 		config = function()
 			require("plugin.nvim-colorizer")
 		end,
-		disable = not CONFIG.enable.nvim_colorizer,
-	})
+		enabled = CONFIG.enable.nvim_colorizer,
+	},
 
 	-- dashboard-nvim
-	use({
+	{
 		"glepnir/dashboard-nvim",
-		event = "BufWinEnter",
+		lazy = false,
 		config = function()
 			require("plugin.dashboard")
 		end,
-		disable = not CONFIG.enable.dashboard,
-	})
+		enabled = CONFIG.enable.dashboard,
+	},
 
 	-- Statusline
-	use({
+	{
 		"hoob3rt/lualine.nvim",
+		event = "BufWinEnter",
 		config = function()
 			require("plugin.lualine")
 		end,
-		disable = not CONFIG.enable.lualine,
-	})
+		enabled = CONFIG.enable.lualine,
+	},
 
 	-- Markdown
-	use({
+	{
 		"junegunn/goyo.vim",
 		cmd = "Goyo",
-		disable = not CONFIG.enable.goyo,
-	})
-	use({
+		enabled = CONFIG.enable.goyo,
+	},
+	{
 		"junegunn/limelight.vim",
 		cmd = "Limelight",
-		disable = not CONFIG.enable.limelight,
-	})
-	use({
+		enabled = CONFIG.enable.limelight,
+	},
+	{
 		"dkarter/bullets.vim",
+		event = "BufRead",
+		ft = { "md", "markdown" },
 		config = function()
 			require("plugin.bullets")
 		end,
-		disable = not CONFIG.enable.bullets,
-	})
-	use({
+		enabled = CONFIG.enable.bullets,
+	},
+	{
 		"godlygeek/tabular",
-		event = "BufRead",
-		disable = not CONFIG.enable.tabular or not CONFIG.enable.vim_markdown,
-	})
-	use({
+		ft = { "md", "markdown" },
+		enabled = CONFIG.enable.tabular and CONFIG.enable.vim_markdown,
+	},
+	{
 		"plasticboy/vim-markdown",
+		ft = { "md", "markdown" },
 		config = function()
 			require("plugin.vim-markdown")
 		end,
-		disable = not CONFIG.enable.vim_markdown,
-	})
+		enabled = CONFIG.enable.vim_markdown,
+	},
 
 	-- Colorschemes
-	use("joshdick/onedark.vim")
-	use("sainnhe/gruvbox-material")
-	use("sainnhe/everforest")
-	use("folke/tokyonight.nvim")
-	use("tjdevries/colorbuddy.vim")
-	use("rose-pine/neovim")
-	use("Shatur/neovim-ayu")
-	use("rebelot/kanagawa.nvim")
-	use("arcticicestudio/nord-vim")
-	use({ "catppuccin/nvim", as = "catppuccin" })
-end)
+	{ "joshdick/onedark.vim" },
+	{ "sainnhe/gruvbox-material" },
+	{ "sainnhe/everforest" },
+	{ "folke/tokyonight.nvim" },
+	{ "rose-pine/neovim" },
+	{ "Shatur/neovim-ayu" },
+	{ "rebelot/kanagawa.nvim" },
+	{ "arcticicestudio/nord-vim" },
+	{ "catppuccin/nvim" },
+}
+require("lazy").setup(plugins, opts)
