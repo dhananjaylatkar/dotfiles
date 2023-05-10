@@ -8,9 +8,16 @@ require("dashboard").setup({
         center = {
           {
             icon = 'ﭯ ',
-            desc = 'Recent Files           ',
+            desc = 'Recent Files [Cur]           ',
             key = 'r',
             keymap = 'SPC f r',
+            action = 'Telescope oldfiles only_cwd=true'
+          },
+          {
+            icon = 'ﭯ ',
+            desc = 'Recent Files [All]           ',
+            key = 'R',
+            keymap = 'SPC f R',
             action = 'Telescope oldfiles'
           },
           {

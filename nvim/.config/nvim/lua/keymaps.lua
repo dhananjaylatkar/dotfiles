@@ -32,8 +32,12 @@ wk.register({
 				"Find files",
 			},
 			r = {
+				"<cmd>Telescope oldfiles only_cwd=true<cr>",
+				"Recent files [Cur]",
+			},
+			R = {
 				"<cmd>Telescope oldfiles<cr>",
-				"Recent files",
+				"Recent files [All]",
 			},
 			g = { "<cmd>Telescope git_files<cr>", "Git files" },
 			s = { "<cmd>NvimTreeFindFile<cr>", "Open in sidebar" },
@@ -152,9 +156,13 @@ wk.register({
 		},
 		r = {
 			name = "+recent",
-			f = {
+			R = {
 				"<cmd>Telescope oldfiles<cr>",
-				"Recent files",
+				"Recent files [All]",
+			},
+			r = {
+				"<cmd>Telescope oldfiles only_cwd=true<cr>",
+				"Recent files [Cur]",
 			},
 			c = {
 				"<cmd>Telescope command_history<cr>",
