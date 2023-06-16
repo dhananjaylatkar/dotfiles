@@ -15,7 +15,7 @@ font:
     family: JetBrainsMono Nerd Font Mono
     style: Italic
 
-  use_thin_strokes: true
+  AppleFontSmoothing: true
 
   size: 14.0
 
