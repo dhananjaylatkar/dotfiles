@@ -248,17 +248,20 @@ local plugins = {
 	{
 		"dhananjaylatkar/cscope_maps.nvim",
 		ft = { "c", "h", "dashboard" },
-		cmd = "Cscope",
-		config = function()
-			require("cscope_maps").setup({ cscope = { use_telescope = true } })
-		end,
+		cmd = { "Cscope", "Cstag" },
+		keys = "<C-]>",
+		opts = {
+			cscope = {
+				picker = "telescope",
+			},
+		},
 		enabled = CONFIG.enable.cscope_maps,
 	},
 
 	--* Looks do matter *--
 	-- Dev Icons
 	{
-		"kyazdani42/nvim-web-devicons",
+		"nvim-tree/nvim-web-devicons",
 		enabled = CONFIG.enable.nvim_web_devicons,
 	},
 
