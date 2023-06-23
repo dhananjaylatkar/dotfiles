@@ -7,14 +7,14 @@ local M = {}
   - ayu
   - catppuccin
   - everforest
-  - gruvbox
+  - gruvbox-material
   - kanagawa
   - nord
   - onedark
   - rosepine
   - tokyonight
 --]]
-M.colorscheme = "gruvbox"
+M.colorscheme = "gruvbox-material"
 
 -- Plugin config
 
