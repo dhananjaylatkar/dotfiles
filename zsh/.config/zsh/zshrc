@@ -38,6 +38,7 @@ zsh_add_file "zsh-os-conf"
 zsh_add_file "zsh-aliases"
 zsh_add_file "zsh-history"
 [ -f $HOME/.config/zsh-work/nsalias ] && source $HOME/.config/zsh-work/nsalias
+[ -f $HOME/.config/zsh/zsh-custom-conf ] && source $HOME/.config/zsh/zsh-custom-conf
 
 # Plugins
 # For more plugins: https://github.com/unixorn/awesome-zsh-plugins
