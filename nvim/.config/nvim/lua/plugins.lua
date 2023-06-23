@@ -158,8 +158,9 @@ local plugins = {
 
 	{
 		"williamboman/mason.nvim",
-		lazy = false,
-		enabled = CONFIG.enable.mason,
+		cmd = "Mason",
+		build = ":MasonUpdate",
+		opts = {},
 	},
 
 	-- Autocompletion plugin
@@ -231,6 +232,10 @@ local plugins = {
 	-- Code formatter
 	{
 		"mhartington/formatter.nvim",
+		dependencies = {
+			"williamboman/mason.nvim",
+			opts = {},
+		},
 		cmd = "Format",
 		config = function()
 			require("plugin.formatter")

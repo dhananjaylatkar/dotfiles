@@ -82,7 +82,6 @@ M.enable = {
 	neogit = true, -- TimUntersberger/neogit
 	git_blame = true, -- bobrown101/git_blame.nvim
 	lsp = true, -- neovim/nvim-lspconfig
-	mason = true, -- williamboman/mason.nvim
 	nvim_cmp = true, -- hrsh7th/nvim-cmp
 	LuaSnip = true, -- L3MON4D3/LuaSnip
 	smart_pairs = false, -- ZhiyuanLck/smart-pairs
