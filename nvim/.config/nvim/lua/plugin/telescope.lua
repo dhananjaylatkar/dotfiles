@@ -33,7 +33,7 @@ require("telescope").setup({
 		},
 		file_sorter = require("telescope.sorters").get_fuzzy_file,
 		file_ignore_patterns = {
-			".git",
+			"^.git",
 			"cscope.out",
 			"cscope.files",
 			"cscope.in.out",
@@ -41,7 +41,8 @@ require("telescope").setup({
 			"*venv*",
 			"__pycache__/",
 			"*.py[cod]",
-			".vscode",
+			"^.vscode",
+			"*.path",
 		},
 		generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 		winblend = 0,
