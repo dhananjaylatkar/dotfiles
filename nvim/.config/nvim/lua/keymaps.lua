@@ -210,7 +210,7 @@ wk.register({
 			l = { "<cmd>set number!<cr>", "Line numbers" },
 			r = { "<cmd>set relativenumber!<cr>", "Relative line numbers" },
 			s = { "<cmd>set expandtab!<cr>", "Spaces/Tabs" },
-			m = { "<cmd>lua ToggleMouse()<cr>", "Mouse mode" },
+			m = { "<cmd>lua require('utils').ToggleMouse()<cr>", "Mouse mode" },
 			C = { "<cmd>ColorizerToggle<cr>", "Colorizer" },
 			c = {
 				"<cmd>Telescope colorscheme<cr>",
@@ -338,11 +338,8 @@ wk.register({
 	["<F2>"] = { "<cmd>NvimTreeToggle<cr>", "Project sidebar" },
 	["<F3>"] = { "<cmd>UndotreeToggle<cr>", "Toggle Undotree" },
 	["<F5>"] = { "<cmd>set list!<cr>", "Indent guides" },
-	["<F10>"] = { "<cmd>lua ToggleMouse()<cr>", "Toggle mouse mode" },
+	["<F10>"] = { "<cmd>lua require('utils').ToggleMouse()<cr>", "Toggle mouse mode" },
 }, opts)
-
---Add map to enter paste mode
-vim.o.pastetoggle = "<F3>"
 
 -- Y yank until the end of line
 vim.api.nvim_set_keymap("n", "Y", "y$", { noremap = true })

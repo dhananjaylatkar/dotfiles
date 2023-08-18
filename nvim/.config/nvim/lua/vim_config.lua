@@ -35,7 +35,7 @@ local vim_defaults = {
 	colorcolumn = "80",
 }
 
-local vim_opts = require("core").merge_table(vim_defaults, CONFIG.vim)
+local vim_opts = vim.tbl_deep_extend("force", vim_defaults, CONFIG.vim)
 for k, v in pairs(vim_opts) do
 	vim.opt[k] = v
 end

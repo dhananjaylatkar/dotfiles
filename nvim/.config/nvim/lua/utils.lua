@@ -1,18 +1,9 @@
--- Utils: some useful functions/autocmds
+-- Utils: some useful functions
 
--- Last position on re-open
-vim.api.nvim_exec(
-	[[
-  augroup Reposition
-    autocmd!
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-  augroup end
-]],
-	false
-)
+local M = {}
 
 -- Toggle to disable mouse mode and indentlines for easier paste
-ToggleMouse = function()
+M.ToggleMouse = function()
 	if vim.o.mouse == "a" then
 		vim.cmd("set nolist")
 		vim.wo.signcolumn = "no"
@@ -30,13 +21,4 @@ ToggleMouse = function()
 	end
 end
 
--- Highlight on yank
-vim.api.nvim_exec(
-	[[
-	augroup YankHighlight
-		autocmd!
-		autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-	augroup end
-]],
-	false
-)
+return M

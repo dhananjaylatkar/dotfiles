@@ -2,7 +2,7 @@
 local _ok, config_user = pcall(require, "config")
 if _ok then
 	local config_default = require("config_default")
-	CONFIG = require("core").merge_table(config_default, config_user)
+	CONFIG = vim.tbl_deep_extend("force", config_default, config_user)
 	CONFIG_FILE = "config.lua"
 else
 	CONFIG = require("config_default")
@@ -12,7 +12,7 @@ end
 local modules = {
 	"plugins",
 	"vim_config",
-	"utils",
+	"autocommands",
 	"colors."..CONFIG.colorscheme,
 }
 for _, module in ipairs(modules) do
