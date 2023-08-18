@@ -38,7 +38,6 @@ zsh_add_file "zsh-os-conf"
 zsh_add_file "zsh-aliases"
 zsh_add_file "zsh-history"
 [ -f $HOME/.config/zsh-work/nsalias ] && source $HOME/.config/zsh-work/nsalias
-[ -f $HOME/.config/zsh/zsh-custom-conf ] && source $HOME/.config/zsh/zsh-custom-conf
 
 # Plugins
 # For more plugins: https://github.com/unixorn/awesome-zsh-plugins
@@ -69,3 +68,4 @@ zstyle ':completion:*' cache-path $ZSH_CACHE_DIR
 bindkey -s '^o' 'ranger^M'
 # bindkey -s '^f' 'zi^M'
 
+[ -f $HOME/.config/zsh/zsh-custom-conf ] && source $HOME/.config/zsh/zsh-custom-conf
