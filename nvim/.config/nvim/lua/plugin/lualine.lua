@@ -1,5 +1,6 @@
 -- lualine
 
+local M = {}
 local spaces = {
 	function()
 		if not vim.api.nvim_buf_get_option(0, "expandtab") then
@@ -17,34 +18,39 @@ local spaces = {
 	color = {},
 }
 --                                     
-require("lualine").setup({
-	options = {
-		icons_enabled = true,
-		theme = CONFIG.colorscheme,
-		-- component_separators = { left = "", right = "" },
-		-- section_separators = { left = "", right = "" },
-		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "dashboard" },
-		always_divide_middle = true,
-		globalstatus = false,
-	},
-	sections = {
-		lualine_a = { "mode" },
-		lualine_b = { "branch", "diff" },
-		lualine_c = { { "filename", path = 1 } },
-		lualine_x = { "g:cscope_maps_statusline_indicator", spaces, "encoding", "fileformat", "filetype" },
-		lualine_y = { "progress" },
-		lualine_z = { "location" },
-	},
-	inactive_sections = {
-		lualine_a = {},
-		lualine_b = {},
-		lualine_c = { { "filename", path = 1 } },
-		lualine_x = { "location" },
-		lualine_y = {},
-		lualine_z = {},
-	},
-	tabline = {},
-	extensions = { "nvim-tree", "quickfix" },
-})
+
+M.setup = function(config, _)
+	require("lualine").setup({
+		options = {
+			icons_enabled = true,
+			theme = config.colorscheme,
+			-- component_separators = { left = "", right = "" },
+			-- section_separators = { left = "", right = "" },
+			component_separators = { left = "", right = "" },
+			section_separators = { left = "", right = "" },
+			disabled_filetypes = { "dashboard" },
+			always_divide_middle = true,
+			globalstatus = false,
+		},
+		sections = {
+			lualine_a = { "mode" },
+			lualine_b = { "branch", "diff" },
+			lualine_c = { { "filename", path = 1 } },
+			lualine_x = { "g:cscope_maps_statusline_indicator", spaces, "encoding", "fileformat", "filetype" },
+			lualine_y = { "progress" },
+			lualine_z = { "location" },
+		},
+		inactive_sections = {
+			lualine_a = {},
+			lualine_b = {},
+			lualine_c = { { "filename", path = 1 } },
+			lualine_x = { "location" },
+			lualine_y = {},
+			lualine_z = {},
+		},
+		tabline = {},
+		extensions = { "nvim-tree", "quickfix" },
+	})
+end
+
+return M

@@ -21,4 +21,17 @@ M.ToggleMouse = function()
 	end
 end
 
+M.get_config = function()
+	local config = require("config_default")
+	local config_file = "config_default.lua"
+
+	local _ok, config_user = pcall(require, "config")
+	if _ok then
+		config = vim.tbl_deep_extend("force", config, config_user)
+		config_file = "config.lua"
+	end
+
+	return config, config_file
+end
+
 return M

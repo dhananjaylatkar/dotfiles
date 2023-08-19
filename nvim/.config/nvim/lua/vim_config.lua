@@ -1,4 +1,6 @@
 -- Vim related config
+local M = {}
+
 local vim_defaults = {
 	autoindent = true,
 	breakindent = true, -- Enable break indent
@@ -33,19 +35,24 @@ local vim_defaults = {
 	wrap = true,
 	termguicolors = true,
 	colorcolumn = "80",
+	completeopt = "menuone,noinsert",
 }
 
-local vim_opts = vim.tbl_deep_extend("force", vim_defaults, CONFIG.vim)
-for k, v in pairs(vim_opts) do
-	vim.opt[k] = v
+M.setup = function(conf, _)
+	local vim_opts = vim.tbl_deep_extend("force", vim_defaults, conf.vim)
+	for k, v in pairs(vim_opts) do
+		vim.opt[k] = v
+	end
+
+	-- highlight trailing whitespace
+	--if vim.bo.filetype ~= "dashboard" then
+	--	vim.cmd([[match ErrorMsg '\s\+$']])
+	--end
+
+	--Remap space as leader key
+	vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
+	vim.g.mapleader = " "
+	vim.g.maplocalleader = " "
 end
 
--- highlight trailing whitespace
---if vim.bo.filetype ~= "dashboard" then
---	vim.cmd([[match ErrorMsg '\s\+$']])
---end
-
---Remap space as leader key
-vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+return M
