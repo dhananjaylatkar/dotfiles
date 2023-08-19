@@ -7,14 +7,13 @@ require("vim_config").setup(config, config_file)
 require("keymaps").setup(config, config_file)
 
 local modules = {
-	"autocommands",
-	"colors."..config.colorscheme,
+  "autocommands",
+  "colors." .. config.colorscheme,
 }
 
 for _, module in ipairs(modules) do
-	local ok, err = pcall(require, module)
-	if not ok then
-		error("Error loading " .. module .. "\n\n" .. err)
-	end
+  local ok, err = pcall(require, module)
+  if not ok then
+    error("Error loading " .. module .. "\n\n" .. err)
+  end
 end
-
