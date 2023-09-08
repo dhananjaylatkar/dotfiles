@@ -195,7 +195,6 @@ M.setup = function(conf, conf_file)
   map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
   map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
-
   -- Delete word/line in insert mode
   map("i", "<C-U>", "<C-G>u<C-U>")
   map("i", "<C-W>", "<C-G>u<C-W>")

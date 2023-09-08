@@ -154,14 +154,11 @@ local plugins = function(conf, conf_file)
       "neovim/nvim-lspconfig",
       lazy = false,
       config = function()
-        require("plugin.lsp")
+        require("plugin.lsp").setup(conf, conf_file)
       end,
       dependencies = {
         -- Automatically install LSPs to stdpath for neovim
         "williamboman/mason-lspconfig.nvim",
-
-        -- Useful status updates for LSP
-        { "j-hui/fidget.nvim", tag = "legacy" },
 
         -- Additional lua configuration, makes nvim stuff amazing
         "folke/neodev.nvim",
@@ -316,7 +313,7 @@ local plugins = function(conf, conf_file)
     {
       "norcalli/nvim-colorizer.lua",
       ft = { "css", "js", "html", "yaml", "yml" },
-      cmd = {"ColorizerToggle"},
+      cmd = { "ColorizerToggle" },
       opts = { "css", "javascript", "html", "yaml", "yml" },
       enabled = conf.enable.nvim_colorizer,
     },

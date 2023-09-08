@@ -1,7 +1,7 @@
 -- LSP settings.
 local M = {}
 
-M.setup = function(conf, conf_file)
+M.setup = function(conf, _)
   local mason = require("mason")
   local mason_lspconfig = require("mason-lspconfig")
   local servers = conf.lsp.servers
@@ -45,6 +45,6 @@ M.setup = function(conf, conf_file)
 
   -- Setup neovim lua configuration
   require("neodev").setup()
-  -- Turn on lsp status information
-  require("fidget").setup()
 end
+
+return M
