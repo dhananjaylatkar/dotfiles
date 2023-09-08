@@ -316,6 +316,7 @@ local plugins = function(conf, conf_file)
     {
       "norcalli/nvim-colorizer.lua",
       ft = { "css", "js", "html", "yaml", "yml" },
+      cmd = {"ColorizerToggle"},
       opts = { "css", "javascript", "html", "yaml", "yml" },
       enabled = conf.enable.nvim_colorizer,
     },
@@ -341,16 +342,6 @@ local plugins = function(conf, conf_file)
     },
 
     -- Markdown
-    {
-      "junegunn/goyo.vim",
-      cmd = "Goyo",
-      enabled = conf.enable.goyo,
-    },
-    {
-      "junegunn/limelight.vim",
-      cmd = "Limelight",
-      enabled = conf.enable.limelight,
-    },
     {
       "dkarter/bullets.vim",
       event = "BufRead",

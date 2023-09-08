@@ -1,405 +1,218 @@
 -- Mappings
 local M = {}
 local wk = require("which-key")
-local opts = { noremap = true, silent = true }
---Add leader shortcuts
+local utils = require("utils")
+local map = vim.keymap.set
+
+local grep_word_under_cursor = function()
+  require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
+end
+
+local goto_terminal = function()
+  require("harpoon.term").gotoTerminal(1)
+end
 
 M.setup = function(conf, conf_file)
+  -- which-key setup
   wk.register({
     ["<leader>"] = {
-      ["`"] = { "<C-^>", "Switch to last buffer" },
-      ["<Tab>"] = { "<C-^>", "Switch to last buffer" },
-      [","] = {
-        "<cmd>Telescope buffers<cr>",
-        "Switch buffer",
-      },
-      ["<space>"] = {
-        "<cmd>Telescope find_files hidden=true<cr>",
-        "Find files",
-      },
-      p = {
-        name = "+project",
-        p = {
-          "<cmd>Telescope project<cr>",
-          "Open project",
-        },
-        w = {
-          "<cmd>lua require('telescope.builtin').grep_string{search = vim.fn.expand('<cword>')}<cr>",
-          "Word search",
-        },
-      },
-      f = {
-        name = "+file",
-        f = {
-          "<cmd>Telescope find_files hidden=true<cr>",
-          "Find files",
-        },
-        r = {
-          "<cmd>Telescope oldfiles only_cwd=true<cr>",
-          "Recent files [Cur]",
-        },
-        R = {
-          "<cmd>Telescope oldfiles<cr>",
-          "Recent files [All]",
-        },
-        g = { "<cmd>Telescope git_files<cr>", "Git files" },
-        s = { "<cmd>NvimTreeFindFile<cr>", "Open in sidebar" },
-      },
-      b = {
-        name = "+buffer",
-        b = {
-          "<cmd>Telescope buffers<cr>",
-          "Switch buffer",
-        },
-        t = {
-          "<cmd>Telescope treesitter<cr>",
-          "Symbols in file",
-        },
-        k = { "<cmd>bd<cr>", "Kill buffer" },
-        d = { "<cmd>bd<cr>", "Kill buffer" },
-        p = { "<cmd>bprev<cr>", "Previous buffer" },
-        n = { "<cmd>bnext<cr>", "Next buffer" },
-        ["]"] = { "<cmd>bnext<cr>", "Next buffer" },
-        ["["] = { "<cmd>bprev<cr>", "Previous buffer" },
-        s = { "<cmd>w<cr>", "Save buffer" },
-        S = { "<cmd>wa<cr>", "Save all buffers" },
-        l = { "<C-^>", "Switch to last buffer" },
-        o = { "<cmd>only<cr>", "Close other buffers" },
-        O = { "<cmd>enew<cr>", "New empty buffer" },
-        f = { "<cmd>Format<cr>", "Format buffer" },
-        r = { "<cmd>e<cr>", "Reload buffer" },
-      },
-      s = {
-        name = "+search",
-        b = {
-          "<cmd>Telescope current_buffer_fuzzy_find<cr>",
-          "Search buffer",
-        },
-        s = {
-          "<cmd>Telescope current_buffer_fuzzy_find<cr>",
-          "Search buffer",
-        },
-        B = {
-          "<cmd>Telescope live_grep grep_open_files=true<cr>",
-          "Search open buffers",
-        },
-        p = {
-          "<cmd>Telescope live_grep<cr>",
-          "Search in directory",
-        },
-        w = {
-          "<cmd>lua require('telescope.builtin').grep_string{search = vim.fn.expand('<cword>')}<cr>",
-          "Search word",
-        },
-      },
-      g = {
-        name = "+git",
-        f = { "<cmd>Telescope git_files<cr>", "Git files" },
-        B = {
-          "<cmd>Telescope git_branches<cr>",
-          "Branches",
-        },
-        b = {
-          "<cmd>lua require('git_blame').run()<cr>",
-          "Blame",
-        },
-        s = {
-          "<cmd>Telescope git_status<cr>",
-          "Status in Telescope",
-        },
-        g = { "<cmd>Neogit<cr>", "Neogit" },
-        c = {
-          "<cmd>Telescope git_bcommits<cr>",
-          "Commits for current buffer",
-        },
-        C = {
-          "<cmd>Telescope git_commits<cr>",
-          "Commits for current directory",
-        },
-        l = {
-          '<cmd>lua require"gitsigns".blame_line{full=true}<cr>',
-          "Blame line",
-        },
-        n = { '<cmd>lua require"gitsigns".next_hunk()<cr>', "Next hunk" },
-        N = {
-          '<cmd>lua require"gitsigns".prev_hunk()<cr>',
-          "Previous hunk",
-        },
-        a = {
-          name = "+actions",
-          s = {
-            '<cmd>lua require"gitsigns".stage_hunk()<cr>',
-            "Stage hunk",
-          },
-          u = {
-            '<cmd>lua require"gitsigns".undo_stage_hunk()<cr>',
-            "Undo stage hunk",
-          },
-          r = {
-            '<cmd>lua require"gitsigns".reset_hunk()<cr>',
-            "Reset hunk",
-          },
-          R = {
-            '<cmd>lua require"gitsigns".reset_buffer()<cr>',
-            "Reset buffer",
-          },
-          p = {
-            '<cmd>lua require"gitsigns".preview_hunk()<cr>',
-            "Preview hunk",
-          },
-          S = {
-            '<cmd>lua require"gitsigns".stage_buffer()<cr>',
-            "Stage buffer",
-          },
-          U = {
-            '<cmd>lua require"gitsigns".reset_buffer_index()<cr>',
-            "Rest buffer index",
-          },
-        },
-      },
-      r = {
-        name = "+recent",
-        R = {
-          "<cmd>Telescope oldfiles<cr>",
-          "Recent files [All]",
-        },
-        r = {
-          "<cmd>Telescope oldfiles only_cwd=true<cr>",
-          "Recent files [Cur]",
-        },
-        c = {
-          "<cmd>Telescope command_history<cr>",
-          "Recent commands",
-        },
-        s = { "<cmd>SessionLoad<cr>", "Recent sessions" },
-        j = { "<cmd>Telescope jumplist<cr>", "Jumplist" },
-      },
-      h = {
-        name = "+harpoon",
-        t = {
-          "<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>",
-          "Open terminal",
-        },
-        a = {
-          "<cmd>lua require('harpoon.mark').add_file()<cr>",
-          "Add file",
-        },
-        o = {
-          "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>",
-          "Quick menu",
-        },
-      },
-      o = {
-        name = "+open",
-        t = {
-          "<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>",
-          "Open terminal",
-        },
-        h = {
-          "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>",
-          "Harpoon quick menu",
-        },
-        p = { "<cmd>NvimTreeToggle<cr>", "Project sidebar" },
-        f = { "<cmd>NvimTreeFindFile<cr>", "Open file in sidebar" },
-      },
-      t = {
-        name = "toggle",
-        t = {
-          "<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>",
-          "Terminal",
-        },
-        p = { "<cmd>NvimTreeToggle<cr>", "Project sidebar" },
-        i = { "<cmd>set list!<cr>", "Indent guides" },
-        l = { "<cmd>set number!<cr>", "Line numbers" },
-        r = { "<cmd>set relativenumber!<cr>", "Relative line numbers" },
-        s = { "<cmd>set expandtab!<cr>", "Spaces/Tabs" },
-        m = { "<cmd>lua require('utils').ToggleMouse()<cr>", "Mouse mode" },
-        C = { "<cmd>ColorizerToggle<cr>", "Colorizer" },
-        c = {
-          "<cmd>Telescope colorscheme<cr>",
-          "Colorscheme",
-        },
-        g = { "<cmd>Goyo<cr>", "Goyo" },
-        h = { "<cmd>Limelight!!<cr>", "Limelight" },
-      },
-      l = {
-        name = "+lsp",
-        r = {
-          "<cmd>Telescope lsp_references<cr>",
-          "List referneces",
-        },
-        d = {
-          "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>",
-          "Goto defination",
-        },
-        i = {
-          "<cmd>Telescope lsp_implementations<cr>",
-          "Goto implementation",
-        },
-        c = {
-          "<cmd>Telescope lsp_code_actions<cr>",
-          "Code actions",
-        },
-        C = {
-          "<cmd>Telescope lsp_range_code_actions<cr>",
-          "Code actions on range",
-        },
-        s = {
-          "<cmd>Telescope lsp_document_symbols<cr>",
-          "Symbols in buffer",
-        },
-        S = {
-          "<cmd>Telescope lsp_workspace_symbols<cr>",
-          "Symbols in project",
-        },
-        e = {
-          "<cmd>Telescope lsp_document_diagnostics<cr>",
-          "Buffer diagnostics",
-        },
-        E = {
-          "<cmd>Telescope lsp_workspace_diagnostics<cr>",
-          "Project diagnostics",
-        },
-        R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename symbol" },
-        f = { "<cmd>Format<cr>", "Format buffer" },
-        t = { "<cmd>SymbolsOutline<cr>", "Tree view" },
-      },
-      w = {
-        name = "+window",
-        s = { "<cmd>sp<cr>", "Window split" },
-        n = { "<cmd>vnew<cr>", "New vsplit" },
-        N = { "<cmd>new<cr>", "New split" },
-        v = { "<cmd>vs<cr>", "Window vsplit" },
-        q = { "<cmd>q<cr>", "Quit window" },
-        d = { "<cmd>c<cr>", "Delete window" },
-        o = { "<cmd>only<cr>", "Close other windows" },
-        w = { "<c-w>w", "Goto other window" },
-        p = { "<c-w>p", "Goto previous window" },
-        t = { "<c-w>t", "Goto top-left window" },
-        b = { "<c-w>b", "Goto bottom-right window" },
-        r = { "<c-w>r", "Rotate →" },
-        R = { "<c-w>R", "Rotate ←" },
-        ["<Down>"] = { "<c-w><Down>", "Window down" },
-        ["<Up>"] = { "<c-w><Up>", "Window up" },
-        ["<Right>"] = { "<c-w><Right>", "Window right" },
-        ["<Left>"] = { "<c-w><Left>", "Window left" },
-        ["="] = { "<c-w>=", "Balance windows" },
-        -- ["+"] = {"<c-w>+", "Increase height"},
-        -- ["-"] = {"<c-w>-", "Decrease height"},
-        -- [">"] = {"<c-w>>", "Increase width"},
-        -- ["<"] = {"<c-w><", "Decrease width"},
-      },
-      m = {
-        name = "+markdown",
-        [">"] = { "<cmd>'<,'>HeaderIncrease<cr>", "Header increase" },
-        ["<"] = { "<cmd>'<,'>HeaderDecrease<cr>", "Header decrease" },
-        t = { "<cmd>TableFormat<cr>", "Format table" },
-        l = { "<cmd>Toc<cr>", "Show ToC" },
-        i = { "<cmd>InsertToc<cr>", "Insert ToC" },
-        I = { "<cmd>InsertNToc<cr>", "Insert numbered ToC" },
-      },
-      n = {
-        name = "Notes",
-        f = {
-          "<cmd>Telescope find_files cwd=" .. conf.notes.root_dir .. "<cr>",
-          "Find notes",
-        },
-        s = {
-          "<cmd>Telescope live_grep cwd=" .. conf.notes.root_dir .. "<cr>",
-          "Search notes",
-        },
-        n = { "<cmd>lua require('file_util').create_file(conf.notes.root_dir)<cr>", "New note" },
-      },
-      k = {
-        name = "+config",
-        c = {
-          "<cmd>e ~/.config/nvim/lua/" .. conf_file .. "<cr>",
-          "Config file",
-        },
-      },
+      p = { name = "+project" },
+      f = { name = "+file" },
+      b = { name = "+buffer" },
+      s = { name = "+search" },
+      g = { name = "+git", a = { name = "+actions" } },
+      r = { name = "+recent" },
+      h = { name = "+harpoon" },
+      o = { name = "+open" },
+      t = { name = "toggle" },
+      l = { name = "+lsp" },
+      w = { name = "+window" },
+      m = { name = "+markdown" },
+      n = { name = "+notes" },
+      k = { name = "+config" },
     },
-    -- common lsp bindings
-    ["gd"] = {
-      "<cmd>Telescope lsp_definitions<cr>",
-      "Goto symbol defination",
-    },
-    ["gD"] = {
-      "<cmd>lua vim.lsp.buf.declaration()<cr>",
-      "Goto symbol declaration",
-    },
-    ["K"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover defination" },
-    ["gi"] = {
-      "<cmd>Telescope lsp_implementations<cr>",
-      "Goto symbol implementation",
-    },
-    ["gr"] = {
-      "<cmd>Telescope lsp_references<cr>",
-      "Show symbol referneces",
-    },
-    -- Functions keys
-    ["<F2>"] = { "<cmd>NvimTreeToggle<cr>", "Project sidebar" },
-    ["<F3>"] = { "<cmd>UndotreeToggle<cr>", "Toggle Undotree" },
-    ["<F5>"] = { "<cmd>set list!<cr>", "Indent guides" },
-    ["<F10>"] = { "<cmd>lua require('utils').ToggleMouse()<cr>", "Toggle mouse mode" },
-  }, opts)
+  })
 
-  -- Y yank until the end of line
-  vim.api.nvim_set_keymap("n", "Y", "y$", { noremap = true })
+  map("n", "<leader>pp", "<cmd>Telescope project<cr>", { desc = "Open project" })
+  map("n", "<leader>pw", grep_word_under_cursor, { desc = "Word search" })
+  map({ "n", "v" }, "<leader>pw", "<cmd>Telescope grep_string<cr>", { desc = "Word search" })
 
-  -- Remaps
-  -- Clears hlsearch after doing a search, otherwise just does normal <CR> stuff
-  vim.cmd([[nnoremap <expr> <CR> {-> v:hlsearch ? ":nohl\<CR>" : "\<CR>"}()]])
+  -- files
+  map("n", "<leader><leader>", "<cmd>Telescope find_files hidden=true<cr>", { desc = "Find files" })
+  map("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", { desc = "Find files" })
+  map("n", "<leader>fr", "<cmd>Telescope oldfiles only_cwd=true<cr>", { desc = "Recent files [Cur]" })
+  map("n", "<leader>fR", "<cmd>Telescope oldfiles<cr>", { desc = "Recent files [All]" })
+  map("n", "<leader>fg", "<cmd>Telescope git_files<cr>", { desc = "Git files" })
+  map("n", "<leader>fs", "<cmd>NvimTreeFindFile<cr>", { desc = "Reveal in tree" })
 
-  -- vim.cmd[[nnoremap <Up> <C-y>]]
-  -- vim.cmd[[nnoremap <Down> <C-e>]]
+  -- buffers
+  map("n", "<leader>`", "<C-^>", { desc = "Switch to last buffer" })
+  map("n", "<leader><tab>", "<C-^>", { desc = "Switch to last buffer" })
+  map("n", "<leader>bl", "<C-^>", { desc = "Switch to last buffer" })
+  map("n", "<leader>,", "<cmd>Telescope buffers<cr>", { desc = "Switch buffer" })
+  map("n", "<leader>bb", "<cmd>Telescope buffers<cr>", { desc = "Switch buffer" })
+  map("n", "<leader>bk", "<cmd>bd<cr>", { desc = "Delete buffer" })
+  map("n", "<leader>bd", "<cmd>bd<cr>", { desc = "Delete buffer" })
+  map("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "Next buffer" })
+  map("n", "<leader>bp", "<cmd>bprev<cr>", { desc = "Previous buffer" })
+  map("n", "<c-j>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+  map("n", "<c-k>", "<cmd>bprev<cr>", { desc = "Previous buffer" })
+  map("n", "<leader>bs", "<cmd>w<cr>", { desc = "Save buffer" })
+  map("n", "<leader>bS", "<cmd>wa<cr>", { desc = "Save all buffer" })
+  map("n", "<leader>bo", "<cmd>only<cr>", { desc = "Close other splits" })
+  map("n", "<leader>bO", "<cmd>enew<cr>", { desc = "New empty buffer" })
+  map("n", "<leader>bf", "<cmd>Format<cr>", { desc = "Format buffer" })
+  map("n", "<leader>br", "<cmd>e<cr>", { desc = "Reload buffer" })
 
-  -- Sizing window horizontally
-  vim.cmd([[nnoremap <A-h> <C-W><]])
-  vim.cmd([[nnoremap <A-l> <C-W>>]])
+  -- search strings
+  map("n", "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Search buffer" })
+  map("n", "<leader>ss", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Search buffer" })
+  map("n", "<leader>sB", "<cmd>Telescope live_grep grep_open_files=true<cr>", { desc = "Search open buffers" })
+  map("n", "<leader>sp", "<cmd>Telescope live_grep<cr>", { desc = "Search in directory" })
+  map("n", "<leader>sw", grep_word_under_cursor, { desc = "Word search" })
 
-  -- Sizing window vertically
-  -- taller
-  vim.cmd([[nnoremap <A-k> <C-W>+]])
-  -- shorter
-  vim.cmd([[nnoremap <A-j> <C-W>-]])
+  -- git
+  map("n", "<leader>gg", "<cmd>Neogit<cr>", { desc = "Neogit" })
 
-  --Remap for dealing with word wrap
-  vim.api.nvim_set_keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
-  vim.api.nvim_set_keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
+  map("n", "<leader>gf", "<cmd>Telescope git_files<cr>", { desc = "Files" })
+  map("n", "<leader>gB", "<cmd>Telescope git_branches<cr>", { desc = "Branches" })
+  map("n", "<leader>gs", "<cmd>Telescope git_status<cr>", { desc = "Status" })
+  map("n", "<leader>gc", "<cmd>Telescope git_bcommits<cr>", { desc = "Commits for current buffer" })
+  map("n", "<leader>gC", "<cmd>Telescope git_commits<cr>", { desc = "Commits for current directory" })
 
-  --Remap escape to leave terminal mode
-  vim.api.nvim_exec(
-    [[
-augroup Terminal
-  autocmd!
-    au TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
-    au TermOpen * set nonu
-  augroup end
-]],
-    false
+  map("n", "<leader>gl", require("gitsigns").blame_line, { desc = "Blame line" })
+  map("n", "<leader>gn", require("gitsigns").next_hunk, { desc = "Next hunk" })
+  map("n", "<leader>gp", require("gitsigns").prev_hunk, { desc = "Previous hunk" })
+
+  -- git actions
+  map("n", "<leader>gas", require("gitsigns").stage_hunk, { desc = "Stage hunk" })
+  map("n", "<leader>gau", require("gitsigns").undo_stage_hunk, { desc = "Undo stage hunk" })
+  map("n", "<leader>gar", require("gitsigns").reset_hunk, { desc = "Reset hunk" })
+  map("n", "<leader>gaR", require("gitsigns").reset_buffer, { desc = "Reset buffer" })
+  map("n", "<leader>gap", require("gitsigns").preview_hunk, { desc = "Preview buffer" })
+  map("n", "<leader>gaS", require("gitsigns").stage_buffer, { desc = "Stage buffer" })
+  map("n", "<leader>gaU", require("gitsigns").reset_buffer_index, { desc = "Rest buffer index" })
+
+  -- Recents
+  map("n", "<leader>rR", "<cmd>Telescope oldfiles<cr>", { desc = "Recent files [All]" })
+  map("n", "<leader>rr", "<cmd>Telescope oldfiles only_cwd=true<cr>", { desc = "Recent files [Cur]" })
+  map("n", "<leader>rc", "<cmd>Telescope command_history<cr>", { desc = "Recent commands" })
+  map("n", "<leader>rc", "<cmd>Telescope jumplist<cr>", { desc = "Jumplists" })
+
+  -- Harpoon
+  map("n", "<leader>ht", goto_terminal, { desc = "Open terminal" })
+  map("n", "<leader>ha", require("harpoon.mark").add_file, { desc = "Add file" })
+  map("n", "<leader>hh", require("harpoon.ui").toggle_quick_menu, { desc = "Quick menu" })
+
+  -- Open stuff
+  map("n", "<leader>ot", goto_terminal, { desc = "Open terminal" })
+  map("n", "<leader>oh", require("harpoon.ui").toggle_quick_menu, { desc = "Harpoon quick menu" })
+  map("n", "<leader>op", "<cmd>NvimTreeToggle<cr>", { desc = "Project sidebar" })
+  map("n", "<leader>of", "<cmd>NvimTreeFindFile<cr>", { desc = "Open file in sidebar" })
+
+  -- Toggle
+  map("n", "<leader>tt", goto_terminal, { desc = "Terminal" })
+  map("n", "<leader>tp", "<cmd>NvimTreeToggle<cr>", { desc = "Project sidebar" })
+  map("n", "<leader>ti", "<cmd>set list!<cr>", { desc = "Whitespce chars" })
+  map("n", "<leader>tl", "<cmd>set number!<cr>", { desc = "Line numbers" })
+  map("n", "<leader>tr", "<cmd>set relativenumber!<cr>", { desc = "Relative line numbers" })
+  map("n", "<leader>ts", "<cmd>set expandtab!<cr>", { desc = "Spaces/Tabs" })
+  map("n", "<leader>tm", utils.ToggleMouse, { desc = "Mouse mode" })
+  map("n", "<leader>tC", "<cmd>ColorizerToggle<cr>", { desc = "Colorizer" })
+  map("n", "<leader>tc", "<cmd>Telescope colorscheme<cr>", { desc = "Colorscheme" })
+
+  -- LSP
+  map("n", "<leader>lr", "<cmd>Telescope lsp_references<cr>", { desc = "List referneces" })
+  map("n", "<leader>ld", "<cmd>Telescope lsp_definitions<cr>", { desc = "Goto defination" })
+  map("n", "<leader>li", "<cmd>Telescope lsp_implementations<cr>", { desc = "Goto implementation" })
+  map("n", "<leader>lc", "<cmd>Telescope lsp_code_actions<cr>", { desc = "Code actions" })
+  map("v", "<leader>lc", "<cmd>Telescope lsp_range_code_actions<cr>", { desc = "Code actions on range" })
+  map("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", { desc = "Symbols in buffer" })
+  map("n", "<leader>lS", "<cmd>Telescope lsp_workspace_symbols<cr>", { desc = "Symbols in project" })
+  map("n", "<leader>le", "<cmd>Telescope lsp_document_diagnostics<cr>", { desc = "Buffer diagnostics" })
+  map("n", "<leader>lE", "<cmd>Telescope lsp_workspace_diagnostics<cr>", { desc = "Project diagnostics" })
+  map("n", "<leader>lR", vim.lsp.buf.rename, { desc = "Rename symbol" })
+  map("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format buffer" })
+  -- common lsp bindings
+  map("n", "gd", "<cmd>Telescope lsp_definitions<cr>", { desc = "Goto defination" })
+  map("n", "gD", vim.lsp.buf.declaration, { desc = "Goto declaration" })
+  map("n", "K", vim.lsp.buf.hover, { desc = "Hover defination" })
+  map("n", "gi", "<cmd>Telescope lsp_implementations<cr>", { desc = "Goto implementation" })
+  map("n", "gr", "<cmd>Telescope lsp_references<cr>", { desc = "List referneces" })
+
+  -- Window
+  map("n", "<leader>ws", "<cmd>sp<cr>", { desc = "Window split" })
+  map("n", "<leader>wv", "<cmd>vsp<cr>", { desc = "Window vsplit" })
+  map("n", "<leader>wn", "<cmd>vnew<cr>", { desc = "New vsplit" })
+  map("n", "<leader>wN", "<cmd>new<cr>", { desc = "Window new" })
+  map("n", "<leader>wq", "<cmd>q<cr>", { desc = "Quit window" })
+  map("n", "<leader>wo", "<cmd>only<cr>", { desc = "Close other windows" })
+  map("n", "<leader>ww", "<c-w>w", { desc = "Goto other window" })
+  map("n", "<leader>wp", "<c-w>p", { desc = "Goto previous window" })
+  map("n", "<leader>wt", "<c-w>t", { desc = "Goto top-left window" })
+  map("n", "<leader>wb", "<c-w>b", { desc = "Goto bottom-right window" })
+  map("n", "<leader>wr", "<c-w>r", { desc = "Rotate →" })
+  map("n", "<leader>wR", "<c-w>R", { desc = "Rotate ←" })
+  map("n", "<leader>w<down>", "<c-w><down>", { desc = "Window down" })
+  map("n", "<leader>w<up>", "<c-w><up>", { desc = "Window up" })
+  map("n", "<leader>w<right>", "<c-w><right>", { desc = "Window right" })
+  map("n", "<leader>w<left>", "<c-w><left>", { desc = "Window left" })
+  map("n", "<leader>w=", "<c-w>=", { desc = "Balance windows" })
+  map("n", "<A-h>", "<c-w><", { desc = "Window resize left" })
+  map("n", "<A-l>", "<c-w>>", { desc = "Window resize right" })
+  map("n", "<A-k>", "<c-w>+", { desc = "Window resize up" })
+  map("n", "<A-j>", "<c-w>-", { desc = "Window resize down" })
+
+  -- Markdown
+  map("n", "<leader>m>", "<cmd>'<,'>HeaderIncrease<cr>", { desc = "Header increase" })
+  map("n", "<leader>m<", "<cmd>'<,'>HeaderDecrease<cr>", { desc = "Header decrease" })
+  map("n", "<leader>mt", "<cmd>TableFormat<cr>", { desc = "Format table" })
+  map("n", "<leader>ml", "<cmd>Toc<cr>", { desc = "Show ToC" })
+  map("n", "<leader>mi", "<cmd>InsertToc<cr>", { desc = "Insert ToC" })
+  map("n", "<leader>mI", "<cmd>InsertNToc<cr>", { desc = "Insert numbered ToC" })
+
+  -- Notes
+  map("n", "<leader>nf", "<cmd>Telescope find_files cwd=" .. conf.notes.root_dir .. "<cr>", { desc = "Find notes" })
+  map("n", "<leader>ns", "<cmd>Telescope live_grep cwd=" .. conf.notes.root_dir .. "<cr>", { desc = "Search in notes" })
+  map(
+    "n",
+    "<leader>nn",
+    [[<cmd>lua require('file_util').create_file("]] .. conf.notes.root_dir .. [[")<cr>]],
+    { desc = "New note" }
   )
 
+  -- Misc
+  map("n", "<leader>kk", "<cmd>e ~/.config/nvim/lua/" .. conf_file .. "<cr>", { desc = "Open config file" })
+  map("n", "<f2>", "<cmd>NvimTreeToggle<cr>", { desc = "Project tree" })
+  map("n", "<f3>", "<cmd>UndotreeToggle<cr>", { desc = "Undotree" })
+  map("n", "<f5>", "<cmd>set list!<cr>", { desc = "Indent guides" })
+  map("n", "<f10>", utils.ToggleMouse, { desc = "Toggle mouse mode" })
+
+  -- Clears hlsearch after doing a search, otherwise just does normal <CR> stuff
+  map("n", "<cr>", [[{-> v:hlsearch ? ":nohl\<CR>" : "\<CR>"}()]], { expr = true })
+
+  --Remap for dealing with word wrap
+  map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
+  map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+
+
   -- Delete word/line in insert mode
-  vim.cmd([[
-  inoremap <C-U> <C-G>u<C-U>
-  inoremap <C-W> <C-G>u<C-W>
-]])
+  map("i", "<C-U>", "<C-G>u<C-U>")
+  map("i", "<C-W>", "<C-G>u<C-W>")
 
   -- Keep selection when indenting
-  vim.cmd([[
-  vmap > >gv
-  vmap < <gv
-]])
+  map("v", ">", ">gv")
+  map("v", "<", "<gv")
 
   -- System Clipboard
-  vim.cmd([[
-  vmap <Leader>y "+y
-  vmap <Leader>d "+d
-  nmap <Leader>p "+p
-  nmap <Leader>P "+P
-  vmap <Leader>p "+p
-  vmap <Leader>P "+P
-]])
+  map("v", "<Leader>y", [["+y]], { desc = "Yank to system clipboard" })
+  map("v", "<Leader>d", [["+d]], { desc = "Cut to system clipboard" })
+
+  map("n", "<Leader>y", [["+yy]], { desc = "Yank to system clipboard" })
+  map("n", "<Leader>d", [["+dd]], { desc = "Cut to system clipboard" })
+
+  map({ "n", "v" }, "<Leader>p", [["+p]], { desc = "Paste from system clipboard" })
+  map({ "n", "v" }, "<Leader>P", [["+P]], { desc = "Paste from system clipboard" })
 end
 
 return M

@@ -16,3 +16,13 @@ autocmd("TextYankPost", {
   end,
   group = group,
 })
+
+-- Remap escape to leave terminal mode
+autocmd("TermOpen", {
+  callback = function()
+    vim.keymap.set("t", "<esc>", [[<c-\><c-n>]], { buffer = true })
+    vim.opt.number = false
+    vim.opt.relativenumber = false
+  end,
+  group = group,
+})
