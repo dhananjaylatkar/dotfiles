@@ -144,8 +144,18 @@ local plugins = function(conf, conf_file)
       "TimUntersberger/neogit",
       cmd = "Neogit",
       opts = {},
-      dependencies = "nvim-lua/plenary.nvim",
+      dependencies = { "nvim-lua/plenary.nvim" },
       enabled = conf.enable.neogit,
+    },
+
+    {
+      "f-person/git-blame.nvim",
+      event = "BufRead",
+      opts = {
+        virtual_text_column = 80,
+        highlight_group = "LineNr",
+        set_extmark_options = { hl_mode = "combine" },
+      },
     },
 
     --* Code *--
@@ -266,6 +276,15 @@ local plugins = function(conf, conf_file)
       enabled = conf.enable.nvim_treesitter_refactor and conf.enable.nvim_treesitter,
     },
 
+    {
+      "nvim-treesitter/nvim-treesitter-context",
+      event = "BufRead",
+      opts = {
+        max_lines = 5,
+      },
+      enabled = conf.enable.nvim_treesitter_context and conf.enable.nvim_treesitter,
+    },
+
     -- Code formatter
     {
       "mhartington/formatter.nvim",
@@ -289,8 +308,8 @@ local plugins = function(conf, conf_file)
 
     -- cscope keymaps
     {
-      -- dir = "~/code/cscope_maps.nvim",
-      "dhananjaylatkar/cscope_maps.nvim",
+      dir = "~/code/cscope_maps.nvim",
+      -- "dhananjaylatkar/cscope_maps.nvim",
       ft = { "c", "h", "dashboard" },
       cmd = { "Cscope", "Cstag" },
       keys = "<C-]>",
