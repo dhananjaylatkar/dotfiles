@@ -154,8 +154,10 @@ local plugins = function(conf, conf_file)
       opts = {
         virtual_text_column = 80,
         highlight_group = "LineNr",
+        date_format = "%Y-%m-%d",
         set_extmark_options = { hl_mode = "combine" },
       },
+      enabled = conf.enable.git_blame,
     },
 
     --* Code *--
