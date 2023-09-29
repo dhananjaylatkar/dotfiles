@@ -36,6 +36,8 @@ local vim_defaults = {
   termguicolors = true,
   colorcolumn = "80",
   completeopt = "menuone,noinsert",
+  spell = true,
+  spelllang = {"en_us"},
 }
 
 M.setup = function(conf, _)
