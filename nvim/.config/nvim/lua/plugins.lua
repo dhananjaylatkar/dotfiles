@@ -308,8 +308,8 @@ local plugins = function(conf, conf_file)
 
     -- cscope keymaps
     {
-      dir = "~/code/cscope_maps.nvim",
-      -- "dhananjaylatkar/cscope_maps.nvim",
+      -- dir = "~/code/cscope_maps.nvim",
+      "dhananjaylatkar/cscope_maps.nvim",
       ft = { "c", "h", "dashboard" },
       cmd = { "Cscope", "Cstag" },
       keys = "<C-]>",
