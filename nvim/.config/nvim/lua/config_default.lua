@@ -84,7 +84,6 @@ M.enable = {
   lsp = true, -- neovim/nvim-lspconfig
   nvim_cmp = true, -- hrsh7th/nvim-cmp
   LuaSnip = true, -- L3MON4D3/LuaSnip
-  smart_pairs = false, -- ZhiyuanLck/smart-pairs
   undotree = true, -- mbbill/undotree
   nvim_treesitter = true, -- nvim-treesitter/nvim-treesitter
   nvim_treesitter_refactor = true, -- nvim-treesitter/nvim-treesitter-refactor

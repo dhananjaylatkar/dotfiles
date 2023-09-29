@@ -216,13 +216,6 @@ local plugins = function(conf, conf_file)
       enabled = conf.enable.nvim_cmp,
     },
 
-    {
-      "ZhiyuanLck/smart-pairs",
-      event = "InsertEnter",
-      opts = {},
-      enabled = conf.enable.smart_pairs,
-    },
-
     -- Undotree
     {
       "mbbill/undotree",
