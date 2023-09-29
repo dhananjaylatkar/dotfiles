@@ -19,6 +19,9 @@ M.setup = function(conf, _)
   -- 	end
   -- end
 
+  -- Setup neovim lua configuration
+  require("neodev").setup()
+
   -- Install new servers added to config
   mason_lspconfig.setup({
     ensure_installed = server_names,
@@ -43,8 +46,6 @@ M.setup = function(conf, _)
     end,
   })
 
-  -- Setup neovim lua configuration
-  require("neodev").setup()
 end
 
 return M
