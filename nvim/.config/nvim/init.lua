@@ -17,3 +17,8 @@ for _, module in ipairs(modules) do
     error("Error loading " .. module .. "\n\n" .. err)
   end
 end
+
+-- Overwrite with device specific custom config
+if config.custom then
+  config.custom()
+end

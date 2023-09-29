@@ -100,4 +100,8 @@ M.enable = {
   vim_markdown = true, -- plasticboy/vim-markdown
 }
 
+M.custom = function()
+  -- additional device specific config
+end
+
 return M
