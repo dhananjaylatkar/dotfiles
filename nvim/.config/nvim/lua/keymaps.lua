@@ -212,6 +212,12 @@ M.setup = function(conf, conf_file)
 
   map({ "n", "v" }, "<Leader>p", [["+p]], { desc = "Paste from system clipboard" })
   map({ "n", "v" }, "<Leader>P", [["+P]], { desc = "Paste from system clipboard" })
+
+  -- folds
+  map("n", "zR", require("ufo").openAllFolds)
+  map("n", "zM", require("ufo").closeAllFolds)
+  map("n", "zp", require("ufo").peekFoldedLinesUnderCursor)
+  map("n", "<tab>", "za")
 end
 
 return M

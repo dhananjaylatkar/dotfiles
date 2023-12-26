@@ -352,6 +352,31 @@ local plugins = function(conf, conf_file)
       enabled = conf.enable.lualine,
     },
 
+    -- Folds
+    {
+      "kevinhwang91/nvim-ufo",
+      dependencies = "kevinhwang91/promise-async",
+      event = "BufReadPost",
+      config = function()
+        require("plugin.ufo").setup(conf, conf_file)
+      end,
+    },
+
+    {
+      "luukvbaal/statuscol.nvim",
+      event = "BufReadPost",
+      config = function()
+        local builtin = require("statuscol.builtin")
+        require("statuscol").setup({
+          segments = {
+            { text = { "%s" }, click = "v:lua.ScSa" },
+            { text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
+            { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+          },
+        })
+      end,
+    },
+
     -- Markdown
     {
       "dkarter/bullets.vim",
