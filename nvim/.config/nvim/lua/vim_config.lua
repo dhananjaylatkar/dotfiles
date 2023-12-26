@@ -14,7 +14,7 @@ local vim_defaults = {
   inccommand = "nosplit", -- Incremental live completion
   incsearch = true,
   list = true,
-  listchars = { tab = "› ", eol = "↩", trail = "␣" }, -- must enable `list`
+  listchars = { tab = "› ", trail = "␣" }, -- must enable `list`
   -- listchars = { tab = "› ", eol = "↩", trail = "␣", lead = "␣" },
   mouse = "a", -- enable mouse mode
   number = true, -- enable line numbers
