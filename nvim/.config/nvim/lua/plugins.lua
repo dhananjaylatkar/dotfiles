@@ -316,6 +316,15 @@ local plugins = function(conf, conf_file)
       enabled = conf.enable.cscope_maps,
     },
 
+    {
+      "daishengdong/calltree.nvim",
+      ft = { "c", "h", "dashboard" },
+      opts = {
+        prefix = "<leader>c",
+        tree_style = "detailed_paths",
+      },
+    },
+
     --* Looks do matter *--
     -- Dev Icons
     {
