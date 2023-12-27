@@ -10,6 +10,7 @@ M.ToggleMouse = function()
     vim.o.mouse = "v"
     vim.wo.number = false
     vim.wo.relativenumber = false
+    vim.o.foldcolumn = "0"
     print("Mouse disabled")
   else
     vim.cmd("set list")
@@ -17,6 +18,7 @@ M.ToggleMouse = function()
     vim.o.mouse = "a"
     vim.wo.number = true
     vim.wo.relativenumber = true
+    vim.o.foldcolumn = "1"
     print("Mouse enabled")
   end
 end
