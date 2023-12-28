@@ -217,6 +217,9 @@ M.setup = function(conf, conf_file)
   map("n", "zR", require("ufo").openAllFolds)
   map("n", "zM", require("ufo").closeAllFolds)
   map("n", "zp", require("ufo").peekFoldedLinesUnderCursor)
+
+  -- Replace all instances of highlighted words
+  map("v", "<leader>r", '"hy:%s/<C-r>h//g<left><left>')
 end
 
 return M
