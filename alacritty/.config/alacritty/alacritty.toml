@@ -1,0 +1,69 @@
+[colors.bright]
+black = "#3c3836"
+blue = "#7daea3"
+cyan = "#89b482"
+green = "#a9b665"
+magenta = "#d3869b"
+red = "#ea6962"
+white = "#d4be98"
+yellow = "#d8a657"
+
+[colors.normal]
+black = "#3c3836"
+blue = "#7daea3"
+cyan = "#89b482"
+green = "#a9b665"
+magenta = "#d3869b"
+red = "#ea6962"
+white = "#d4be98"
+yellow = "#d8a657"
+
+[colors.primary]
+background = "#141617"
+foreground = "#d4be98"
+
+[cursor.style]
+blinking = "Never"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+# AppleFontSmoothing = true
+# ligatures = true
+size = 14.0
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[selection]
+# live_config_reload = true
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[window]
+# draw_bold_text_with_bright_colors = true
+dynamic_title = true
+# history = 10000
+startup_mode = "Fullscreen"
+
+[window.padding]
+x = 0
+y = 0
