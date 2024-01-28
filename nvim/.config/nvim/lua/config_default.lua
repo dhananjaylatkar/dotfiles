@@ -93,10 +93,9 @@ M.enable = {
   cscope_maps = true, -- dhananjaylatkar/cscope_maps.nvim
   nvim_web_devicons = true, -- kyazdani42/nvim-web-devicons
   nvim_colorizer = true, -- norcalli/nvim-colorizer.lua
+  indent_blankline = true, -- lukas-reineke/indent-blankline.nvim
   dashboard = true, -- glepnir/dashboard-nvim
   lualine = true, -- hoob3rt/lualine.nvim
-  bullets = true, -- dkarter/bullets.vim
-  tabular = true, -- godlygeek/tabular
   vim_markdown = true, -- plasticboy/vim-markdown
 }
 

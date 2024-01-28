@@ -386,18 +386,16 @@ local plugins = function(conf, conf_file)
       end,
     },
 
-    -- Markdown
     {
-      "dkarter/bullets.vim",
-      event = "BufRead",
-      ft = { "md", "markdown" },
-      enabled = conf.enable.bullets,
+      "lukas-reineke/indent-blankline.nvim",
+      event = "BufReadPost",
+      main = "ibl",
+      opts = {
+        indent = { char = "│" },
+      },
+      enabled = conf.enable.indent_blankline,
     },
-    {
-      "godlygeek/tabular",
-      ft = { "md", "markdown" },
-      enabled = conf.enable.tabular and conf.enable.vim_markdown,
-    },
+
     {
       "plasticboy/vim-markdown",
       ft = { "md", "markdown" },
