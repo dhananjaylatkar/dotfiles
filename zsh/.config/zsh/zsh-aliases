@@ -45,10 +45,10 @@ alias df='df -h'
 alias free='free -m'
 
 # Directory
-if which exa > /dev/null; then
-	alias ls="exa --group-directories-first --no-user"
-	alias l="exa -la --icons --group-directories-first --no-user"
-	alias ll="exa -l --icons --group-directories-first --no-user"
+if which eza > /dev/null; then
+	alias ls="eza --group-directories-first --no-user"
+	alias l="eza -la --icons --group-directories-first --no-user"
+	alias ll="eza -l --icons --group-directories-first --no-user"
 else
 	export LSCOLORS="Gxfxcxdxbxegedabagacad"
 	alias ls='ls -G'
