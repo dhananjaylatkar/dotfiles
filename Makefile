@@ -1,23 +1,8 @@
 STOW_DIRS = \
 	alacritty \
-	doom \
 	nvim \
 	scripts \
 	tmux \
-	vim \
-	zsh \
-	work
-
-STOW_DIRS_WORK = \
-	nvim \
-	scripts \
-	tmux \
-	vim \
-	zsh \
-	work
-
-STOW_DIRS_FBSD = \
-	scripts \
 	vim \
 	zsh
 
@@ -34,10 +19,6 @@ nothing:
 	@echo "    make nvim_clean     unstow neovim"
 	@echo "    make pyenv          install pyenv"
 	@echo "    make tmux           fetch tmux config"
-	@echo "    make freebsd        stow freebsd's config"
-	@echo "    make freebsd_clean  unstow freebsd's config"
-	@echo "    make work           stow work files"
-	@echo "    make work_clean     unstow work files"
 
 all:
 	@for DIR in ${STOW_DIRS}; do \
