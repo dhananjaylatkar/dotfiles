@@ -78,6 +78,48 @@ local plugins = function(conf, conf_file)
       },
     },
 
+    --- Telescope on steroids
+    {
+      "FabianWirth/search.nvim",
+      event = "BufWinEnter",
+      dependencies = { "nvim-telescope/telescope.nvim" },
+      opts = {
+        tabs = {
+          {
+            "Files",
+            function()
+              require("telescope.builtin").find_files({ hidden = true })
+            end,
+          },
+          {
+            "Buffers",
+            function()
+              require("telescope.builtin").buffers()
+            end,
+            available = function()
+              return #vim.fn.getbufinfo({ buflisted = 1 }) > 0
+            end,
+          },
+          {
+            "Search",
+            function()
+              require("telescope.builtin").live_grep()
+            end,
+          },
+          {
+            "Git St",
+            function()
+              require("telescope.builtin").git_status()
+            end,
+            available = function()
+              vim.fn.system("git rev-parse --show-toplevel")
+              return vim.v.shell_error == 0
+            end,
+          },
+        },
+      },
+    },
+
     -- Project manager
     {
       "nvim-telescope/telescope-project.nvim",

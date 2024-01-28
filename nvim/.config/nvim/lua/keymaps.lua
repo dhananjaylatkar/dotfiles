@@ -38,7 +38,7 @@ M.setup = function(conf, conf_file)
   map({ "n", "v" }, "<leader>pw", "<cmd>Telescope grep_string<cr>", { desc = "Word search" })
 
   -- files
-  map("n", "<leader><leader>", "<cmd>Telescope find_files hidden=true<cr>", { desc = "Find files" })
+  map("n", "<leader><leader>", require("search").open, { desc = "Run" })
   map("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", { desc = "Find files" })
   map("n", "<leader>fr", "<cmd>Telescope oldfiles only_cwd=true<cr>", { desc = "Recent files [Cur]" })
   map("n", "<leader>fR", "<cmd>Telescope oldfiles<cr>", { desc = "Recent files [All]" })
