@@ -172,14 +172,9 @@ M.setup = function(conf, conf_file)
   map("n", "<leader>mI", "<cmd>InsertNToc<cr>", { desc = "Insert numbered ToC" })
 
   -- Notes
-  map("n", "<leader>nf", "<cmd>Telescope find_files cwd=" .. conf.notes.root_dir .. "<cr>", { desc = "Find notes" })
-  map("n", "<leader>ns", "<cmd>Telescope live_grep cwd=" .. conf.notes.root_dir .. "<cr>", { desc = "Search in notes" })
-  map(
-    "n",
-    "<leader>nn",
-    [[<cmd>lua require('file_util').create_file("]] .. conf.notes.root_dir .. [[")<cr>]],
-    { desc = "New note" }
-  )
+  map("n", "<leader>nf", "<cmd>NotesFind<cr>", { desc = "Find notes" })
+  map("n", "<leader>ns", "<cmd>NotesGrep<cr>", { desc = "Search in notes" })
+  map("n", "<leader>nn", "<cmd>NotesNew<cr>", { desc = "New note" })
 
   -- Misc
   map("n", "<leader>kk", "<cmd>e ~/.config/nvim/lua/" .. conf_file .. "<cr>", { desc = "Open config file" })

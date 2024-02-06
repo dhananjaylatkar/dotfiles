@@ -359,6 +359,12 @@ local plugins = function(conf, conf_file)
     },
 
     {
+      "dhananjaylatkar/notes.nvim",
+      cmd = { "NotesFind", "NotesGrep", "NotesNew" },
+      opts = {},
+    },
+
+    {
       "daishengdong/calltree.nvim",
       ft = { "c", "h", "dashboard" },
       opts = {
