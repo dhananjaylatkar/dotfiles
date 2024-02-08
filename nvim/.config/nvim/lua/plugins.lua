@@ -392,6 +392,15 @@ local plugins = function(conf, conf_file)
       enabled = conf.enable.nvim_colorizer,
     },
 
+    {
+      "ntpeters/vim-better-whitespace",
+      lazy = false,
+      config = function()
+        vim.g.better_whitespace_enabled = 1
+        vim.g.better_whitespace_filetypes_blacklist = { "dashboard" }
+      end,
+    },
+
     -- dashboard-nvim
     {
       "glepnir/dashboard-nvim",

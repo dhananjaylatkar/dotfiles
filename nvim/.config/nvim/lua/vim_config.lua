@@ -46,11 +46,6 @@ M.setup = function(conf, _)
     vim.opt[k] = v
   end
 
-  -- highlight trailing whitespace
-  --if vim.bo.filetype ~= "dashboard" then
-  --	vim.cmd([[match ErrorMsg '\s\+$']])
-  --end
-
   --Remap space as leader key
   vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
   vim.g.mapleader = " "
