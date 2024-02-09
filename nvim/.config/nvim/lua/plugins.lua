@@ -101,6 +101,12 @@ local plugins = function(conf, conf_file)
             end,
           },
           {
+            "Recents",
+            function()
+              require("telescope.builtin").oldfiles({ only_cwd = true })
+            end,
+          },
+          {
             "Search",
             function()
               require("telescope.builtin").live_grep()
