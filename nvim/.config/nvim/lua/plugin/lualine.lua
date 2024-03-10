@@ -3,12 +3,13 @@
 local M = {}
 local spaces = {
   function()
-    if not vim.api.nvim_buf_get_option(0, "expandtab") then
-      return "Tab Size: " .. vim.api.nvim_buf_get_option(0, "tabstop")
+    local get_opt = vim.api.nvim_get_option_value
+    if not get_opt("expandtab", {}) then
+      return "Tab Size: " .. get_opt("tabstop", {})
     end
-    local size = vim.api.nvim_buf_get_option(0, "shiftwidth")
+    local size = get_opt("shiftwidth", {})
     if size == 0 then
-      size = vim.api.nvim_buf_get_option(0, "tabstop")
+      size = get_opt("tabstop", {})
     end
     return "Spaces: " .. size
   end,
