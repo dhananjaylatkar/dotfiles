@@ -215,6 +215,8 @@ M.setup = function(conf, conf_file)
 
   -- Replace all instances of highlighted words
   map("v", "<leader>r", '"hy:%s/<C-r>h//g<left><left>')
+
+  map("n", "<leader>id", "<cmd>DocGen<cr>", { desc = "Insert func doc" })
 end
 
 return M
