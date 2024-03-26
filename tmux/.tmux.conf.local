@@ -65,23 +65,42 @@ tmux_conf_24b_colour=true
 # tmux_conf_theme_colour_17="#e4e4e4"   # white
 
 # Gruvbox Material Hard
-tmux_conf_theme_colour_1="#282828" # bg-left-middle (most of line)
-tmux_conf_theme_colour_2="#504945"
-tmux_conf_theme_colour_3="#ddc7a1"
-tmux_conf_theme_colour_4="#d8a657"
-tmux_conf_theme_colour_5="#ddc7a1"
-tmux_conf_theme_colour_6="#32302f"
-tmux_conf_theme_colour_7="#ddc7a1"
-tmux_conf_theme_colour_8="#32302f"
-tmux_conf_theme_colour_9="#a89984" # bg-session-name
-tmux_conf_theme_colour_10="#504945" # bg-uptime
-tmux_conf_theme_colour_11="#a9b665"
-tmux_conf_theme_colour_12="#ddc7a1"
-tmux_conf_theme_colour_13="#ddc7a1"
-tmux_conf_theme_colour_14="#32302f"
-tmux_conf_theme_colour_15="#282828" # bg-right-side (prefix, time, date)
-tmux_conf_theme_colour_16="#504945" # bg-username
-tmux_conf_theme_colour_17="#a89984" # bg-hostname
+# tmux_conf_theme_colour_1="#282828" # bg-left-middle (most of line)
+# tmux_conf_theme_colour_2="#504945"
+# tmux_conf_theme_colour_3="#ddc7a1"
+# tmux_conf_theme_colour_4="#d8a657"
+# tmux_conf_theme_colour_5="#ddc7a1"
+# tmux_conf_theme_colour_6="#32302f"
+# tmux_conf_theme_colour_7="#ddc7a1"
+# tmux_conf_theme_colour_8="#32302f"
+# tmux_conf_theme_colour_9="#a89984" # bg-session-name
+# tmux_conf_theme_colour_10="#504945" # bg-uptime
+# tmux_conf_theme_colour_11="#a9b665"
+# tmux_conf_theme_colour_12="#ddc7a1"
+# tmux_conf_theme_colour_13="#ddc7a1"
+# tmux_conf_theme_colour_14="#32302f"
+# tmux_conf_theme_colour_15="#282828" # bg-right-side (prefix, time, date)
+# tmux_conf_theme_colour_16="#504945" # bg-username
+# tmux_conf_theme_colour_17="#a89984" # bg-hostname
+
+# catppuccin-mocha
+tmux_conf_theme_colour_1="#181825" # bg-left-middle (most of line)
+tmux_conf_theme_colour_2="#313244"
+tmux_conf_theme_colour_3="#89b4fa"
+tmux_conf_theme_colour_4="#89b4fa"
+tmux_conf_theme_colour_5="#89b4fa"
+tmux_conf_theme_colour_6="#11111b"
+tmux_conf_theme_colour_7="#89b4fa"
+tmux_conf_theme_colour_8="#11111b"
+tmux_conf_theme_colour_9="#89b4fa" # bg-session-name
+tmux_conf_theme_colour_10="#313244" # bg-uptime
+tmux_conf_theme_colour_11="#a6e3a1"
+tmux_conf_theme_colour_12="#89b4fa"
+tmux_conf_theme_colour_13="#89b4fa"
+tmux_conf_theme_colour_14="#11111b"
+tmux_conf_theme_colour_15="#181825" # bg-right-side (prefix, time, date)
+tmux_conf_theme_colour_16="#313244" # bg-username
+tmux_conf_theme_colour_17="#89b4fa" # bg-hostname
 
 # default theme (ansi)
 #tmux_conf_theme_colour_1="colour0"

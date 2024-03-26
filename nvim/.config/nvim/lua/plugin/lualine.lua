@@ -20,11 +20,11 @@ local spaces = {
 }
 --                                     
 
-M.setup = function(config, _)
+M.setup = function(_, _)
   require("lualine").setup({
     options = {
       icons_enabled = true,
-      theme = config.colorscheme,
+      theme = "auto",
       -- component_separators = { left = "", right = "" },
       -- section_separators = { left = "", right = "" },
       component_separators = { left = "", right = "" },
