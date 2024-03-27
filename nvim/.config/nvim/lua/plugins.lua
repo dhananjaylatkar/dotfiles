@@ -388,6 +388,15 @@ local plugins = function(conf, conf_file)
       },
     },
 
+    {
+      "preservim/vimux",
+      event = "BufWinEnter",
+      config = function ()
+        vim.g.VimuxOrientation = "h"
+        vim.g.VimuxHeight = 30
+      end
+    },
+
     --* Looks do matter *--
     -- Dev Icons
     {
