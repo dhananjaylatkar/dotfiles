@@ -137,18 +137,6 @@ local plugins = function(conf, conf_file)
       enabled = conf.enable.telescope_project,
     },
 
-    -- Change directory to project root
-    {
-      "ahmedkhalf/project.nvim",
-      event = "BufRead",
-      init = function()
-        vim.g.nvim_tree_update_cwd = 1
-        vim.g.nvim_tree_respect_buf_cwd = 1
-      end,
-      opts = {},
-      enabled = conf.enable.project,
-    },
-
     -- File browser
     {
       "nvim-tree/nvim-tree.lua",
