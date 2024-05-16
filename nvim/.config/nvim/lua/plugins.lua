@@ -7,6 +7,17 @@ local opts = {
 
 local plugins = function(conf, conf_file)
   return {
+    {
+      "echasnovski/mini.nvim",
+      lazy = false,
+      version = false,
+      config = function()
+        require("mini.ai").setup()
+        require("mini.bracketed").setup()
+        require("mini.files").setup()
+      end,
+    },
+
     { "nvim-lua/plenary.nvim" },
 
     -- 2 char search

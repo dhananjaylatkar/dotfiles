@@ -102,12 +102,12 @@ M.setup = function(conf, conf_file)
   -- Open stuff
   map("n", "<leader>ot", goto_terminal, { desc = "Open terminal" })
   map("n", "<leader>oh", require("harpoon.ui").toggle_quick_menu, { desc = "Harpoon quick menu" })
-  map("n", "<leader>op", "<cmd>NvimTreeToggle<cr>", { desc = "Project sidebar" })
+  map("n", "<leader>op", MiniFiles.open, { desc = "Open file tree" })
   map("n", "<leader>of", "<cmd>NvimTreeFindFile<cr>", { desc = "Open file in sidebar" })
 
   -- Toggle
   map("n", "<leader>tt", goto_terminal, { desc = "Terminal" })
-  map("n", "<leader>tp", "<cmd>NvimTreeToggle<cr>", { desc = "Project sidebar" })
+  map("n", "<leader>tp", MiniFiles.open, { desc = "Open file tree" })
   map("n", "<leader>ti", "<cmd>set list!<cr>", { desc = "Whitespce chars" })
   map("n", "<leader>tl", "<cmd>set number!<cr>", { desc = "Line numbers" })
   map("n", "<leader>tr", "<cmd>set relativenumber!<cr>", { desc = "Relative line numbers" })
@@ -173,7 +173,7 @@ M.setup = function(conf, conf_file)
 
   -- Misc
   map("n", "<leader>kk", "<cmd>e ~/.config/nvim/lua/" .. conf_file .. "<cr>", { desc = "Open config file" })
-  map("n", "<f2>", "<cmd>NvimTreeToggle<cr>", { desc = "Project tree" })
+  map("n", "<f2>", MiniFiles.open, { desc = "Open file tree" })
   map("n", "<f3>", "<cmd>UndotreeToggle<cr>", { desc = "Undotree" })
   map("n", "<f5>", "<cmd>set list!<cr>", { desc = "Indent guides" })
   map("n", "<f10>", utils.ToggleMouse, { desc = "Toggle mouse mode" })
