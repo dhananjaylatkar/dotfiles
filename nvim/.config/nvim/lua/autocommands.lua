@@ -34,3 +34,29 @@ autocmd("BufWritePost", {
   end,
   group = group,
 })
+
+local function start_cscope_lsp()
+  if vim.fn.exepath("cscope_lsp") == "" then
+    return
+  end
+
+  local root_files =
+    { "cscope.out", "cscope.files", "cscope.in.out", "cscope.out.in", "cscope.out.po", "cscope.po.out" }
+  local paths = vim.fs.find(root_files, { stop = vim.env.HOME })
+  local root_dir = vim.fs.dirname(paths[1])
+
+  if root_dir then
+    vim.lsp.start({
+      name = "cscope_lsp",
+      cmd = { "cscope_lsp" },
+      root_dir = root_dir,
+      filetypes = { "c", "h", "cpp", "hpp" },
+    })
+  end
+end
+
+autocmd("FileType", {
+  pattern = { "c", "h", "cpp", "hpp" },
+  desc = "Start cscope_lsp",
+  callback = start_cscope_lsp,
+})
