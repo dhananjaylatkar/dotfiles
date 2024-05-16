@@ -365,15 +365,6 @@ local plugins = function(conf, conf_file)
     },
 
     {
-      "daishengdong/calltree.nvim",
-      ft = { "c", "h", "dashboard" },
-      opts = {
-        prefix = "<leader>c",
-        tree_style = "detailed_paths",
-      },
-    },
-
-    {
       "preservim/vimux",
       event = "BufWinEnter",
       config = function ()
