@@ -29,8 +29,8 @@ autocmd("TermOpen", {
 
 autocmd("BufWritePost", {
   pattern = { "*.c", "*.h" },
-  callback = function ()
-    vim.cmd("Cscope build")
+  callback = function()
+    vim.cmd("Cscope db build")
   end,
   group = group,
 })
