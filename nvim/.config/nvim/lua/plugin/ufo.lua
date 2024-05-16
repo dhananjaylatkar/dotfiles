@@ -42,7 +42,7 @@ M.setup = function(_, _)
     end,
     fold_virt_text_handler = handler,
     open_fold_hl_timeout = 400,
-    close_fold_kinds = { "imports", "comment" },
+    close_fold_kinds_for_ft = { "imports", "comment" },
     preview = {
       mappings = {
         scrollU = "<C-u>",
