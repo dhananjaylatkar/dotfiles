@@ -4,10 +4,6 @@ local wk = require("which-key")
 local utils = require("utils")
 local map = vim.keymap.set
 
-local grep_word_under_cursor = function()
-  require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
-end
-
 local goto_terminal = function()
   require("harpoon.term").gotoTerminal(1)
 end
@@ -34,7 +30,6 @@ M.setup = function(conf, conf_file)
   })
 
   map("n", "<leader>pp", "<cmd>Telescope project<cr>", { desc = "Open project" })
-  map("n", "<leader>pw", grep_word_under_cursor, { desc = "Word search" })
   map({ "n", "v" }, "<leader>pw", "<cmd>Telescope grep_string<cr>", { desc = "Word search" })
 
   -- files
@@ -69,7 +64,7 @@ M.setup = function(conf, conf_file)
   map("n", "<leader>ss", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Search buffer" })
   map("n", "<leader>sB", "<cmd>Telescope live_grep grep_open_files=true<cr>", { desc = "Search open buffers" })
   map("n", "<leader>sp", "<cmd>Telescope live_grep<cr>", { desc = "Search in directory" })
-  map("n", "<leader>sw", grep_word_under_cursor, { desc = "Word search" })
+  map({ "n", "v" }, "<leader>sw", "<cmd>Telescope grep_string<cr>", { desc = "Word search" })
 
   -- git
   map("n", "<leader>gg", "<cmd>Neogit<cr>", { desc = "Neogit" })
