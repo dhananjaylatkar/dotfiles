@@ -145,9 +145,6 @@ local plugins = function(conf, conf_file)
         git = {
           ignore = false,
         },
-        view = {
-          side = "right",
-        },
       },
       enabled = conf.enable.nvim_tree,
     },
