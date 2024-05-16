@@ -34,7 +34,14 @@ M.setup = function(_, _)
       globalstatus = false,
     },
     sections = {
-      lualine_a = { "mode" },
+      lualine_a = {
+        {
+          "mode",
+          fmt = function(str)
+            return str:sub(1, 1)
+          end,
+        },
+      },
       lualine_b = { "branch", "diff" },
       lualine_c = { { "filename", path = 1 } },
       lualine_x = { "g:cscope_maps_statusline_indicator", spaces, "encoding", "fileformat", "filetype" },
