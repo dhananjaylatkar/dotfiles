@@ -148,18 +148,6 @@ local plugins = function(conf, conf_file)
       enabled = conf.enable.telescope_project,
     },
 
-    -- File browser
-    {
-      "nvim-tree/nvim-tree.lua",
-      cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
-      opts = {
-        git = {
-          ignore = false,
-        },
-      },
-      enabled = conf.enable.nvim_tree,
-    },
-
     -- which-key
     {
       "folke/which-key.nvim",

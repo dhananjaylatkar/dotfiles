@@ -38,7 +38,9 @@ M.setup = function(conf, conf_file)
   map("n", "<leader>fr", "<cmd>Telescope oldfiles only_cwd=true<cr>", { desc = "Recent files [Cur]" })
   map("n", "<leader>fR", "<cmd>Telescope oldfiles<cr>", { desc = "Recent files [All]" })
   map("n", "<leader>fg", "<cmd>Telescope git_files<cr>", { desc = "Git files" })
-  map("n", "<leader>fs", "<cmd>NvimTreeFindFile<cr>", { desc = "Reveal in tree" })
+  map("n", "<leader>fs", function()
+    MiniFiles.open(vim.api.nvim_buf_get_name(0))
+  end, { desc = "Reveal in file tree" })
 
   -- buffers
   map("n", "<leader>`", "<C-^>", { desc = "Switch to last buffer" })
@@ -103,7 +105,9 @@ M.setup = function(conf, conf_file)
   map("n", "<leader>ot", goto_terminal, { desc = "Open terminal" })
   map("n", "<leader>oh", require("harpoon.ui").toggle_quick_menu, { desc = "Harpoon quick menu" })
   map("n", "<leader>op", MiniFiles.open, { desc = "Open file tree" })
-  map("n", "<leader>of", "<cmd>NvimTreeFindFile<cr>", { desc = "Open file in sidebar" })
+  map("n", "<leader>of", function()
+    MiniFiles.open(vim.api.nvim_buf_get_name(0))
+  end, { desc = "Reveal in file tree" })
 
   -- Toggle
   map("n", "<leader>tt", goto_terminal, { desc = "Terminal" })
