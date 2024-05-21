@@ -71,18 +71,14 @@ M.vim = {}
 
 -- Plugins
 M.enable = {
-  lightspeed = true, -- ggandor/lightspeed.nvim
   Comment = true, -- numToStr/Comment.nvim
-  vim_surround = true, -- tpope/vim-surround
   telescope_project = true, -- nvim-telescope/telescope-project.nvim
-  project = true, -- ahmedkhalf/project.nvim
-  nvim_tree = true, -- kyazdani42/nvim-tree.lua
   harpoon = true, -- ThePrimeagen/harpoon
   gitsigns = true, -- lewis6991/gitsigns.nvim
   neogit = true, -- TimUntersberger/neogit
   git_blame = true, -- f-person/git-blame.nvim
   lsp = true, -- neovim/nvim-lspconfig
-  nvim_cmp = true, -- hrsh7th/nvim-cmp
+  cmp = true, -- hrsh7th/nvim-cmp
   LuaSnip = true, -- L3MON4D3/LuaSnip
   undotree = true, -- mbbill/undotree
   nvim_treesitter = true, -- nvim-treesitter/nvim-treesitter
@@ -91,16 +87,17 @@ M.enable = {
   formatter = true, -- mhartington/formatter.nvim
   vim_sleuth = true, -- tpope/vim-sleuth
   cscope_maps = true, -- dhananjaylatkar/cscope_maps.nvim
-  nvim_web_devicons = true, -- kyazdani42/nvim-web-devicons
+  devicons = true, -- kyazdani42/nvim-web-devicons
   nvim_colorizer = true, -- norcalli/nvim-colorizer.lua
-  indent_blankline = true, -- lukas-reineke/indent-blankline.nvim
-  dashboard = true, -- glepnir/dashboard-nvim
   lualine = true, -- hoob3rt/lualine.nvim
   vim_markdown = true, -- plasticboy/vim-markdown
+  folds = true, -- kevinhwang91/nvim-ufo
+  notes = true, -- dhananjaylatkar/notes.nvim
+  docgen = true, -- dhananjaylatkar/docgen.nvim
 }
 
 M.custom = function()
-  -- additional device specific config
+  -- additional user specific config
 end
 
 return M

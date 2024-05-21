@@ -1,6 +1,4 @@
 -- Vim related config
-local M = {}
-
 local vim_defaults = {
   autoindent = true,
   breakindent = true, -- Enable break indent
@@ -37,19 +35,16 @@ local vim_defaults = {
   colorcolumn = "80",
   completeopt = "menuone,noinsert",
   spell = true,
-  spelllang = {"en_us"},
+  spelllang = { "en_us" },
 }
 
-M.setup = function(conf, _)
-  local vim_opts = vim.tbl_deep_extend("force", vim_defaults, conf.vim)
-  for k, v in pairs(vim_opts) do
-    vim.opt[k] = v
-  end
-
-  --Remap space as leader key
-  vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
-  vim.g.mapleader = " "
-  vim.g.maplocalleader = " "
+-- apply vim config
+local vim_opts = vim.tbl_deep_extend("force", vim_defaults, vim.g.dha.conf.vim)
+for k, v in pairs(vim_opts) do
+  vim.opt[k] = v
 end
 
-return M
+--Remap space as leader key
+vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "

@@ -1,24 +1,12 @@
--- Custom config
-local utils = require("utils")
-local config, config_file = utils.get_config()
+require("utils").install_lazy()
+require("utils").update_config()
+require("vim_config")
+require("lazy").setup({ { import = "plugins", opts = { defaults = { lazy = true } } } })
+require("keymaps")
+require("autocommands")
+require("colors." .. vim.g.dha.conf.colorscheme)
 
-require("plugins").setup(config, config_file)
-require("vim_config").setup(config, config_file)
-require("keymaps").setup(config, config_file)
-
-local modules = {
-  "autocommands",
-  "colors." .. config.colorscheme,
-}
-
-for _, module in ipairs(modules) do
-  local ok, err = pcall(require, module)
-  if not ok then
-    error("Error loading " .. module .. "\n\n" .. err)
-  end
-end
-
--- Overwrite with device specific custom config
-if config.custom then
-  config.custom()
+-- Overwrite with user specific config
+if vim.g.dha.conf.custom then
+  vim.g.dha.conf.custom()
 end

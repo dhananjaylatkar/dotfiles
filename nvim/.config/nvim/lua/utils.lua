@@ -23,17 +23,32 @@ M.ToggleMouse = function()
   end
 end
 
-M.get_config = function()
-  local config = require("config_default")
-  local config_file = "config_default.lua"
+M.update_config = function()
+  local conf = require("config_default")
+  conf.file = "config_default.lua"
 
   local _ok, config_user = pcall(require, "config")
   if _ok then
-    config = vim.tbl_deep_extend("force", config, config_user)
-    config_file = "config.lua"
+    conf = vim.tbl_deep_extend("force", conf, config_user)
+    conf.file = "config.lua"
   end
 
-  return config, config_file
+  vim.g.dha = { conf = conf }
+end
+
+M.install_lazy = function()
+  local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+  if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+      "git",
+      "clone",
+      "--filter=blob:none",
+      "https://github.com/folke/lazy.nvim.git",
+      "--branch=stable", -- latest stable release
+      lazypath,
+    })
+  end
+  vim.opt.rtp:prepend(lazypath)
 end
 
 return M
