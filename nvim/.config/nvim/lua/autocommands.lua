@@ -21,6 +21,7 @@ autocmd("TextYankPost", {
 autocmd("TermOpen", {
   callback = function()
     vim.keymap.set("t", "<esc>", [[<c-\><c-n>]], { buffer = true })
+    vim.keymap.set("n", "<esc>", "<cmd>q<cr>", { buffer = true })
     vim.opt.number = false
     vim.opt.relativenumber = false
   end,
@@ -36,7 +37,8 @@ autocmd("BufWritePost", {
 })
 
 local function start_cscope_lsp()
-  if vim.fn.exepath("cscope_lsp") == "" then
+  local cmd = vim.fn.exepath("cscope_lsp")
+  if cmd == "" then
     return
   end
 
@@ -48,7 +50,7 @@ local function start_cscope_lsp()
   if root_dir then
     vim.lsp.start({
       name = "cscope_lsp",
-      cmd = { "cscope_lsp" },
+      cmd = { cmd },
       root_dir = root_dir,
       filetypes = { "c", "h", "cpp", "hpp" },
     })
