@@ -42,25 +42,6 @@ M.treesitter = {
   },
 }
 
--- Dashboard
-M.dashboard = {
-  custom_footer = { "", "Dhananjay's Neovim Config" },
-  custom_header = {
-    "",
-    "",
-    "",
-    " ______       ___  _______  __   __ ",
-    "|      |     |   ||   _   ||  | |  |",
-    "|  _    |    |   ||  |_|  ||  |_|  |",
-    "| | |   |    |   ||       ||       |",
-    "| |_|   | ___|   ||       ||_     _|",
-    "|       ||       ||   _   |  |   |  ",
-    "|______| |_______||__| |__|  |___|  ",
-    "",
-    "",
-  },
-}
-
 -- Notes
 M.notes = {
   root_dir = os.getenv("HOME") .. "/code/notes/",
