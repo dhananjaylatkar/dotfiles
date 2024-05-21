@@ -157,10 +157,6 @@ M.setup = function(conf, conf_file)
   map("n", "<leader>w<right>", "<c-w><right>", { desc = "Window right" })
   map("n", "<leader>w<left>", "<c-w><left>", { desc = "Window left" })
   map("n", "<leader>w=", "<c-w>=", { desc = "Balance windows" })
-  map("n", "<A-h>", "<c-w><", { desc = "Window resize left" })
-  map("n", "<A-l>", "<c-w>>", { desc = "Window resize right" })
-  map("n", "<A-k>", "<c-w>+", { desc = "Window resize up" })
-  map("n", "<A-j>", "<c-w>-", { desc = "Window resize down" })
 
   -- Markdown
   map("n", "<leader>m>", "<cmd>'<,'>HeaderIncrease<cr>", { desc = "Header increase" })
