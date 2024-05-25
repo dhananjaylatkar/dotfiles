@@ -48,7 +48,7 @@ zsh_add_plugin "zsh-users/zsh-autosuggestions"
 # zsh_add_completion "esc/conda-zsh-completion" false
 
 # FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 export FZF_COMPLETION_TRIGGER='~~'
 export FZF_DEFAULT_COMMAND='fd --type file --color=always --follow --hidden --exclude ^.git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
