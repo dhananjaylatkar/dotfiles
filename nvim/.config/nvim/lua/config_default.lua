@@ -75,6 +75,7 @@ M.enable = {
   folds = true, -- kevinhwang91/nvim-ufo
   notes = true, -- dhananjaylatkar/notes.nvim
   docgen = true, -- dhananjaylatkar/docgen.nvim
+  comment = true, -- numToStr/Comment.nvinumToStr/Comment.nvim
 }
 
 M.custom = function()
