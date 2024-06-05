@@ -12,7 +12,7 @@ return {
     require("mini.splitjoin").setup() -- 'gS' to join/split args on separate lines
     require("mini.starter").setup({
       items = {
-        require("mini.starter").sections.recent_files(10, true, false),
+        require("mini.starter").sections.recent_files(10, true, true),
       },
       footer = function()
         return vim.fn.getcwd():gsub(vim.env.HOME, "~")
