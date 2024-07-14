@@ -54,5 +54,32 @@ return {
         })
       end,
     })
+
+    local function start_cscope_lsp()
+      local cmd = vim.fn.exepath("cscope_lsp")
+      if cmd == "" then
+        return
+      end
+
+      local root_files =
+        { "cscope.out", "cscope.files", "cscope.in.out", "cscope.out.in", "cscope.out.po", "cscope.po.out" }
+      local paths = vim.fs.find(root_files, { stop = vim.env.HOME })
+      local root_dir = vim.fs.dirname(paths[1])
+
+      if root_dir then
+        vim.lsp.start({
+          name = "cscope_lsp",
+          cmd = { cmd },
+          root_dir = root_dir,
+          filetypes = { "c", "h", "cpp", "hpp" },
+        })
+      end
+    end
+
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "c", "h", "cpp", "hpp" },
+      desc = "Start cscope_lsp",
+      callback = start_cscope_lsp,
+    })
   end,
 }
