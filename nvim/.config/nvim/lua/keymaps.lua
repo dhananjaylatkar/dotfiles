@@ -4,21 +4,22 @@ local utils = require("utils")
 local map = vim.keymap.set
 
 -- which-key setup
-wk.register({
-  ["<leader>"] = {
-    p = { name = "+project" },
-    f = { name = "+file" },
-    b = { name = "+buffer" },
-    s = { name = "+search" },
-    g = { name = "+git", a = { name = "+actions" } },
-    r = { name = "+recent" },
-    o = { name = "+open" },
-    t = { name = "toggle" },
-    l = { name = "+lsp" },
-    w = { name = "+window" },
-    m = { name = "+markdown" },
-    n = { name = "+notes" },
-    k = { name = "+config" },
+wk.add({
+  {
+    { "<leader>b", group = "buffer" },
+    { "<leader>f", group = "file" },
+    { "<leader>g", group = "git" },
+    { "<leader>ga", group = "actions" },
+    { "<leader>k", group = "config" },
+    { "<leader>l", group = "lsp" },
+    { "<leader>m", group = "markdown" },
+    { "<leader>n", group = "notes" },
+    { "<leader>o", group = "open" },
+    { "<leader>p", group = "project" },
+    { "<leader>r", group = "recent" },
+    { "<leader>s", group = "search" },
+    { "<leader>t", group = "toggle" },
+    { "<leader>w", group = "window" },
   },
 })
 
