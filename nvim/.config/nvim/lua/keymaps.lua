@@ -20,6 +20,7 @@ wk.add({
     { "<leader>s", group = "search" },
     { "<leader>t", group = "toggle" },
     { "<leader>w", group = "window" },
+    { "<leader>i", group = "insert" },
   },
 })
 
@@ -172,6 +173,8 @@ map("n", "<cr>", [[{-> v:hlsearch ? ":nohl\<CR>" : "\<CR>"}()]], { expr = true }
 --Remap for dealing with word wrap
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+map("n", "<up>", "v:count == 0 ? 'gk' : 'k'", { expr = true })
+map("n", "<down>", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
 -- Delete word/line in insert mode
 map("i", "<C-U>", "<C-G>u<C-U>")
@@ -188,8 +191,8 @@ map("v", "<Leader>d", [["+d]], { desc = "Cut to system clipboard" })
 map("n", "<Leader>y", [["+yy]], { desc = "Yank to system clipboard" })
 map("n", "<Leader>d", [["+dd]], { desc = "Cut to system clipboard" })
 
-map({ "n", "v" }, "<Leader>p", [["+p]], { desc = "Paste from system clipboard" })
-map({ "n", "v" }, "<Leader>P", [["+P]], { desc = "Paste from system clipboard" })
+map({ "n", "v" }, "<Leader>is", [["+p]], { desc = "Paste from system clipboard" })
+map({ "n", "v" }, "<Leader>iS", [["+P]], { desc = "Paste from system clipboard" })
 
 -- folds
 map("n", "zR", require("ufo").openAllFolds)
