@@ -76,10 +76,10 @@ return {
       end
     end
 
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = { "c", "h", "cpp", "hpp" },
-      desc = "Start cscope_lsp",
-      callback = start_cscope_lsp,
-    })
+    -- vim.api.nvim_create_autocmd("FileType", {
+    --   pattern = { "c", "h", "cpp", "hpp" },
+    --   desc = "Start cscope_lsp",
+    --   callback = start_cscope_lsp,
+    -- })
   end,
 }
