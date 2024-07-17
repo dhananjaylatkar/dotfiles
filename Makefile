@@ -4,7 +4,8 @@ STOW_DIRS = \
 	scripts \
 	tmux \
 	vim \
-	zsh
+	zsh \
+	wezterm
 
 ZSH_DIR=${HOME}/.config/zsh
 NVIM_DIR=${HOME}/.config/nvim
@@ -20,6 +21,7 @@ nothing:
 	@echo "    make pyenv          install pyenv"
 	@echo "    make tmux           fetch tmux config"
 
+.PHONY: all
 all:
 	@for DIR in ${STOW_DIRS}; do \
 		 stow --target=$${HOME} -v --no-folding $${DIR}; \
