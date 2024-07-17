@@ -140,7 +140,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 # draw_bold_text_with_bright_colors = true
 dynamic_title = true
 # history = 10000
-startup_mode = "Fullscreen"
+# startup_mode = "Fullscreen"
 
 [window.padding]
 x = 0
