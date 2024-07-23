@@ -1,3 +1,21 @@
+local pick_scroll_one_line = function(direction)
+  local key = ({ down = "<C-y>", up = "<C-e>" })[direction]
+  key = vim.api.nvim_replace_termcodes(key, true, true, true)
+  local scroll_fun = function(win_id)
+    vim.api.nvim_win_call(win_id, function()
+      vim.cmd("normal! " .. key)
+    end)
+  end
+
+  return function()
+    local win_id = MiniPick.get_picker_state().windows.main
+    local is_not_main_view = vim.api.nvim_get_current_buf() ~= MiniPick.get_picker_state().buffers.main
+    if is_not_main_view then
+      return scroll_fun(win_id)
+    end
+  end
+end
+
 return {
   "echasnovski/mini.nvim",
   lazy = false,
@@ -20,5 +38,12 @@ return {
     })
     require("mini.surround").setup() -- sa, sd, sr, sf, sh or sn + <surround char>
     require("mini.trailspace").setup() -- highlight trailing whitespace
+    require("mini.pick").setup({
+      mappings = {
+        scroll_one_line_down = { char = "<C-y>", func = pick_scroll_one_line("down") },
+        scroll_one_line_up = { char = "<C-e>", func = pick_scroll_one_line("up") },
+      },
+    }) -- picker
+    require("mini.extra").setup() -- extra stuff
   end,
 }
