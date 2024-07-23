@@ -32,11 +32,11 @@ require("catppuccin").setup({
     -- miscs = {}, -- Uncomment to turn off hard-coded styles
   },
   color_overrides = {
-    mocha = {
-      base = "#181825",
-      mantle = "#181825",
-      crust = "#181825",
-    },
+    -- mocha = {
+    --   base = "#181825",
+    --   mantle = "#181825",
+    --   crust = "#181825",
+    -- },
   },
   custom_highlights = {},
   integrations = {
