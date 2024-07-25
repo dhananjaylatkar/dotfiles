@@ -43,6 +43,11 @@ return {
         scroll_one_line_down = { char = "<C-y>", func = pick_scroll_one_line("down") },
         scroll_one_line_up = { char = "<C-e>", func = pick_scroll_one_line("up") },
       },
+      source = {
+        preview = function(buf_id, item)
+          MiniPick.default_preview(buf_id, item, { line_position = "center" })
+        end,
+      },
     }) -- picker
     require("mini.extra").setup() -- extra stuff
   end,
