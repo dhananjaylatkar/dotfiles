@@ -4,7 +4,7 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
   local newVirtText = {}
   local totalLines = vim.api.nvim_buf_line_count(0)
   local foldedLines = endLnum - lnum
-  local suffix = ("  %d %d%%"):format(foldedLines, foldedLines / totalLines * 100)
+  local suffix = (" ↙ %d %d%%"):format(foldedLines, foldedLines / totalLines * 100)
   local sufWidth = vim.fn.strdisplaywidth(suffix)
   local targetWidth = width - sufWidth
   local curWidth = 0
@@ -41,7 +41,7 @@ return {
       vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
-      vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+      vim.o.fillchars = [[eob: ,fold: ,foldopen:▽,foldsep: ,foldclose:▷]]
       require("ufo").setup({
         provider_selector = function(bufnr, filetype, buftype)
           return { "treesitter", "indent" }
