@@ -1,7 +1,17 @@
 require("utils").install_lazy()
 require("utils").update_config()
 require("vim_config")
-require("lazy").setup({ { import = "plugins", opts = { defaults = { lazy = true } } } })
+require("lazy").setup({
+  import = "plugins",
+}, {
+  defaults = {
+    lazy = true,
+  },
+  change_detection = {
+    enabled = false,
+    notify = false,
+  },
+})
 require("keymaps")
 require("autocommands")
 require("colors." .. vim.g.dha.conf.colorscheme)
