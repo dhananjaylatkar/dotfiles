@@ -24,7 +24,10 @@ return {
     require("mini.ai").setup() -- enhanced textobjects. 'a(', 'a)', 'a'', 'a*' 'a ', 'an', 'al', 'g[' 'g]'
     require("mini.bracketed").setup() -- move using '[' or ']' + bcxdfijloqtuwy
     require("mini.files").setup() -- floating file tree
-    require("mini.indentscope").setup({ symbol = "│" }) -- indentlines
+    require("mini.indentscope").setup({
+      draw = { delay = 0, --[[ animation = require("mini.indentscope").gen_animation.none() ]] },
+      symbol = "│",
+    }) -- indentlines
     require("mini.jump").setup() -- Extend f, F, t, T
     require("mini.move").setup() -- Move line/selection with Alt+hjkl
     require("mini.splitjoin").setup() -- 'gS' to join/split args on separate lines
