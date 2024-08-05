@@ -16,7 +16,7 @@ local vim_defaults = {
   -- listchars = { tab = "› ", eol = "↩", trail = "␣", lead = "␣" },
   mouse = "a", -- enable mouse mode
   number = true, -- enable line numbers
-  relativenumber = true, -- relative line numbers
+  relativenumber = false, -- relative line numbers
   scrolloff = 3,
   shada = { "!", "'1000", "<50", "s10", "h" }, -- shada file
   shiftwidth = 4,

@@ -36,3 +36,21 @@ autocmd("BufWritePost", {
   group = group,
 })
 
+-- Show relative numbers only when they matter (linewise and blockwise
+-- selection) and 'number' is set (avoids horizontal flickering)
+autocmd("ModeChanged", {
+  pattern = "*:[V\x16]*",
+  callback = function()
+    vim.wo.relativenumber = vim.wo.number
+  end,
+  desc = "Show relative line numbers",
+})
+
+-- Hide relative numbers when neither linewise/blockwise mode is on
+autocmd("ModeChanged", {
+  pattern = "[V\x16]*:*",
+  callback = function()
+    vim.wo.relativenumber = string.find(vim.fn.mode(), "^[V\22]") ~= nil
+  end,
+  desc = "Hide relative line numbers",
+})
