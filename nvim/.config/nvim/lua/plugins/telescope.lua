@@ -1,8 +1,8 @@
 -- Telescope and its extensions
+
 return {
   {
     "nvim-telescope/telescope.nvim",
-    event = "BufWinEnter",
     opts = {
       defaults = {
         vimgrep_arguments = {
@@ -37,12 +37,9 @@ return {
       },
     },
   },
-
   --- Telescope on steroids
   {
     "FabianWirth/search.nvim",
-    event = "BufWinEnter",
-    dependencies = { "nvim-telescope/telescope.nvim" },
     opts = {
       tabs = {
         {
@@ -89,10 +86,8 @@ return {
   -- Project manager
   {
     "nvim-telescope/telescope-project.nvim",
-    event = "BufWinEnter",
     config = function()
       require("telescope").load_extension("project")
     end,
-    dependencies = { "nvim-telescope/telescope.nvim" },
   },
 }
