@@ -29,4 +29,15 @@ return {
     },
     enabled = vim.g.dha.conf.enable.git_blame,
   },
+
+  -- Blame like a pro
+  {
+    "FabijanZulj/blame.nvim",
+    keys = {
+      { "<f4>", "<cmd>BlameToggle<cr>" },
+    },
+    opts = {
+      date_format = "%Y-%m-%d",
+    },
+  },
 }
