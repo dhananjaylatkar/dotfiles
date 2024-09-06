@@ -1,13 +1,5 @@
 --* Git *--
 return {
-  -- Add git related info in the signs columns and popups
-  {
-    "lewis6991/gitsigns.nvim",
-    event = "BufRead",
-    opts = {},
-    enabled = vim.g.dha.conf.enable.gitsigns,
-  },
-
   -- Neogit
   {
     "TimUntersberger/neogit",

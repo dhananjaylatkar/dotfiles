@@ -53,5 +53,11 @@ return {
       },
     }) -- picker
     require("mini.extra").setup() -- extra stuff
+    require("mini.diff").setup({
+      view = {
+        style = "sign",
+        signs = { add = "+", change = "~", delete = "-" },
+      },
+    }) -- diff signs and keymaps to traverse diff hunks
   end,
 }

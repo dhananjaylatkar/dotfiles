@@ -72,19 +72,6 @@ map("n", "<leader>gs", "<cmd>Telescope git_status<cr>", { desc = "Status" })
 map("n", "<leader>gc", "<cmd>Telescope git_bcommits<cr>", { desc = "Commits for current buffer" })
 map("n", "<leader>gC", "<cmd>Telescope git_commits<cr>", { desc = "Commits for current directory" })
 
-map("n", "<leader>gl", require("gitsigns").blame_line, { desc = "Blame line" })
-map("n", "<leader>gn", require("gitsigns").next_hunk, { desc = "Next hunk" })
-map("n", "<leader>gp", require("gitsigns").prev_hunk, { desc = "Previous hunk" })
-
--- git actions
-map("n", "<leader>gas", require("gitsigns").stage_hunk, { desc = "Stage hunk" })
-map("n", "<leader>gau", require("gitsigns").undo_stage_hunk, { desc = "Undo stage hunk" })
-map("n", "<leader>gar", require("gitsigns").reset_hunk, { desc = "Reset hunk" })
-map("n", "<leader>gaR", require("gitsigns").reset_buffer, { desc = "Reset buffer" })
-map("n", "<leader>gap", require("gitsigns").preview_hunk, { desc = "Preview buffer" })
-map("n", "<leader>gaS", require("gitsigns").stage_buffer, { desc = "Stage buffer" })
-map("n", "<leader>gaU", require("gitsigns").reset_buffer_index, { desc = "Rest buffer index" })
-
 -- Recents
 map("n", "<leader>rR", "<cmd>Telescope oldfiles<cr>", { desc = "Recent files [All]" })
 map("n", "<leader>rr", "<cmd>Telescope oldfiles only_cwd=true<cr>", { desc = "Recent files [Cur]" })
