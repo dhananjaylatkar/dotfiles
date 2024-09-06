@@ -68,4 +68,7 @@ zstyle ':completion:*' cache-path $ZSH_CACHE_DIR
 bindkey -s '^o' 'ranger^M'
 # bindkey -s '^f' 'zi^M'
 
+# opam configuration
+[[ ! -r $HOME/.opam/opam-init/init.zsh ]] || source $HOME/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
 [ -f $HOME/.config/zsh/zsh-custom-conf ] && source $HOME/.config/zsh/zsh-custom-conf
