@@ -1,3 +1,4 @@
+vim.loader.enable()
 require("utils").install_lazy()
 require("utils").update_config()
 require("vim_config")
