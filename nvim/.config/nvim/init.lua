@@ -15,7 +15,7 @@ require("lazy").setup({
 })
 require("keymaps")
 require("autocommands")
-local ok, _ = pcall("colors." .. vim.g.dha.conf.colorscheme)
+local ok, _ = pcall(require, "colors." .. vim.g.dha.conf.colorscheme)
 if not ok then
   vim.cmd("colorscheme " .. vim.g.dha.conf.colorscheme)
 end
