@@ -12,6 +12,7 @@ return {
   {
     "TimUntersberger/neogit",
     cmd = "Neogit",
+    commit = "bc0c609",
     opts = {},
     dependencies = { "nvim-lua/plenary.nvim" },
     enabled = vim.g.dha.conf.enable.neogit,
