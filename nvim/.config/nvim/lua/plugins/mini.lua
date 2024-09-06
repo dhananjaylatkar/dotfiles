@@ -25,7 +25,10 @@ return {
     require("mini.bracketed").setup() -- move using '[' or ']' + bcxdfijloqtuwy
     require("mini.files").setup() -- floating file tree
     require("mini.indentscope").setup({
-      draw = { delay = 0, --[[ animation = require("mini.indentscope").gen_animation.none() ]] },
+      draw = {
+        delay = 0,
+        animation = require("mini.indentscope").gen_animation.none(),
+      },
       symbol = "│",
     }) -- indentlines
     require("mini.jump").setup() -- Extend f, F, t, T
