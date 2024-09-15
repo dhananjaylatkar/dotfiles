@@ -70,13 +70,9 @@ return {
           end,
         },
         {
-          "Git St",
+          "Symbols (f)",
           function()
-            require("telescope.builtin").git_status()
-          end,
-          available = function()
-            vim.fn.system("git rev-parse --show-toplevel")
-            return vim.v.shell_error == 0
+            require("telescope.builtin").treesitter({ symbol_width = 50, symbols = "function" })
           end,
         },
       },
