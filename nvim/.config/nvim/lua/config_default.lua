@@ -69,7 +69,6 @@ M.enable = {
   vim_sleuth = true, -- tpope/vim-sleuth
   cscope_maps = true, -- dhananjaylatkar/cscope_maps.nvim
   devicons = true, -- kyazdani42/nvim-web-devicons
-  nvim_colorizer = true, -- norcalli/nvim-colorizer.lua
   lualine = true, -- hoob3rt/lualine.nvim
   vim_markdown = true, -- plasticboy/vim-markdown
   folds = true, -- kevinhwang91/nvim-ufo

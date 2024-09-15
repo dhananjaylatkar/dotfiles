@@ -93,7 +93,6 @@ map("n", "<leader>tl", "<cmd>set number!<cr>", { desc = "Line numbers" })
 map("n", "<leader>tr", "<cmd>set relativenumber!<cr>", { desc = "Relative line numbers" })
 map("n", "<leader>ts", "<cmd>set expandtab!<cr>", { desc = "Spaces/Tabs" })
 map("n", "<leader>tm", utils.ToggleMouse, { desc = "Mouse mode" })
-map("n", "<leader>tC", "<cmd>ColorizerToggle<cr>", { desc = "Colorizer" })
 map("n", "<leader>tc", "<cmd>Telescope colorscheme<cr>", { desc = "Colorscheme" })
 
 -- LSP
