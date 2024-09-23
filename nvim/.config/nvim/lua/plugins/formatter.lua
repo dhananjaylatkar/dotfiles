@@ -71,6 +71,14 @@ return {
             }
           end,
         },
+        ocaml = {
+          function()
+            return {
+              exe = "ocamlformat",
+              stdin = true,
+            }
+          end,
+        },
       },
     })
   end,
