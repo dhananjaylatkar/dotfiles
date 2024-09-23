@@ -75,5 +75,6 @@ return {
         hex_color = hipatterns.gen_highlighter.hex_color(),
       },
     }) -- colorizer
+    require("mini.cursorword").setup() -- highlight word under cursor
   end,
 }

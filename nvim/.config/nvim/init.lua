@@ -19,6 +19,8 @@ local ok, _ = pcall(require, "colors." .. vim.g.dha.conf.colorscheme)
 if not ok then
   vim.cmd("colorscheme " .. vim.g.dha.conf.colorscheme)
 end
+vim.api.nvim_set_hl(0, "MiniCursorWord", { link = "Visual" })
+vim.api.nvim_set_hl(0, "MiniCursorWordCurrent", {})
 
 -- Overwrite with user specific config
 if vim.g.dha.conf.custom then

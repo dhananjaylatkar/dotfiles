@@ -63,7 +63,6 @@ M.enable = {
   LuaSnip = true, -- L3MON4D3/LuaSnip
   undotree = true, -- mbbill/undotree
   nvim_treesitter = true, -- nvim-treesitter/nvim-treesitter
-  nvim_treesitter_refactor = true, -- nvim-treesitter/nvim-treesitter-refactor
   nvim_treesitter_context = true, -- nvim-treesitter/nvim-treesitter-context
   formatter = true, -- mhartington/formatter.nvim
   vim_sleuth = true, -- tpope/vim-sleuth
