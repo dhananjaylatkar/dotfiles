@@ -74,6 +74,22 @@ M.enable = {
   notes = true, -- dhananjaylatkar/notes.nvim
   docgen = true, -- dhananjaylatkar/docgen.nvim
   comment = true, -- numToStr/Comment.nvinumToStr/Comment.nvim
+  -- echasnovski/mini.nvim modules
+  mini_ai = true,
+  mini_bracketed = true,
+  mini_files = true,
+  mini_indentscope = true,
+  mini_jump = true,
+  mini_move = true,
+  mini_splitjoin = true,
+  mini_starter = true,
+  mini_surround = true,
+  mini_trailspace = true,
+  mini_pick = true,
+  mini_extra = true,
+  mini_diff = true,
+  mini_hipatterns = true,
+  mini_cursorword = true,
 }
 
 M.custom = function()
