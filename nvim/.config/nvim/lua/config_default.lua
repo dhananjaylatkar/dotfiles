@@ -67,7 +67,6 @@ M.enable = {
   formatter = true, -- mhartington/formatter.nvim
   vim_sleuth = true, -- tpope/vim-sleuth
   cscope_maps = true, -- dhananjaylatkar/cscope_maps.nvim
-  devicons = true, -- kyazdani42/nvim-web-devicons
   lualine = true, -- hoob3rt/lualine.nvim
   vim_markdown = true, -- plasticboy/vim-markdown
   folds = true, -- kevinhwang91/nvim-ufo
@@ -90,6 +89,7 @@ M.enable = {
   mini_diff = true,
   mini_hipatterns = true,
   mini_cursorword = true,
+  mini_icons = true,
 }
 
 M.custom = function()

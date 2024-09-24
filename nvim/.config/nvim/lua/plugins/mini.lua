@@ -107,5 +107,11 @@ return {
 
     -- highlight word under cursor
     if e.mini_cursorword then require("mini.cursorword").setup() end
+
+    -- minimal ascii icons
+    if e.mini_icons then
+      require("mini.icons").setup({ style = "ascii" })
+      MiniIcons.mock_nvim_web_devicons()
+    end
   end,
 }
