@@ -113,5 +113,73 @@ return {
       require("mini.icons").setup({ style = "ascii" })
       MiniIcons.mock_nvim_web_devicons()
     end
+
+    if e.mini_clue then
+      local miniclue = require("mini.clue")
+      miniclue.setup({
+        window = {
+          config = {
+            width = "auto",
+          },
+          delay = 100,
+        },
+
+        triggers = {
+          -- Leader triggers
+          { mode = "n", keys = "<leader>" },
+          { mode = "x", keys = "<leader>" },
+
+          -- Built-in completion
+          { mode = "i", keys = "<C-x>" },
+
+          -- `g` key
+          { mode = "n", keys = "g" },
+          { mode = "x", keys = "g" },
+
+          -- Marks
+          { mode = "n", keys = "'" },
+          { mode = "n", keys = "`" },
+          { mode = "x", keys = "'" },
+          { mode = "x", keys = "`" },
+
+          -- Registers
+          { mode = "n", keys = '"' },
+          { mode = "x", keys = '"' },
+          { mode = "i", keys = "<C-r>" },
+          { mode = "c", keys = "<C-r>" },
+
+          -- Window commands
+          { mode = "n", keys = "<C-w>" },
+
+          -- `z` key
+          { mode = "n", keys = "z" },
+          { mode = "x", keys = "z" },
+
+          { mode = "n", keys = "[" },
+          { mode = "n", keys = "]" },
+        },
+
+        clues = {
+          miniclue.gen_clues.builtin_completion(),
+          miniclue.gen_clues.g(),
+          miniclue.gen_clues.z(),
+          miniclue.gen_clues.marks(),
+          miniclue.gen_clues.registers(),
+          miniclue.gen_clues.windows({
+            submode_move = true,
+            submode_navigate = true,
+            submode_resize = true,
+          }),
+
+          -- bracketed improved
+          { mode = "n", keys = "]b", postkeys = "]" },
+          { mode = "n", keys = "[b", postkeys = "[" },
+          { mode = "n", keys = "]w", postkeys = "]" },
+          { mode = "n", keys = "[w", postkeys = "[" },
+          { mode = "n", keys = "]h", postkeys = "]" },
+          { mode = "n", keys = "[h", postkeys = "[" },
+        },
+      })
+    end
   end,
 }

@@ -90,6 +90,7 @@ M.enable = {
   mini_hipatterns = true,
   mini_cursorword = true,
   mini_icons = true,
+  mini_clue = true,
 }
 
 M.custom = function()

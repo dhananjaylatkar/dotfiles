@@ -1,30 +1,27 @@
 -- Mappings
-local wk = require("which-key")
 local utils = require("utils")
 local map = vim.keymap.set
 
--- which-key setup
-wk.add({
-  {
-    { "<leader>b", group = "buffer" },
-    { "<leader>f", group = "file" },
-    { "<leader>g", group = "git" },
-    { "<leader>ga", group = "actions" },
-    { "<leader>k", group = "config" },
-    { "<leader>l", group = "lsp" },
-    { "<leader>m", group = "markdown" },
-    { "<leader>n", group = "notes" },
-    { "<leader>o", group = "open" },
-    { "<leader>p", group = "project" },
-    { "<leader>r", group = "recent" },
-    { "<leader>s", group = "search" },
-    { "<leader>t", group = "toggle" },
-    { "<leader>w", group = "window" },
-    { "<leader>i", group = "insert" },
-  },
-})
+local miniclue_add = function(opts)
+  if not MiniClue then return end
+  table.insert(MiniClue.config.clues, opts)
+end
 
-map("n", "<leader>pp", "<cmd>Telescope project<cr>", { desc = "Open project" })
+miniclue_add({ mode = "n", keys = "<leader>b", desc = "+buffer" })
+miniclue_add({ mode = "n", keys = "<leader>f", desc = "+file" })
+miniclue_add({ mode = "n", keys = "<leader>g", desc = "+git" })
+miniclue_add({ mode = "n", keys = "<leader>k", desc = "+config" })
+miniclue_add({ mode = "n", keys = "<leader>l", desc = "+lsp" })
+miniclue_add({ mode = "n", keys = "<leader>m", desc = "+markdown" })
+miniclue_add({ mode = "n", keys = "<leader>n", desc = "+notes" })
+miniclue_add({ mode = "n", keys = "<leader>o", desc = "+open" })
+miniclue_add({ mode = "n", keys = "<leader>p", desc = "+project" })
+miniclue_add({ mode = "n", keys = "<leader>r", desc = "+recent" })
+miniclue_add({ mode = "n", keys = "<leader>s", desc = "+search" })
+miniclue_add({ mode = "n", keys = "<leader>t", desc = "+toggle" })
+miniclue_add({ mode = "n", keys = "<leader>w", desc = "+window" })
+miniclue_add({ mode = "n", keys = "<leader>i", desc = "+insert" })
+
 map({ "n", "v" }, "<leader>pw", "<cmd>Telescope grep_string<cr>", { desc = "Word search" })
 
 -- files
