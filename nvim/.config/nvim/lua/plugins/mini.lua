@@ -176,6 +176,8 @@ return {
           { mode = "n", keys = "[b", postkeys = "[" },
           { mode = "n", keys = "]w", postkeys = "]" },
           { mode = "n", keys = "[w", postkeys = "[" },
+          { mode = "n", keys = "]f", postkeys = "]" },
+          { mode = "n", keys = "[f", postkeys = "[" },
           { mode = "n", keys = "]h", postkeys = "]" },
           { mode = "n", keys = "[h", postkeys = "[" },
         },
