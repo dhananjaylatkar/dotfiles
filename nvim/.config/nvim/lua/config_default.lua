@@ -59,8 +59,6 @@ M.enable = {
   neogit = true, -- TimUntersberger/neogit
   git_blame = true, -- f-person/git-blame.nvim
   lsp = true, -- neovim/nvim-lspconfig
-  cmp = true, -- hrsh7th/nvim-cmp
-  LuaSnip = true, -- L3MON4D3/LuaSnip
   undotree = true, -- mbbill/undotree
   nvim_treesitter = true, -- nvim-treesitter/nvim-treesitter
   nvim_treesitter_context = true, -- nvim-treesitter/nvim-treesitter-context
@@ -91,6 +89,7 @@ M.enable = {
   mini_cursorword = true,
   mini_icons = true,
   mini_clue = true,
+  mini_completion = true,
 }
 
 M.custom = function()
