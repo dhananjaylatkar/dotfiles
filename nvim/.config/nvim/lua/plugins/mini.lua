@@ -81,7 +81,10 @@ return {
     end
 
     -- extra stuff
-    if e.mini_extra then require("mini.extra").setup() end
+    if e.mini_extra then
+      require("mini.extra").setup()
+      vim.keymap.set("n", "z=", MiniExtra.pickers.spellsuggest, { desc = "Show spelling suggestions" })
+    end
 
     -- diff signs and keymaps([h,]h) to traverse diff hunks
     if e.mini_diff then
