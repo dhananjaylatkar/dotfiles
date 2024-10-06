@@ -169,11 +169,6 @@ map("n", "<Leader>d", [["+dd]], { desc = "Cut to system clipboard" })
 map({ "n", "v" }, "<Leader>is", [["+p]], { desc = "Paste from system clipboard" })
 map({ "n", "v" }, "<Leader>iS", [["+P]], { desc = "Paste from system clipboard" })
 
--- folds
-map("n", "zR", require("ufo").openAllFolds)
-map("n", "zM", require("ufo").closeAllFolds)
-map("n", "zp", require("ufo").peekFoldedLinesUnderCursor)
-
 -- Replace all instances of highlighted words
 map("v", "<leader>r", '"hy:%s/<C-r>h//g<left><left>')
 
