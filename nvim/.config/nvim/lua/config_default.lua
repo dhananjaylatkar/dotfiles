@@ -50,6 +50,9 @@ M.notes = {
 -- NOTE: Overide vim options using this table (defaults can be found in vim_config.lua).
 M.vim = {}
 
+-- "mini-pick" or "telescope"
+M.picker = "mini-pick"
+
 -- Plugins
 M.enable = {
   Comment = true, -- numToStr/Comment.nvim
