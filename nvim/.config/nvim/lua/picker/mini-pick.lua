@@ -1,6 +1,11 @@
 ---@diagnostic disable: undefined-global
 local M = {}
 
+M.resume = function()
+  local ok, _ = pcall(MiniPick.builtin.resume)
+  if not ok then print("There is no picker to resume.") end
+end
+
 M.files = function()
   MiniPick.builtin.cli({
     command = { "fd", "--hidden", "-t", "f", "--exclude", ".git*" },

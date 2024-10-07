@@ -23,6 +23,8 @@ miniclue_add({ mode = "n", keys = "<leader>t", desc = "+toggle" })
 miniclue_add({ mode = "n", keys = "<leader>w", desc = "+window" })
 miniclue_add({ mode = "n", keys = "<leader>i", desc = "+insert" })
 
+map("n", "<leader>.", picker.resume, { desc = "Resume picker" })
+
 -- files
 map("n", "<leader><leader>", picker.files, { desc = "Find files" })
 map("n", "<leader>ff", picker.files, { desc = "Find files" })

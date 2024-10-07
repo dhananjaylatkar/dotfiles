@@ -1,5 +1,9 @@
 local M = {}
 
+M.resume = function()
+  require("telescope.builtin").resume()
+end
+
 M.files = function()
   require("telescope.builtin").find_files({ hidden = true })
 end
