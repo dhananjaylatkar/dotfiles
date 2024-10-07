@@ -1,6 +1,7 @@
 -- Better commenting
 return {
   "numToStr/Comment.nvim",
+  enabled = vim.g.dha.conf.enable.comment,
   event = "VeryLazy",
   opts = {
     ---Add a space b/w comment and the line

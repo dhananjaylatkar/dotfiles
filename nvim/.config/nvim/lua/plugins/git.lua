@@ -32,5 +32,6 @@ return {
     opts = {
       date_format = "%Y-%m-%d",
     },
+    enabled = vim.g.dha.conf.enable.blame,
   },
 }

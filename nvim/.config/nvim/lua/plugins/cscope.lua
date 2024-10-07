@@ -1,15 +1,10 @@
 -- cscope keymaps
+local C = vim.g.dha.conf.cscope_maps
 return {
-  -- dir = "~/code/cscope_maps.nvim",
   "dhananjaylatkar/cscope_maps.nvim",
-  ft = { "c", "h", "cpp", "ministarter" },
-  cmd = { "Cscope", "Cstag", "Cs" },
-  keys = "<C-]>",
-  opts = {
-    cscope = {
-      picker = "mini-pick",
-      project_rooter = { enable = true },
-    },
-  },
+  ft = C.ft,
+  cmd = C.cmd,
+  keys = C.keys,
+  opts = C.opts,
   enabled = vim.g.dha.conf.enable.cscope_maps,
 }

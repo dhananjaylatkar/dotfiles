@@ -3,6 +3,7 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
+    enabled = vim.g.dha.conf.enable.telescope,
     opts = {
       defaults = {
         vimgrep_arguments = {
@@ -40,6 +41,7 @@ return {
   --- Telescope on steroids
   {
     "FabianWirth/search.nvim",
+    enabled = vim.g.dha.conf.enable.telescope,
     opts = {
       tabs = {
         {
@@ -82,6 +84,7 @@ return {
   -- Project manager
   {
     "nvim-telescope/telescope-project.nvim",
+    enabled = vim.g.dha.conf.enable.telescope,
     config = function()
       require("telescope").load_extension("project")
     end,

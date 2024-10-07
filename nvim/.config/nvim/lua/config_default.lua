@@ -14,9 +14,12 @@ local M = {}
   - rosepine
   - tokyonight
 --]]
-M.colorscheme = "gruvbox-material"
+M.colorscheme = "catppuccin"
 
 -- Plugin config
+
+-- "mini-pick" or "telescope"
+M.picker = "mini-pick"
 
 -- LSP
 M.lsp = {
@@ -46,21 +49,30 @@ M.treesitter = {
 M.notes = {
   root_dir = os.getenv("HOME") .. "/code/notes/",
 }
+
+-- cscope_maps
+M.cscope_maps = {
+  ft = { "c", "h", "cpp", "ministarter" },
+  cmd = { "Cscope", "Cstag", "Cs" },
+  keys = "<C-]>",
+  opts = {
+    cscope = {
+      picker = M.picker,
+      project_rooter = { enable = true },
+    },
+  },
+}
+
 -- Vim options
 -- NOTE: Overide vim options using this table (defaults can be found in vim_config.lua).
 M.vim = {}
 
--- "mini-pick" or "telescope"
-M.picker = "mini-pick"
-
 -- Plugins
 M.enable = {
-  Comment = true, -- numToStr/Comment.nvim
-  telescope_project = true, -- nvim-telescope/telescope-project.nvim
-  harpoon = true, -- ThePrimeagen/harpoon
-  gitsigns = true, -- lewis6991/gitsigns.nvim
+  telescope = false, -- nvim-telescope/telescope.nvim
   neogit = true, -- TimUntersberger/neogit
   git_blame = true, -- f-person/git-blame.nvim
+  blame = true, -- FabijanZulj/blame.nvim
   lsp = true, -- neovim/nvim-lspconfig
   undotree = true, -- mbbill/undotree
   nvim_treesitter = true, -- nvim-treesitter/nvim-treesitter
@@ -73,7 +85,7 @@ M.enable = {
   folds = true, -- kevinhwang91/nvim-ufo
   notes = true, -- dhananjaylatkar/notes.nvim
   docgen = true, -- dhananjaylatkar/docgen.nvim
-  comment = true, -- numToStr/Comment.nvinumToStr/Comment.nvim
+  comment = true, -- numToStr/Comment.nvim
   -- echasnovski/mini.nvim modules
   mini_ai = true,
   mini_bracketed = true,
