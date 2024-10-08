@@ -47,7 +47,10 @@ M.treesitter = {
 
 -- Notes
 M.notes = {
-  root_dir = os.getenv("HOME") .. "/code/notes/",
+  opts = {
+    root = os.getenv("HOME") .. "/code/notes/",
+    picker = M.picker,
+  },
 }
 
 -- cscope_maps
