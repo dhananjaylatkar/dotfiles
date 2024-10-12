@@ -32,7 +32,7 @@ return {
   {
     "kevinhwang91/nvim-ufo",
     dependencies = "kevinhwang91/promise-async",
-    event = "BufReadPost",
+    lazy = false,
     enabled = vim.g.dha.conf.enable.folds,
     config = function()
       vim.o.foldcolumn = "1" -- '0' is not bad
@@ -64,7 +64,7 @@ return {
 
   {
     "luukvbaal/statuscol.nvim",
-    event = "BufReadPost",
+    lazy = false,
     enabled = vim.g.dha.conf.enable.folds,
     config = function()
       local builtin = require("statuscol.builtin")

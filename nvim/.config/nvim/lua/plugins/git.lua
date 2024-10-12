@@ -4,8 +4,10 @@ return {
   {
     "TimUntersberger/neogit",
     cmd = "Neogit",
-    commit = "bc0c609",
-    opts = {},
+    -- commit = "bc0c609",
+    opts = {
+      disable_signs = true,
+    },
     dependencies = { "nvim-lua/plenary.nvim" },
     enabled = vim.g.dha.conf.enable.neogit,
   },
