@@ -59,6 +59,7 @@ map("n", "<leader>sb", picker.buffer_search, { desc = "Search buffer" })
 map("n", "<leader>ss", picker.buffer_search, { desc = "Search buffer" })
 map("n", "<leader>sB", picker.buffer_grep_live, { desc = "Search open buffers" })
 map("n", "<leader>sp", picker.grep_live, { desc = "Search in directory" })
+map("n", "<leader>sP", picker.grep, { desc = "Search pattern" })
 map({ "n", "v" }, "<leader>sw", picker.grep_cword, { desc = "Word search" })
 map({ "n", "v" }, "<leader>pw", picker.grep_cword, { desc = "Word search" })
 

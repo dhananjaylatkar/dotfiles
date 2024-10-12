@@ -43,6 +43,10 @@ M.buffer_grep_live = function()
   MiniExtra.pickers.buf_lines({ scope = "all" })
 end
 
+M.grep = function()
+  MiniPick.builtin.grep()
+end
+
 M.grep_live = function()
   MiniPick.builtin.grep_live()
 end

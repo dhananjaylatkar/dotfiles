@@ -34,3 +34,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+export RIPGREP_CONFIG_PATH=$XDG_DATA_HOME/rg/ripgreprc

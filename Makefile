@@ -5,7 +5,8 @@ STOW_DIRS = \
 	tmux \
 	vim \
 	zsh \
-	wezterm
+	wezterm \
+	rg
 
 ZSH_DIR=${HOME}/.config/zsh
 NVIM_DIR=${HOME}/.config/nvim

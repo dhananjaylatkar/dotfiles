@@ -32,6 +32,12 @@ M.buffer_grep_live = function()
   require("telescope.builtin").live_grep({ grep_open_files = true })
 end
 
+M.grep = function()
+  local input_string = vim.fn.input("Grep pattern: ")
+  if input_string == "" then return end
+  require("telescope.builtin").grep_string({ search = input_string })
+end
+
 M.grep_live = function()
   require("telescope.builtin").live_grep()
 end
