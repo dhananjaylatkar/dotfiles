@@ -1,5 +1,6 @@
--- Colorschemes
+-- Colors
 return {
+  { "hiphish/rainbow-delimiters.nvim", lazy = false },
   { "joshdick/onedark.vim" },
   { "sainnhe/gruvbox-material" },
   { "sainnhe/everforest" },
