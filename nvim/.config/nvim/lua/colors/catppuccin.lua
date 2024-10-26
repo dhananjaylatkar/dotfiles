@@ -13,14 +13,14 @@ require("catppuccin").setup({
     shade = "dark",
     percentage = 0.15, -- percentage of the shade to apply to the inactive window
   },
-  no_italic = false, -- Force no italic
+  no_italic = true, -- Force no italic
   no_bold = false, -- Force no bold
   no_underline = false, -- Force no underline
   styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
-    comments = { "italic" }, -- Change the style of comments
+    comments = {}, -- Change the style of comments
     conditionals = {},
     loops = {},
-    functions = {},
+    functions = { "bold" },
     keywords = {},
     strings = {},
     variables = {},
