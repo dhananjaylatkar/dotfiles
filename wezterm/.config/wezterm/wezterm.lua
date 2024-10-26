@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 
 config.color_scheme = "Catppuccin Mocha (Gogh)"
 
-config.font = wezterm.font("Victor Mono", { weight = "Bold" })
+config.font = wezterm.font("Victor Mono", { weight = "DemiBold" })
 config.font_size = 14.0
 
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
@@ -23,9 +23,7 @@ wezterm.on("gui-attached", function(_)
   -- maximize all displayed windows on startup
   local workspace = mux.get_active_workspace()
   for _, window in ipairs(mux.all_windows()) do
-    if window:get_workspace() == workspace then
-      window:gui_window():maximize()
-    end
+    if window:get_workspace() == workspace then window:gui_window():maximize() end
   end
 end)
 
@@ -38,8 +36,6 @@ config.mouse_bindings = {
   },
 }
 
-if wezterm.target_triple == "x86_64-pc-windows-msvc" then
-  config.default_prog = { "powershell.exe" }
-end
+if wezterm.target_triple == "x86_64-pc-windows-msvc" then config.default_prog = { "powershell.exe" } end
 
 return config
