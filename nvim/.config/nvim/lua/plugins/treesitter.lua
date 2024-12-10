@@ -21,6 +21,7 @@ return {
     event = "BufRead",
     enabled = vim.g.dha.conf.enable.nvim_treesitter_context and vim.g.dha.conf.enable.nvim_treesitter,
     opts = {
+      multiwindow = true,
       max_lines = 5,
     },
   },
