@@ -61,20 +61,4 @@ return {
       vim.keymap.set("n", "zp", require("ufo").peekFoldedLinesUnderCursor)
     end,
   },
-
-  {
-    "luukvbaal/statuscol.nvim",
-    lazy = false,
-    enabled = vim.g.dha.conf.enable.folds,
-    config = function()
-      local builtin = require("statuscol.builtin")
-      require("statuscol").setup({
-        segments = {
-          { text = { "%s" }, click = "v:lua.ScSa" },
-          { text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
-          { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
-        },
-      })
-    end,
-  },
 }
