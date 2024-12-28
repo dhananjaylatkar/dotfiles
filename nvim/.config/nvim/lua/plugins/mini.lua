@@ -78,6 +78,8 @@ return {
           end,
         },
       })
+
+      vim.ui.select = MiniPick.ui_select
     end
 
     -- extra stuff
@@ -220,6 +222,22 @@ return {
       end
 
       vim.keymap.set("i", "<CR>", "v:lua._G.cr_action()", { expr = true })
+    end
+
+    if e.mini_snippets then
+      require("mini.snippets").setup({
+        snippets = {
+          { prefix = "cdate", body = "$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE", desc = "Date" },
+          { prefix = "T", body = "TODO: ", desc = "TODO" },
+          { prefix = "N", body = "NOTE: ", desc = "NOTE" },
+          { prefix = "F", body = "FIXME: ", desc = "FIXME" },
+          { prefix = "H", body = "HACK: ", desc = "HACK" },
+          vim.g.dha.conf.snippets(),
+        },
+      })
+      vim.keymap.set("i", "<C-g><C-j>", function()
+        MiniSnippets.expand({ match = false })
+      end, { desc = "Expand all" })
     end
   end,
 }

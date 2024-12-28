@@ -66,6 +66,10 @@ M.cscope_maps = {
   },
 }
 
+M.snippets = function()
+  return {}
+end
+
 -- Vim options
 -- NOTE: Overide vim options using this table (defaults can be found in vim_config.lua).
 M.vim = {}
@@ -108,6 +112,7 @@ M.enable = {
   mini_icons = true,
   mini_clue = true,
   mini_completion = true,
+  mini_snippets = true,
 }
 
 M.custom = function()
