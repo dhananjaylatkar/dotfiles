@@ -6,7 +6,6 @@ return {
     bigfile = { enabled = true },
     git = { enabled = true },
     quickfile = { enabled = true },
-    scroll = { enabled = true },
     statuscolumn = {
       enabled = true,
       right = { "git" },
