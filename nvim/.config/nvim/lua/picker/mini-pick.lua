@@ -28,7 +28,11 @@ M.recent = function()
 end
 
 M.project = function()
-  print("Not Implemented")
+  local cwd = vim.fn.expand('~/code')
+  local choose = function(item)
+    vim.schedule(function() MiniPick.builtin.files(nil, { source = { cwd = item.path } }) end)
+  end
+  return MiniExtra.pickers.explorer({ cwd = cwd }, { source = { choose = choose } })
 end
 
 M.buffers = function()
