@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+DB_FILES=()
+DB_ROOTS=()
+while getopts "d:" opt; do
+    case $opt in
+        d)
+            DB_FILES=("${DB_FILES[@]}" $(echo $OPTARG | awk -F:: '{print $1}'))
+            DB_ROOTS=("${DB_ROOTS[@]}" $(echo $OPTARG | awk -F:: '{print $2}'))
+            ;;
+        esac
+done
+
+if (( ${#DB_FILES[@]} == 0 )); then
+    fd -e c -e h > cscope.files
+    cscope -bqkv
+    exit 0
+fi
+
+for ((i=0; i<${#DB_FILES[@]}; i++)); do
+    pushd ${DB_ROOTS[$i]}
+    fd -e c -e h > cscope.files
+    cscope -bqkv -f ${DB_FILES[$i]}
+    popd
+done
+
+exit 0

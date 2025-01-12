@@ -62,6 +62,7 @@ M.cscope_maps = {
     cscope = {
       picker = M.picker,
       project_rooter = { enable = true },
+      db_build_cmd = { script = os.getenv("HOME") .. "/.config/scripts/cs", args = {} },
     },
   },
 }
