@@ -67,10 +67,16 @@ return {
         end
       end
 
+      local choose_all = function()
+        local mappings = MiniPick.get_picker_opts().mappings
+        vim.api.nvim_input(mappings.mark_all .. mappings.choose_marked)
+      end
+
       require("mini.pick").setup({
         mappings = {
           scroll_one_line_down = { char = "<C-y>", func = pick_scroll_one_line("down") },
           scroll_one_line_up = { char = "<C-e>", func = pick_scroll_one_line("up") },
+          choose_all = { char = "<C-q>", func = choose_all },
         },
         source = {
           preview = function(buf_id, item)
