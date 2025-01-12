@@ -48,7 +48,7 @@ M.treesitter = {
 -- Notes
 M.notes = {
   opts = {
-    root = os.getenv("HOME") .. "/code/notes/",
+    root = vim.fn.expand("~/code/notes/"),
     picker = M.picker,
   },
 }
@@ -62,7 +62,7 @@ M.cscope_maps = {
     cscope = {
       picker = M.picker,
       project_rooter = { enable = true },
-      db_build_cmd = { script = os.getenv("HOME") .. "/.config/scripts/cs", args = {} },
+      db_build_cmd = { script = vim.fn.expand("~/.config/scripts/cs"), args = {} },
     },
   },
 }
