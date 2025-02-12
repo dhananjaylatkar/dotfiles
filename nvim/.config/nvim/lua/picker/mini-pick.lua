@@ -28,7 +28,7 @@ M._files = function(opts)
     },
   }, {
     source = {
-      name = "Files",
+      name = opts.name,
       show = function(buf_id, items, query)
         MiniPick.default_show(buf_id, items, query, { show_icons = true })
       end,
@@ -38,7 +38,7 @@ M._files = function(opts)
 end
 
 M.files = function()
-  M._files({ cwd = vim.fn.getcwd() })
+  M._files({ name = "Files", cwd = vim.fn.getcwd() })
 end
 
 M.recent_cwd = function()
@@ -53,7 +53,7 @@ M.project = function()
   local cwd = vim.fn.expand("~/code")
   local choose = function(item)
     vim.schedule(function()
-      M._files({ cwd = item.path })
+      M._files({ name = item.path, cwd = item.path })
     end)
   end
   return MiniExtra.pickers.explorer({ cwd = cwd }, { source = { choose = choose } })
