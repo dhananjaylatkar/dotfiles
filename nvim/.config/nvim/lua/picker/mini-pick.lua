@@ -6,17 +6,39 @@ M.resume = function()
   if not ok then print("There is no picker to resume.") end
 end
 
-M.files = function()
+M._files = function(opts)
   MiniPick.builtin.cli({
-    command = { "fd", "--hidden", "-t", "f", "--exclude", ".git*" },
+    command = {
+      "fd",
+      "--hidden",
+      "-t",
+      "f",
+      "-E",
+      ".git*",
+      "-E",
+      "*venv*",
+      "-E",
+      "cscope.out",
+      "-E",
+      "cscope.files",
+      "-E",
+      "cscope.in.out",
+      "-E",
+      "cscope.po.out",
+    },
   }, {
     source = {
       name = "Files",
       show = function(buf_id, items, query)
         MiniPick.default_show(buf_id, items, query, { show_icons = true })
       end,
+      cwd = opts.cwd,
     },
   })
+end
+
+M.files = function()
+  M._files({ cwd = vim.fn.getcwd() })
 end
 
 M.recent_cwd = function()
@@ -28,9 +50,11 @@ M.recent = function()
 end
 
 M.project = function()
-  local cwd = vim.fn.expand('~/code')
+  local cwd = vim.fn.expand("~/code")
   local choose = function(item)
-    vim.schedule(function() MiniPick.builtin.files(nil, { source = { cwd = item.path } }) end)
+    vim.schedule(function()
+      M._files({ cwd = item.path })
+    end)
   end
   return MiniExtra.pickers.explorer({ cwd = cwd }, { source = { choose = choose } })
 end
