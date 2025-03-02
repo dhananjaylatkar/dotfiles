@@ -6,6 +6,7 @@ local M = {}
 --[[ Available colorschemes:
   - ayu
   - catppuccin
+  - cyberdream
   - everforest
   - gruvbox-material
   - kanagawa
@@ -14,7 +15,7 @@ local M = {}
   - rosepine
   - tokyonight
 --]]
-M.colorscheme = "catppuccin"
+M.colorscheme = "cyberdream"
 
 -- Plugin config
 

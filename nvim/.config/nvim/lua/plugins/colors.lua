@@ -10,4 +10,5 @@ return {
   { "rebelot/kanagawa.nvim" },
   { "arcticicestudio/nord-vim" },
   { "catppuccin/nvim", name = "catppuccin" },
+  { "scottmckendry/cyberdream.nvim" },
 }
