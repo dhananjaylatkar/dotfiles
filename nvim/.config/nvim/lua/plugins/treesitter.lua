@@ -13,6 +13,18 @@ return {
           enable = true,
           disable = vim.g.dha.conf.treesitter.highlight.disable,
         },
+        indent = {
+          enable = true,
+        },
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = "gnn",
+            node_incremental = "<cr>",
+            scope_incremental = false,
+            node_decremental = "<bs>",
+          },
+        },
       })
     end,
   },
