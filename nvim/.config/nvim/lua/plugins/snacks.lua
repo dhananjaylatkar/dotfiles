@@ -7,7 +7,7 @@ return {
     git = { enabled = true },
     quickfile = { enabled = true },
     statuscolumn = {
-      enabled = true,
+      enabled = false,
       right = { "git" },
       left = { "sign", "fold" },
       folds = {
