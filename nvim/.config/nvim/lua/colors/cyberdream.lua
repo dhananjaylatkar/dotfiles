@@ -3,7 +3,9 @@ require("cyberdream").setup({
   transparent = false,
   saturation = 1,
   colors = {},
-  highlights = {},
+  highlights = {
+    ["@property.c"] = { fg = require("cyberdream.colors").default.cyan, bg = "NONE" },
+  },
   italic_comments = false,
   hide_fillchars = false,
   borderless_pickers = false,
