@@ -3,9 +3,12 @@ require("cyberdream").setup({
   transparent = false,
   saturation = 1,
   colors = {},
-  highlights = {
-    ["@property.c"] = { fg = require("cyberdream.colors").default.cyan, bg = "NONE" },
-  },
+  overrides = function(c)
+    return {
+      ["@property.c"] = { fg = c.cyan },
+      ["@property.cpp"] = { fg = c.cyan },
+    }
+  end,
   italic_comments = false,
   hide_fillchars = false,
   borderless_pickers = false,
