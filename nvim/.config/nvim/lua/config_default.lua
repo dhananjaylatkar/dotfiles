@@ -56,9 +56,6 @@ M.notes = {
 
 -- cscope_maps
 M.cscope_maps = {
-  ft = { "c", "h", "cpp", "ministarter" },
-  cmd = { "Cscope", "Cstag", "Cs" },
-  keys = "<C-]>",
   opts = {
     cscope = {
       picker = M.picker,
