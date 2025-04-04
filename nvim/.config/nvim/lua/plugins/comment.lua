@@ -2,7 +2,10 @@
 return {
   "numToStr/Comment.nvim",
   enabled = vim.g.dha.conf.enable.comment,
-  event = "VeryLazy",
+  keys = {
+    "gcc",
+    { "gc", mode = { "v" } },
+  },
   opts = {
     ---Add a space b/w comment and the line
     padding = true,
