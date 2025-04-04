@@ -3,14 +3,11 @@
 local spaces = {
   function()
     local get_opt = vim.api.nvim_get_option_value
-    if not get_opt("expandtab", {}) then
-      return "Tab Size: " .. get_opt("tabstop", {})
-    end
+    if not get_opt("expandtab", {}) then return "T:" .. get_opt("tabstop", {}) end
+
     local size = get_opt("shiftwidth", {})
-    if size == 0 then
-      size = get_opt("tabstop", {})
-    end
-    return "Spaces: " .. size
+    if size == 0 then size = get_opt("tabstop", {}) end
+    return "S:" .. size
   end,
   cond = function()
     return vim.fn.winwidth(0) > 70
@@ -44,7 +41,7 @@ return {
         },
         lualine_b = { "branch", "diff" },
         lualine_c = { { "filename", path = 1 } },
-        lualine_x = { "g:cscope_maps_statusline_indicator", spaces, "encoding", "fileformat", "filetype" },
+        lualine_x = { "g:cscope_maps_statusline_indicator", spaces, { "filetype", icon_only = true } },
         lualine_y = { "progress" },
         lualine_z = { "location" },
       },
