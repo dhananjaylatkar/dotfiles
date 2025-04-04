@@ -9,7 +9,9 @@ return {
     if e.mini_ai then require("mini.ai").setup() end
 
     -- move using '[' or ']' + bcxdfijloqtuwy
-    if e.mini_bracketed then require("mini.bracketed").setup() end
+    if e.mini_bracketed then require("mini.bracketed").setup({
+      comment = { suffix = "", options = {} },
+    }) end
 
     -- floating file tree
     if e.mini_files then require("mini.files").setup() end
