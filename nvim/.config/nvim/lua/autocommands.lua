@@ -54,3 +54,21 @@ autocmd("ModeChanged", {
   end,
   desc = "Hide relative line numbers",
 })
+
+-- Show whitespace chars only in insert mode
+autocmd("InsertEnter", {
+  pattern = "*",
+  callback = function()
+    vim.wo.list = true
+  end,
+  group = group,
+  desc = "Show Whitespace Chars",
+})
+autocmd("InsertLeave", {
+  pattern = "*",
+  callback = function()
+    vim.wo.list = false
+  end,
+  group = group,
+  desc = "Hide Whitespace Chars",
+})

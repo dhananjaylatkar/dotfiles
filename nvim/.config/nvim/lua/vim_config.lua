@@ -11,8 +11,8 @@ local vim_defaults = {
   ignorecase = true, -- Case insensitive searching
   inccommand = "nosplit", -- Incremental live completion
   incsearch = true,
-  list = true,
-  listchars = { tab = "› ", trail = "␣" }, -- must enable `list`
+  list = false,
+  listchars = { tab = "› ", trail = "·", lead = "·" }, -- must enable `list`
   -- listchars = { tab = "› ", eol = "↩", trail = "␣", lead = "␣" },
   mouse = "a", -- enable mouse mode
   number = true, -- enable line numbers
