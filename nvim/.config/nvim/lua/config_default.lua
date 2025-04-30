@@ -15,7 +15,7 @@ local M = {}
   - rosepine
   - tokyonight
 --]]
-M.colorscheme = "dayfox"
+M.colorscheme = "carbonfox"
 
 -- Plugin config
 
