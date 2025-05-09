@@ -42,7 +42,6 @@ end
 config.use_fancy_tab_bar = false
 config.tab_max_width = 1600
 
-
 local function tab_title(tab_info)
   local title = tab_info.tab_title
   if title and #title > 0 then return title end
@@ -61,7 +60,9 @@ wezterm.on("format-tab-title", function(tab, _, _, _, hover, max_width)
     foreground = "#0c0c0c"
   end
 
-  local title = ("  %d %s  "):format(tab.tab_index + 1, tab_title(tab))
+  local zoom = ""
+  if tab.active_pane.is_zoomed then zoom = "[Z]" end
+  local title = ("  %d %s %s "):format(tab.tab_index + 1, tab_title(tab), zoom)
 
   return {
     { Background = { Color = background } },
