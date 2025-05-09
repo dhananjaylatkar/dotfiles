@@ -116,6 +116,8 @@ wezterm.on("update-right-status", function(window, pane)
   local key_table = window:active_key_table()
   update_items(items, _colors.bg, _colors.fg, key_table)
 
+  if window:leader_is_active() then update_items(items, _colors.bg, _colors.fg, "`") end
+
   local date = wezterm.strftime("%H:%M | %b %-d")
   update_items(items, _colors.bg, _colors.fg, date)
 
