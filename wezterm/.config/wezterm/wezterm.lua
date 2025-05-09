@@ -102,7 +102,7 @@ wezterm.on("update-status", function(window, pane)
   local domain = window:active_pane():get_domain_name()
   update_items(items, _colors.status_bg1, _colors.status_fg1, domain)
 
-  local name = wezterm.mux.get_active_workspace()
+  local name = mux.get_active_workspace()
   update_items(items, _colors.status_bg2, _colors.status_fg2, name)
 
   update_items(items, _colors.bg, _colors.fg, "")
