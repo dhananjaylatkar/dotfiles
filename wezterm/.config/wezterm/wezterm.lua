@@ -30,7 +30,7 @@ config.font = wezterm.font("Victor Mono", { weight = "DemiBold" })
 config.font_size = 14.0
 
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
-config.window_decorations = "RESIZE"
+config.window_decorations = "NONE"
 
 -- config.enable_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
@@ -56,6 +56,10 @@ config.mouse_bindings = {
   },
 }
 
-if wezterm.target_triple == "x86_64-pc-windows-msvc" then config.default_prog = { "powershell.exe" } end
+if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+  config.default_prog = { "powershell.exe" }
+  config.window_decorations = "RESIZE"
+end
+
 
 return config
