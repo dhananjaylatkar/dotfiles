@@ -33,15 +33,17 @@ config.mouse_bindings = {
   },
 }
 
-config.unix_domains = { { name = "unix" } }
-config.default_gui_startup_args = { "connect", "unix" }
-
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
   config.default_prog = { "powershell.exe" }
   config.window_decorations = "RESIZE"
 end
 
--- tab bar style
+-- Unix domains
+-- config.unix_domains = { { name = "0" } }
+-- config.default_gui_startup_args = { "connect", "0" }
+
+-- tab and status bar style
+config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = false
 config.tab_max_width = 1600
 
@@ -132,9 +134,10 @@ wezterm.on("update-right-status", function(window, pane)
   window:set_right_status(wezterm.format(items))
 end)
 
-config.leader = { key = "`", timeout_milliseconds = 5000 }
+-- LEADER based keybindings
+config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 5000 }
 config.keys = {
-  { key = "`", mods = "LEADER", action = wezterm.action.SendKey({ key = "`" }) },
+  { key = "a", mods = "LEADER|CTRL", action = wezterm.action.SendKey({ key = "a", mods = "CTRL" }) },
 
   -- tab navigation
   { key = "1", mods = "LEADER", action = act.ActivateTab(0) },
