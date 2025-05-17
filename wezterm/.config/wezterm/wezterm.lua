@@ -135,77 +135,77 @@ wezterm.on("update-right-status", function(window, pane)
 end)
 
 -- LEADER based keybindings
-config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 5000 }
-config.keys = {
-  { key = "a", mods = "LEADER|CTRL", action = wezterm.action.SendKey({ key = "a", mods = "CTRL" }) },
-
-  -- tab navigation
-  { key = "1", mods = "LEADER", action = act.ActivateTab(0) },
-  { key = "2", mods = "LEADER", action = act.ActivateTab(1) },
-  { key = "3", mods = "LEADER", action = act.ActivateTab(2) },
-  { key = "4", mods = "LEADER", action = act.ActivateTab(3) },
-  { key = "5", mods = "LEADER", action = act.ActivateTab(4) },
-  { key = "6", mods = "LEADER", action = act.ActivateTab(5) },
-  { key = "7", mods = "LEADER", action = act.ActivateTab(6) },
-  { key = "8", mods = "LEADER", action = act.ActivateTab(7) },
-  { key = "9", mods = "LEADER", action = act.ActivateTab(8) },
-  { key = "0", mods = "LEADER", action = act.ActivateTab(9) },
-  { key = "Tab", mods = "LEADER", action = act.ActivateLastTab },
-
-  -- pane life cycle
-  { key = "_", mods = "LEADER|SHIFT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-  { key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-  { key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
-  { key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
-
-  -- tab life cycle
-  { key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
-  { key = "[", mods = "LEADER", action = act.ActivateTabRelative(-1) },
-  { key = "]", mods = "LEADER", action = act.ActivateTabRelative(1) },
-  {
-    key = ",",
-    mods = "LEADER",
-    action = act.PromptInputLine({
-      description = "Enter new name for tab",
-      initial_value = "ws",
-      action = wezterm.action_callback(function(window, pane, line)
-        if line then window:active_tab():set_title(line) end
-      end),
-    }),
-  },
-
-  -- scroll
-  { key = "PageUp", mods = "SHIFT", action = act.ScrollByPage(-1) },
-  { key = "PageDown", mods = "SHIFT", action = act.ScrollByPage(1) },
-
-  -- pane navigation
-  { key = "LeftArrow", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
-  { key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
-
-  { key = "RightArrow", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
-  { key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
-
-  { key = "UpArrow", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
-  { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
-
-  { key = "DownArrow", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
-  { key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
-
-  -- pane resize
-  { key = "H", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
-  { key = "J", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
-  { key = "K", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
-  { key = "L", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
-}
-
-config.key_tables = {
-  resize_pane = {
-    { key = "H", action = act.AdjustPaneSize({ "Left", 1 }) },
-    { key = "L", action = act.AdjustPaneSize({ "Right", 1 }) },
-    { key = "K", action = act.AdjustPaneSize({ "Up", 1 }) },
-    { key = "J", action = act.AdjustPaneSize({ "Down", 1 }) },
-    { key = "Escape", action = "PopKeyTable" },
-  },
-}
+-- config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 5000 }
+-- config.keys = {
+--   { key = "a", mods = "LEADER|CTRL", action = wezterm.action.SendKey({ key = "a", mods = "CTRL" }) },
+--
+--   -- tab navigation
+--   { key = "1", mods = "LEADER", action = act.ActivateTab(0) },
+--   { key = "2", mods = "LEADER", action = act.ActivateTab(1) },
+--   { key = "3", mods = "LEADER", action = act.ActivateTab(2) },
+--   { key = "4", mods = "LEADER", action = act.ActivateTab(3) },
+--   { key = "5", mods = "LEADER", action = act.ActivateTab(4) },
+--   { key = "6", mods = "LEADER", action = act.ActivateTab(5) },
+--   { key = "7", mods = "LEADER", action = act.ActivateTab(6) },
+--   { key = "8", mods = "LEADER", action = act.ActivateTab(7) },
+--   { key = "9", mods = "LEADER", action = act.ActivateTab(8) },
+--   { key = "0", mods = "LEADER", action = act.ActivateTab(9) },
+--   { key = "Tab", mods = "LEADER", action = act.ActivateLastTab },
+--
+--   -- pane life cycle
+--   { key = "_", mods = "LEADER|SHIFT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+--   { key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+--   { key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
+--   { key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
+--
+--   -- tab life cycle
+--   { key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
+--   { key = "[", mods = "LEADER", action = act.ActivateTabRelative(-1) },
+--   { key = "]", mods = "LEADER", action = act.ActivateTabRelative(1) },
+--   {
+--     key = ",",
+--     mods = "LEADER",
+--     action = act.PromptInputLine({
+--       description = "Enter new name for tab",
+--       initial_value = "ws",
+--       action = wezterm.action_callback(function(window, pane, line)
+--         if line then window:active_tab():set_title(line) end
+--       end),
+--     }),
+--   },
+--
+--   -- scroll
+--   { key = "PageUp", mods = "SHIFT", action = act.ScrollByPage(-1) },
+--   { key = "PageDown", mods = "SHIFT", action = act.ScrollByPage(1) },
+--
+--   -- pane navigation
+--   { key = "LeftArrow", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
+--   { key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
+--
+--   { key = "RightArrow", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
+--   { key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
+--
+--   { key = "UpArrow", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
+--   { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
+--
+--   { key = "DownArrow", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
+--   { key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
+--
+--   -- pane resize
+--   { key = "H", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
+--   { key = "J", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
+--   { key = "K", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
+--   { key = "L", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
+-- }
+--
+-- config.key_tables = {
+--   resize_pane = {
+--     { key = "H", action = act.AdjustPaneSize({ "Left", 1 }) },
+--     { key = "L", action = act.AdjustPaneSize({ "Right", 1 }) },
+--     { key = "K", action = act.AdjustPaneSize({ "Up", 1 }) },
+--     { key = "J", action = act.AdjustPaneSize({ "Down", 1 }) },
+--     { key = "Escape", action = "PopKeyTable" },
+--   },
+-- }
 
 return config
