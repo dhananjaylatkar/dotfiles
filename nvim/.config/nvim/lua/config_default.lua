@@ -14,8 +14,9 @@ local M = {}
   - onedark
   - rosepine
   - tokyonight
+  - kanso
 --]]
-M.colorscheme = "carbonfox"
+M.colorscheme = "kanso"
 
 -- Plugin config
 

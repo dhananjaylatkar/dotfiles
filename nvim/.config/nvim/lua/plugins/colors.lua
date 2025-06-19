@@ -1,6 +1,5 @@
 -- Colors
 return {
-  { "hiphish/rainbow-delimiters.nvim", lazy = false },
   { "joshdick/onedark.vim" },
   { "sainnhe/gruvbox-material" },
   { "sainnhe/everforest" },
@@ -12,4 +11,5 @@ return {
   { "catppuccin/nvim", name = "catppuccin" },
   { "scottmckendry/cyberdream.nvim" },
   { "EdenEast/nightfox.nvim" },
+  { "webhooked/kanso.nvim" }
 }
