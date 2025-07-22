@@ -1,9 +1,13 @@
-require('mini.hues').setup({
-  background = '#000000',
-  foreground = '#f0f0f0',
+require("mini.hues").setup({
+  -- green
+  background = "#1F2C24",
+  foreground = "#E7DDC7",
+  -- blue
+  -- background = "#232E3F",
+  -- foreground = "#EEECE3",
   saturation = "high",
   plugins = {
-    default = true,
+    default = false,
+    ["echasnovski/mini.nvim"] = true,
   },
 })
-

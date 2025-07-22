@@ -183,24 +183,44 @@ tmux_conf_theme=enabled
 # color_hostname_bg="#78a9ff"
 
 # kanso
+# # line colors
+# color_left_middle_bg="#14171d"
+# color_right_bg="#14171d"
+# color_right_fg="#C5C9C7"
+# color_cmd_mode_bg="#C5C9C7"
+# # window colors
+# color_active_bg_prev_fg="#A292A3"
+# color_prev_bg="#393B44"
+# color_inactive_fg="#C5C9C7"
+# # section colors
+# color_session_name_fg="#14171d"
+# color_session_name_bg="#8BA4B0"
+# color_uptime_fg="#8BA4B0"
+# color_uptime_bg="#14171d"
+# color_username_fg="#8BA4B0"
+# color_username_bg="#14171d"
+# color_hostname_fg="#14171d"
+# color_hostname_bg="#8BA4B0"
+
+# Selenized Black
 # line colors
-color_left_middle_bg="#14171d"
-color_right_bg="#14171d"
-color_right_fg="#C5C9C7"
-color_cmd_mode_bg="#C5C9C7"
+color_left_middle_bg="#181818"
+color_right_bg="#181818"
+color_right_fg="#b9b9b9"
+color_cmd_mode_bg="#b9b9b9"
 # window colors
-color_active_bg_prev_fg="#A292A3"
-color_prev_bg="#393B44"
-color_inactive_fg="#C5C9C7"
+color_active_bg_prev_fg="#dbb32d"
+color_prev_bg="#3b3b3b"
+color_inactive_fg="#b9b9b9"
 # section colors
-color_session_name_fg="#14171d"
-color_session_name_bg="#8BA4B0"
-color_uptime_fg="#8BA4B0"
-color_uptime_bg="#14171d"
-color_username_fg="#8BA4B0"
-color_username_bg="#14171d"
-color_hostname_fg="#14171d"
-color_hostname_bg="#8BA4B0"
+color_session_name_fg="#181818"
+color_session_name_bg="#dbb32d"
+color_uptime_fg="#dbb32d"
+color_uptime_bg="#181818"
+color_username_fg="#dbb32d"
+color_username_bg="#181818"
+color_hostname_fg="#181818"
+color_hostname_bg="#dbb32d"
 
 # unused
 color_unused_1="#5eff6c"
