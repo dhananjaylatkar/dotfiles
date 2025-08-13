@@ -22,6 +22,8 @@ end
 vim.api.nvim_set_hl(0, "MiniCursorWord", { link = "Visual" })
 vim.api.nvim_set_hl(0, "MiniCursorWordCurrent", {})
 
+require("utils").set_undo()
+
 -- Overwrite with user specific config
 if vim.g.dha.conf.custom then
   vim.g.dha.conf.custom()

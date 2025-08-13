@@ -28,7 +28,6 @@ local vim_defaults = {
   splitright = true,
   swapfile = false, -- Disable swap files
   tabstop = 4,
-  undofile = true, -- Save undo history
   updatetime = 250, -- Decrease update time
   wrap = true,
   termguicolors = true,

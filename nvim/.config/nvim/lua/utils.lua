@@ -51,4 +51,36 @@ M.install_lazy = function()
   vim.opt.rtp:prepend(lazypath)
 end
 
+M.set_undo = function()
+  -- Read Undo file for current buffer
+  local function ReadUndo()
+    local fname = vim.api.nvim_buf_get_name(0)
+    local undofile = string.format("%s%s", vim.o.undodir, fname)
+
+    if vim.fn.filereadable(undofile) ~= 1 then return end
+    vim.cmd(string.format("silent! rundo " .. vim.fn.fnameescape(undofile)))
+  end
+
+  -- Write Undo file for current buffer
+  local function WriteUndo()
+    local fname = vim.api.nvim_buf_get_name(0)
+    local undofile = string.format("%s%s", vim.o.undodir, fname)
+    local dir = vim.fn.fnamemodify(undofile, ":h")
+
+    if vim.fn.isdirectory(dir) == 0 then vim.fn.mkdir(dir, "p") end
+    vim.cmd(string.format("silent! wundo %s", vim.fn.fnameescape(undofile)))
+  end
+
+  -- Autocommands
+  vim.api.nvim_create_autocmd("BufReadPost", {
+    pattern = "*",
+    callback = ReadUndo,
+  })
+
+  vim.api.nvim_create_autocmd("BufWritePost", {
+    pattern = "*",
+    callback = WriteUndo,
+  })
+end
+
 return M
