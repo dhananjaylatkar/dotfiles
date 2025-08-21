@@ -10,7 +10,6 @@ STOW_DIRS = \
 
 ZSH_DIR=${HOME}/.config/zsh
 NVIM_DIR=${HOME}/.config/nvim
-TMUX_DIR=${HOME}/.config/tmux
 PYENV_DIR=${HOME}/.config/pyenv
 
 nothing:
@@ -20,7 +19,6 @@ nothing:
 	@echo "    make nvim           stow neovim"
 	@echo "    make nvim_clean     unstow neovim"
 	@echo "    make pyenv          install pyenv"
-	@echo "    make tmux           fetch tmux config"
 
 .PHONY: all
 all:
@@ -53,17 +51,6 @@ freebsd_clean:
 	@for DIR in ${STOW_DIRS_FBSD}; do \
 		 stow --target=$${HOME} --delete -v --no-folding $${DIR}; \
 	done
-
-.PHONY: tmux
-tmux:
-	@echo ">>> tmux >>>"
-	@if [ -f "${TMUX_DIR}/.tmux.conf" ]; then \
-		git --git-dir ${TMUX_DIR}/.git/ --work-tree=${TMUX_DIR} pull; \
-	else \
-		git clone https://github.com/gpakosz/.tmux.git ${TMUX_DIR}; \
-		ln -s -f ${TMUX_DIR}/.tmux.conf ${HOME}/.tmux.conf; \
-	fi
-	@echo "<<< tmux <<<"
 
 .PHONY: pyenv
 pyenv:
