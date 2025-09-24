@@ -61,8 +61,6 @@ fi
 setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
-#alias cd='z'
-alias -- -='\cd -'
 alias 1='\cd -'
 alias 2='\cd -2'
 alias 3='\cd -3'
@@ -73,9 +71,14 @@ alias 7='\cd -7'
 alias 8='\cd -8'
 alias 9='\cd -9'
 
+# dir history with fzf
 function d () {
-  if [[ -n $1 ]]; then
-    dirs "$@"
+  if which fzf > /dev/null; then
+    local sel=$(dirs -v | fzf --height=10 | awk '{print $2}')
+    sel=$(eval echo "${sel}")
+    if [[ -n "${sel}" ]]; then
+      cd "${sel}"
+    fi
   else
     dirs -v | head -10
   fi
