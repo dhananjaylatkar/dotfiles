@@ -18,9 +18,12 @@ if (( ${#DB_FILES[@]} == 0 )); then
 fi
 
 for ((i=0; i<${#DB_FILES[@]}; i++)); do
+    if ! [ -d "${DB_ROOTS[$i]}" ]; then
+        continue
+    fi
     pushd ${DB_ROOTS[$i]}
     fd -e c -e h > cscope.files
-    cscope -bqkv -f ${DB_FILES[$i]}
+    cscope -bqkv
     popd
 done
 
