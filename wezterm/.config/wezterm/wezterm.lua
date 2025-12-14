@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 
 config.color_scheme = 'Selenized Black (Gogh)'
 
-config.font = wezterm.font("Victor Mono", { weight = "DemiBold" })
+config.font = wezterm.font("Victor Mono")
 config.font_size = 14.0
 
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
