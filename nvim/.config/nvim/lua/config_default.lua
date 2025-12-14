@@ -137,6 +137,7 @@ M.enable = {
   mini_clue = true,
   mini_completion = true,
   mini_snippets = true,
+  mini_cmdline = true,
 }
 
 M.custom = function()

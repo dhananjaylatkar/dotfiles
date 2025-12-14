@@ -263,5 +263,9 @@ return {
       local opts = { pattern = "MiniSnippetsSessionStart", callback = make_stop }
       vim.api.nvim_create_autocmd("User", opts)
     end
+
+    if e.mini_cmdline then require("mini.cmdline").setup({
+      autocomplete = { delay = 500 },
+    }) end
   end,
 }

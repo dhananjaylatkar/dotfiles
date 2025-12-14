@@ -35,6 +35,7 @@ local vim_defaults = {
   completeopt = "menuone,noinsert",
   spell = true,
   spelllang = { "en_us" },
+  pumheight = 5, -- height of popup menu
 }
 
 -- apply vim config
