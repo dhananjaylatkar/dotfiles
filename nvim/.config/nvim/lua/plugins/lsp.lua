@@ -16,5 +16,6 @@ return {
         vim.lsp.enable(s)
       end
     end
+    vim.diagnostic.config({ virtual_lines = { current_line = true } })
   end,
 }
