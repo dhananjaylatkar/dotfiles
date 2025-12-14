@@ -119,7 +119,23 @@ return {
     end
 
     -- highlight word under cursor
-    if e.mini_cursorword then require("mini.cursorword").setup() end
+    if e.mini_cursorword then
+      -- disable mini_cursorword when in visual mode
+      vim.api.nvim_create_autocmd("ModeChanged", {
+        pattern = "*:[vV\x16]",
+        callback = function()
+          vim.b.minicursorword_disable = true
+        end,
+      })
+
+      vim.api.nvim_create_autocmd("ModeChanged", {
+        pattern = "[vV\x16]:*",
+        callback = function()
+          vim.b.minicursorword_disable = false
+        end,
+      })
+      require("mini.cursorword").setup()
+    end
 
     -- minimal ascii icons
     if e.mini_icons then
