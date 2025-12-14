@@ -129,4 +129,8 @@ M.lsp_workspace_diagnostics = function()
   MiniExtra.pickers.diagnostic({ scope = "all" })
 end
 
+M.help = function()
+  MiniPick.builtin.help()
+end
+
 return M

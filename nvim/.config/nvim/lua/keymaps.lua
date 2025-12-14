@@ -142,6 +142,7 @@ map("n", "<leader>nn", "<cmd>NotesNew<cr>", { desc = "New note" })
 
 -- Misc
 map("n", "<leader>kk", "<cmd>e ~/.config/nvim/lua/" .. vim.g.dha.conf.file .. "<cr>", { desc = "Open config file" })
+map("n", "<f1>", picker.help, { desc = "Help" })
 map("n", "<f2>", MiniFiles.open, { desc = "Open file tree" })
 map("n", "<f3>", "<cmd>UndotreeToggle<cr>", { desc = "Undotree" })
 map("n", "<f5>", "<cmd>set list!<cr>", { desc = "Indent guides" })

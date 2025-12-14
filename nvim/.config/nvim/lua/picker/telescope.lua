@@ -82,4 +82,8 @@ M.lsp_workspace_diagnostics = function()
   require("telescope.builtin").lsp_workspace_diagnostics()
 end
 
+M.help = function()
+  require("telescope.builtin").help_tags()
+end
+
 return M
