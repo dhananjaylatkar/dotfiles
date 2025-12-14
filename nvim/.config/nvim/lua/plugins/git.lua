@@ -47,12 +47,6 @@ return {
       local actions = require("diffview.actions")
       require("diffview").setup({
         enhanced_diff_hl = true,
-        file_panel = {
-          win_config = {
-            position = "bottom",
-            height = 5,
-          },
-        },
         keymaps = {
           file_history_panel = {
             {
