@@ -138,6 +138,7 @@ M.enable = {
   mini_completion = true,
   mini_snippets = true,
   mini_cmdline = true,
+  mini_tabline = true,
 }
 
 M.custom = function()

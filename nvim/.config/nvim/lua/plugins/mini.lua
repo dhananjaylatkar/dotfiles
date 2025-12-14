@@ -283,5 +283,7 @@ return {
     if e.mini_cmdline then require("mini.cmdline").setup({
       autocomplete = { delay = 500 },
     }) end
+
+    if e.mini_tabline then require("mini.tabline").setup() end
   end,
 }
