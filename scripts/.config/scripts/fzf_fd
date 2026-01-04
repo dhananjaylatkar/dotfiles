@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# 1. Search for files using fd
+# 2. Open the file in NeoVim
+fzf --height ~40% --layout reverse --tmux bottom,40% \
+    --preview 'bat -n --color=always {}' \
+    --bind 'enter:become(nvim {})'

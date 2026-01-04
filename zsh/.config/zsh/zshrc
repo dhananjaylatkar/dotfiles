@@ -50,7 +50,14 @@ zsh_add_plugin "zsh-users/zsh-autosuggestions"
 # FZF
 source <(fzf --zsh)
 export FZF_COMPLETION_TRIGGER='~~'
-export FZF_DEFAULT_COMMAND='fd --type file --color=never --follow --hidden --exclude ^.git'
+export FZF_DEFAULT_COMMAND="fd -t f --color=never --hidden \
+    -E .git \
+    -E .github \
+    -E venv \
+    -E cscope.out \
+    -E cscope.files \
+    -E cscope.in.out \
+    -E cscope.po.out"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 compinit
 
@@ -66,7 +73,8 @@ zstyle ':completion:*' cache-path $ZSH_CACHE_DIR
 
 # Key-bindings
 bindkey -s '^o' 'ranger^M'
-# bindkey -s '^f' 'zi^M'
+bindkey -s '^f' 'fzf_fd^M'
+bindkey -s '^g' 'fzf_rg^M'
 
 # opam configuration
 [[ ! -r $HOME/.opam/opam-init/init.zsh ]] || source $HOME/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
