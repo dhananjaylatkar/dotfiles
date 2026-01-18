@@ -63,12 +63,8 @@ M.lsp = {
   },
 }
 -- Treesitter
-M.treesitter = {
-  ensure_installed = { "lua" }, -- List of languages
-  ignore_install = {}, -- List of parsers to ignore installing
-  highlight = {
-    disable = {}, -- List of parsers to disable
-  },
+M.ts = {
+  langs = { "lua", "c", "cpp" }, -- List of languages
 }
 
 -- Notes
