@@ -12,4 +12,4 @@ fzf --ansi --disabled --query "$INITIAL_QUERY" \
     --preview 'bat -n --color=always {1} --highlight-line {2}' \
     --bind 'enter:become(nvim {1} +{2})' \
     --preview-window '+{2}+3/3,~3' \
-    --height ~40% --layout reverse --tmux bottom,40%
+    --height 40% --layout reverse --tmux bottom,40%
