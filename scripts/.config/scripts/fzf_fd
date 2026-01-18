@@ -2,9 +2,6 @@
 
 # 1. Search for files using fd
 # 2. Open the file in NeoVim
-# fzf --height ~40% --layout reverse --tmux bottom,40% \
-#     --preview 'bat -n --color=always {}' \
-#     --bind 'enter:become(nvim {}; echo {})'
 FD_PREFIX="fd --hidden -t f -E .git -E venv -E cscope.out -E cscope.files -E cscope.in.out -E cscope.po.out"
 INITIAL_QUERY="${*:-}"
 fzf --ansi --disabled --query "$INITIAL_QUERY" \
