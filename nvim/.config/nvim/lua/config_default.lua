@@ -107,7 +107,6 @@ M.enable = {
   formatter = true, -- mhartington/formatter.nvim
   vim_sleuth = true, -- tpope/vim-sleuth
   cscope_maps = true, -- dhananjaylatkar/cscope_maps.nvim
-  lualine = true, -- hoob3rt/lualine.nvim
   vim_markdown = true, -- plasticboy/vim-markdown
   folds = false, -- kevinhwang91/nvim-ufo
   notes = true, -- dhananjaylatkar/notes.nvim
@@ -135,6 +134,7 @@ M.enable = {
   mini_snippets = true,
   mini_cmdline = true,
   mini_tabline = false,
+  mini_statusline = true,
 }
 
 M.custom = function()

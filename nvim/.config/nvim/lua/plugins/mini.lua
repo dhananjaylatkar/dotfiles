@@ -285,5 +285,49 @@ return {
     }) end
 
     if e.mini_tabline then require("mini.tabline").setup() end
+
+    if e.mini_statusline then
+      local ALWAYS_TRUNC = 500
+      local diff = function()
+        local summary = vim.b.minidiff_summary
+        if summary == nil then return "" end
+        local t = {}
+        if summary.add > 0 then table.insert(t, "+" .. summary.add) end
+        if summary.change > 0 then table.insert(t, "~" .. summary.change) end
+        if summary.delete > 0 then table.insert(t, "-" .. summary.delete) end
+        return table.concat(t, " ")
+      end
+
+      local indent = function()
+        local get_opt = vim.api.nvim_get_option_value
+        if not get_opt("expandtab", {}) then return "T:" .. get_opt("tabstop", {}) .. "│" end
+
+        local size = get_opt("shiftwidth", {})
+        if size == 0 then size = get_opt("tabstop", {}) end
+        return "S:" .. size .. "│"
+      end
+
+      require("mini.statusline").setup({
+        content = {
+          active = function()
+            local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = ALWAYS_TRUNC })
+            local filename = MiniStatusline.section_filename({ trunc_width = ALWAYS_TRUNC })
+            return MiniStatusline.combine_groups({
+              { hl = mode_hl, strings = { mode } },
+              { hl = "MiniStatuslineDevinfo", strings = { diff() } },
+              "%<", -- Mark general truncate point
+              { hl = "MiniStatuslineFilename", strings = { filename } },
+              "%=", -- End left alignment
+              { hl = nil, strings = { vim.g.cscope_maps_statusline_indicator } },
+              { hl = mode_hl, strings = { indent(), "%l│%v" } },
+            })
+          end,
+          inactive = function()
+            local filename = MiniStatusline.section_filename({ trunc_width = ALWAYS_TRUNC })
+            return MiniStatusline.combine_groups({ { hl = "MiniStatuslineInactive", strings = { filename } } })
+          end,
+        },
+      })
+    end
   end,
 }
