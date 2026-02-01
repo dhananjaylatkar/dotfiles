@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+BACKUP_PATH=$1
+
+BACKUP_DIRS=(
+    "Documents"
+    "Calibre Library"
+    "Learning"
+    "Music"
+    "Pictures"
+)
+
+for dir in "${BACKUP_DIRS[@]}"; do
+    echo \"rsync -aP "${BACKUP_PATH}/${dir}" "${HOME}/"\"
+    rsync -aP "${BACKUP_PATH}/${dir}" "${HOME}/"
+done
+
+
+rsync -aP "${BACKUP_PATH}/zsh/.history" "${HOME}/.config/zsh/"
+rsync -aP "${BACKUP_PATH}/zsh/zsh-custom-conf" "${HOME}/.config/zsh/"

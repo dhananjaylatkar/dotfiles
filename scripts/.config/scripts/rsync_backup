@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+PATH=$1
+BACKUP_PATH=${PATH}/backup_fedora
+
+BACKUP_DIRS=(
+    "Documents"
+    "Calibre Library"
+    "Learning"
+    "Music"
+    "Pictures"
+)
+
+for dir in "${BACKUP_DIRS[@]}"; do
+    echo \"rsync -aP "${HOME}/${dir}" "${BACKUP_PATH}"/\"
+    rsync -aP "${HOME}/${dir}" "${BACKUP_PATH}/"
+done
+
+rsync -aP "${HOME}/.config/zsh/.history" "${BACKUP_PATH}/zsh/"
+rsync -aP "${HOME}/.config/zsh/zsh-custom-conf" "${BACKUP_PATH}/zsh/"
+
+rsync -aP "${HOME}/Videos/Movies/" "${PATH}/Entertainment/Movies/"
+rsync -aP "${HOME}/Videos/TV/" "${PATH}/Entertainment/TV Series/"
