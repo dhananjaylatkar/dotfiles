@@ -6,7 +6,8 @@ STOW_DIRS = \
 	vim \
 	zsh \
 	wezterm \
-	rg
+	rg \
+	niri
 
 ZSH_DIR=${HOME}/.config/zsh
 NVIM_DIR=${HOME}/.config/nvim
