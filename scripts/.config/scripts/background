@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+IMG=$(find ${HOME}/Pictures/Wallpapers -type f | shuf -n 1)
+
+swaybg -i ${IMG} -m fill &
+OLD_PID=$!
+while true; do
+    sleep 600
+    swaybg -i ${IMG} -m fill &
+    NEXT_PID=$!
+    sleep 5
+    kill $OLD_PID
+    OLD_PID=$NEXT_PID
+done
