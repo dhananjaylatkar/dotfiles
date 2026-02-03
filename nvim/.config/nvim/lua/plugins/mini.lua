@@ -292,9 +292,9 @@ return {
         local summary = vim.b.minidiff_summary
         if summary == nil then return "" end
         local t = {}
-        if summary.add > 0 then table.insert(t, "+" .. summary.add) end
-        if summary.change > 0 then table.insert(t, "~" .. summary.change) end
-        if summary.delete > 0 then table.insert(t, "-" .. summary.delete) end
+        if summary.add and summary.add > 0 then table.insert(t, "+" .. summary.add) end
+        if summary.change and summary.change > 0 then table.insert(t, "~" .. summary.change) end
+        if summary.delete and summary.delete > 0 then table.insert(t, "-" .. summary.delete) end
         return table.concat(t, " ")
       end
 
