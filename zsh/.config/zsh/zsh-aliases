@@ -61,6 +61,7 @@ fi
 setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
+alias -- -='\cd -'
 alias 1='\cd -'
 alias 2='\cd -2'
 alias 3='\cd -3'
@@ -75,6 +76,7 @@ alias 9='\cd -9'
 function d () {
   if which fzf > /dev/null; then
     local sel=$(dirs -v | fzf --height=10 | awk '{print $2}')
+    echo "${sel}"
     sel=$(eval echo "${sel}")
     if [[ -n "${sel}" ]]; then
       cd "${sel}"
