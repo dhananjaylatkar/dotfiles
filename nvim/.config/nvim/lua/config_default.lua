@@ -16,7 +16,7 @@ local M = {}
   - tokyonight
   - kanso
 --]]
-M.colorscheme = "default"
+M.colorscheme = "minihues"
 
 -- Plugin config
 
