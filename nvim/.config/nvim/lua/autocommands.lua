@@ -77,15 +77,15 @@ autocmd("InsertLeave", {
 autocmd("VimResized", { command = "wincmd =" })
 
 -- show cursorline only in active window
-autocmd({ "WinEnter", "BufEnter" }, {
-  group = vim.api.nvim_create_augroup("active_cursorline", { clear = true }),
-  callback = function()
-    vim.opt_local.cursorline = true
-  end,
-})
-autocmd({ "WinLeave", "BufLeave" }, {
-  group = "active_cursorline",
-  callback = function()
-    vim.opt_local.cursorline = false
-  end,
-})
+-- autocmd({ "WinEnter", "BufEnter" }, {
+--   group = group,
+--   callback = function()
+--     vim.opt_local.cursorline = true
+--   end,
+-- })
+-- autocmd({ "WinLeave", "BufLeave" }, {
+--   group = group,
+--   callback = function()
+--     vim.opt_local.cursorline = false
+--   end,
+-- })
