@@ -319,7 +319,7 @@ return {
               { hl = "MiniStatuslineFilename", strings = { filename } },
               "%=", -- End left alignment
               { hl = nil, strings = { vim.g.cscope_maps_statusline_indicator } },
-              { hl = mode_hl, strings = { indent(), "%l│%v" } },
+              { hl = mode_hl, strings = { indent(), "%l:%v" } },
             })
           end,
           inactive = function()
