@@ -307,24 +307,30 @@ return {
         return "S:" .. size
       end
 
+      local utils = require("utils")
+      local fname = function()
+        local modified = vim.bo.modified and " [+]" or ""
+        local ro = vim.bo.readonly and " [-]" or ""
+        local file = utils.get_rel_path(vim.fn.expand("%:p"))
+        return file .. modified .. ro
+      end
+
       require("mini.statusline").setup({
         content = {
           active = function()
             local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = ALWAYS_TRUNC })
-            local filename = MiniStatusline.section_filename({ trunc_width = ALWAYS_TRUNC })
             return MiniStatusline.combine_groups({
               { hl = mode_hl, strings = { mode } },
               { hl = "MiniStatuslineDevinfo", strings = { diff() } },
               "%<", -- Mark general truncate point
-              { hl = "MiniStatuslineFilename", strings = { filename } },
+              { hl = "MiniStatuslineFilename", strings = { fname() } },
               "%=", -- End left alignment
               { hl = nil, strings = { vim.g.cscope_maps_statusline_indicator, indent() } },
               { hl = mode_hl, strings = { "%l:%v" } },
             })
           end,
           inactive = function()
-            local filename = MiniStatusline.section_filename({ trunc_width = ALWAYS_TRUNC })
-            return MiniStatusline.combine_groups({ { hl = "MiniStatuslineInactive", strings = { filename } } })
+            return MiniStatusline.combine_groups({ { hl = "MiniStatuslineInactive", strings = { fname() } } })
           end,
         },
       })

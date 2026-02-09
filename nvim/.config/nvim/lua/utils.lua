@@ -83,4 +83,34 @@ M.set_undo = function()
   })
 end
 
+M.get_rel_path = function(path, rel_to)
+  if vim.fn.isabsolutepath(path) == 0 then return path end
+
+  if rel_to == nil then rel_to = vim.fn.getcwd() end
+  local rel_path = ""
+  local sp_rel_to = vim.split(vim.fs.normalize(rel_to), "/")
+  local sp_path = vim.split(vim.fs.normalize(path), "/")
+  local len_rel_to = #sp_rel_to + 1
+  local len_path = #sp_path + 1
+  local i = 1
+
+  -- skip till parents are same
+  while i < len_rel_to and i < len_path do
+    if sp_rel_to[i] == sp_path[i] then
+      i = i + 1
+    else
+      break
+    end
+  end
+
+  -- append "../" for remaining parents
+  rel_path = rel_path .. string.rep("../", len_rel_to - i)
+
+  -- append remaining path
+  rel_path = rel_path .. table.concat(sp_path, "/", i)
+
+  if rel_path == "" then rel_path = "." end
+
+  return rel_path
+end
 return M
