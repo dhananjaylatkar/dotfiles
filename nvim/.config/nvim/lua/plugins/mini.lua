@@ -300,11 +300,11 @@ return {
 
       local indent = function()
         local get_opt = vim.api.nvim_get_option_value
-        if not get_opt("expandtab", {}) then return "T:" .. get_opt("tabstop", {}) .. "│" end
+        if not get_opt("expandtab", {}) then return "T:" .. get_opt("tabstop", {}) end
 
         local size = get_opt("shiftwidth", {})
         if size == 0 then size = get_opt("tabstop", {}) end
-        return "S:" .. size .. "│"
+        return "S:" .. size
       end
 
       require("mini.statusline").setup({
@@ -318,8 +318,8 @@ return {
               "%<", -- Mark general truncate point
               { hl = "MiniStatuslineFilename", strings = { filename } },
               "%=", -- End left alignment
-              { hl = nil, strings = { vim.g.cscope_maps_statusline_indicator } },
-              { hl = mode_hl, strings = { indent(), "%l:%v" } },
+              { hl = nil, strings = { vim.g.cscope_maps_statusline_indicator, indent() } },
+              { hl = mode_hl, strings = { "%l:%v" } },
             })
           end,
           inactive = function()
