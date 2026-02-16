@@ -335,5 +335,25 @@ return {
         },
       })
     end
+    if e.mini_jump2d then
+      require("mini.jump2d").setup({
+        allowed_lines = {
+          blank = false,
+        },
+        view = {
+          dim = true,
+          n_steps_ahead = 2,
+        },
+        mappings = {
+          start_jumping = "",
+        },
+      })
+      vim.keymap.set(
+        { "o", "x", "n" },
+        "\\",
+        "<Cmd>lua MiniJump2d.start(MiniJump2d.builtin_opts.single_character)<CR>",
+        { desc = "MiniJump2d" }
+      )
+    end
   end,
 }
