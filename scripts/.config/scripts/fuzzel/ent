@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+TYPE=$(echo -en "TV\\nMovies" | fuzzel --dmenu)
+
+if [[ -z ${TYPE} ]]; then
+  exit
+fi
+
+if [[ ${TYPE} == "TV" ]]; then
+  DIR=${HOME}/Videos/TV
+fi
+
+if [[ ${TYPE} == "Movies" ]]; then
+  DIR=${HOME}/Videos/Movies
+fi
+
+NAME=$(fd -t d -d 1 -p . "${DIR}" -x realpath -s --relative-to="${DIR}" | sort | fuzzel --dmenu)
+
+if [[ -z "${NAME}" ]]; then
+  exit
+fi
+
+NAME_DIR="${DIR}/${NAME}"
+
+if [[ ! -d "${NAME_DIR}" ]]; then
+  exit
+fi
+
+OPERATION=$(echo -en "Continue\\nStart\\nRandom" | fuzzel --dmenu)
+
+if [[ -z "${OPERATION}" ]]; then
+  exit 1
+fi
+
+## Create Playlist
+PLAYLIST_DIR=${HOME}/.config/play/data/playlists/
+mkdir -p "${PLAYLIST_DIR}"
+PL="${PLAYLIST_DIR}/$(echo "${NAME_DIR}" | tr ' /\(\)' '_').m3u"
+fd -t f -e mkv -e mp4 . "${NAME_DIR}" >"${PL}"
+
+MPV_OPTS="-fs --save-position-on-quit "
+
+case ${OPERATION} in
+  Continue)
+    ;;
+  Start)
+    MPV_OPTS+="--no-resume-playback --playlist-start=0 "
+    ;;
+  Random)
+    TOTAL=$(wc -l <"${PL}")
+    RAND=$(shuf -i 0-$((TOTAL - 1)) -n 1)
+    MPV_OPTS+="--playlist-start=${RAND} "
+    ;;
+esac
+
+mpv ${MPV_OPTS} "${PL}"
