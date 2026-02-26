@@ -6,6 +6,7 @@ swaybg -i ${IMG} -m fill &
 OLD_PID=$!
 while true; do
     sleep 600
+    IMG=$(find ${HOME}/Pictures/Wallpapers -type f | shuf -n 1)
     swaybg -i ${IMG} -m fill &
     NEXT_PID=$!
     sleep 5
