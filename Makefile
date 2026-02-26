@@ -7,6 +7,7 @@ STOW_DIRS = \
 	zsh \
 	wezterm \
 	rg \
+	systemd \
 	niri
 
 ZSH_DIR=${HOME}/.config/zsh
