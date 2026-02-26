@@ -4,6 +4,7 @@ return {
   version = false,
   config = function()
     local e = vim.g.dha.conf.enable
+    local utils = require("utils")
 
     -- enhanced textobjects. 'a(', 'a)', 'a'', 'a*' 'a ', 'an', 'al', 'g[' 'g]'
     if e.mini_ai then require("mini.ai").setup() end
@@ -307,7 +308,6 @@ return {
         return "S:" .. size
       end
 
-      local utils = require("utils")
       local fname = function()
         local modified = vim.bo.modified and " [+]" or ""
         local ro = vim.bo.readonly and " [-]" or ""
@@ -354,6 +354,15 @@ return {
         "<Cmd>lua MiniJump2d.start(MiniJump2d.builtin_opts.single_character)<CR>",
         { desc = "MiniJump2d" }
       )
+    end
+    if e.mini_git then
+      require("mini.git").setup()
+      vim.keymap.set("n", "<leader>gs", function()
+        local commit = utils.git_cur_line_sha()
+        if commit == "" then return end
+        -- TODO: jump to cur line in diff
+        vim.cmd(string.format("Git show %s", commit))
+      end)
     end
   end,
 }

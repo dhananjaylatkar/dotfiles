@@ -113,4 +113,12 @@ M.get_rel_path = function(path, rel_to)
 
   return rel_path
 end
+
+M.git_cur_line_sha = function ()
+      local ln, _ = unpack(vim.api.nvim_win_get_cursor(0))
+      local file = vim.fn.expand("%:p")
+      local cmd = { "git", "log", "-s", "-1", "-L", string.format("%d,%d:%s", ln, ln, file), '--format="%H"' }
+      return vim.system(cmd, { text = true }):wait().stdout:gsub('[\n"]', "")
+end
+
 return M
