@@ -89,3 +89,11 @@ autocmd("VimResized", { command = "wincmd =" })
 --     vim.opt_local.cursorline = false
 --   end,
 -- })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "git" },
+  callback = function()
+    vim.opt_local.spell = false
+  end,
+})
+
