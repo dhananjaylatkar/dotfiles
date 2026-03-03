@@ -136,6 +136,7 @@ M.enable = {
   mini_tabline = false,
   mini_statusline = true,
   mini_jump2d = true,
+  mini_git = true,
 }
 
 M.custom = function()

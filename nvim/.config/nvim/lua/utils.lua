@@ -114,11 +114,28 @@ M.get_rel_path = function(path, rel_to)
   return rel_path
 end
 
-M.git_cur_line_sha = function ()
-      local ln, _ = unpack(vim.api.nvim_win_get_cursor(0))
-      local file = vim.fn.expand("%:p")
-      local cmd = { "git", "log", "-s", "-1", "-L", string.format("%d,%d:%s", ln, ln, file), '--format="%H"' }
-      return vim.system(cmd, { text = true }):wait().stdout:gsub('[\n"]', "")
+M.git_root = function()
+  local fdir = vim.fn.expand("%:p:h")
+  local cmd = { "git", "-C", fdir, "rev-parse", "--show-toplevel" }
+  local out = vim.system(cmd, { text = true }):wait()
+  if out.code ~= 0 then return "" end
+  return out.stdout:gsub('[\n"]', "")
+end
+
+M.git_blame_cur_line = function()
+  local lnum, _ = unpack(vim.api.nvim_win_get_cursor(0))
+  local file = vim.fn.expand("%:p")
+  local root = M.git_root()
+  if root == "" then return nil end
+
+  local cmd = { "git", "-C", root, "blame", "-s", "-l", "-L", string.format("%d,%d", lnum, lnum), file }
+  local out = vim.system(cmd, { text = true }):wait()
+  if out.code ~= 0 then return "" end
+
+  out = out.stdout:gsub('[\n"]', "")
+  local hash = vim.split(vim.split(out, ")")[1], " ")[1]
+  local line = vim.api.nvim_buf_get_lines(0, lnum - 1, lnum, true)
+  return { root = root, file = file, line = line, lnum = lnum, hash = hash }
 end
 
 return M

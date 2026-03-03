@@ -358,10 +358,9 @@ return {
     if e.mini_git then
       require("mini.git").setup()
       vim.keymap.set("n", "<leader>gs", function()
-        local commit = utils.git_cur_line_sha()
-        if commit == "" then return end
-        -- TODO: jump to cur line in diff
-        vim.cmd(string.format("Git show %s", commit))
+        local blame = utils.git_blame_cur_line()
+        if blame == nil then return end
+        vim.cmd.Git("-C", blame.root, "show", blame.hash)
       end)
     end
   end,
