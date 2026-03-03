@@ -357,11 +357,15 @@ return {
     end
     if e.mini_git then
       require("mini.git").setup()
-      vim.keymap.set("n", "<leader>gs", function()
+      vim.keymap.set("n", "<leader>gb", function()
         local blame = utils.git_blame_cur_line()
         if blame == nil then return end
+        if blame.hash == "0000000000000000000000000000000000000000" then
+          vim.cmd.Git("-C", blame.root, "diff")
+          return
+        end
         vim.cmd.Git("-C", blame.root, "show", blame.hash)
-      end)
+      end, { desc = "blame this line" })
     end
   end,
 }
