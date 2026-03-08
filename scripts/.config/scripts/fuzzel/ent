@@ -22,6 +22,15 @@ fi
 
 NAME_DIR="${DIR}/${NAME}"
 
+if [[ ${TYPE} == "Movies" && ${NAME} =~ "Collection"$ ]]; then
+  COLLECTION=${NAME}
+  NAME=$(fd -t d -d 1 -p . "${NAME_DIR}" -x realpath -s --relative-to="${NAME_DIR}" | sort | fuzzel --dmenu)
+  if [[ -z "${NAME}" ]]; then
+    exit
+  fi
+  NAME_DIR=${DIR}/${COLLECTION}/${NAME}
+fi
+
 if [[ ! -d "${NAME_DIR}" ]]; then
   exit
 fi
