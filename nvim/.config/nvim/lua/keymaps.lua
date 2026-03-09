@@ -179,3 +179,9 @@ map({ "n", "v" }, "<Leader>iS", [["+P]], { desc = "Paste from system clipboard" 
 map("v", "<leader>r", '"hy:%s/<C-r>h//g<left><left>')
 
 map("n", "<leader>id", "<cmd>DocGen<cr>", { desc = "Insert func doc" })
+
+-- force use of hjkl
+map("n", "<right>", [[<cmd>echo "use h"<cr>]])
+map("n", "<down>", [[<cmd>echo "use j"<cr>]])
+map("n", "<up>", [[<cmd>echo "use k"<cr>]])
+map("n", "<left>", [[<cmd>echo "use l"<cr>]])
