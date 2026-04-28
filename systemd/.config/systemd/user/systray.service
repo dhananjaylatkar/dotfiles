@@ -4,5 +4,5 @@ After=graphical-session.target
 Requisite=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/ashell
+ExecStart=/usr/bin/dms run
 Restart=on-failure
