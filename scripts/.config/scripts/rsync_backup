@@ -2,6 +2,7 @@
 
 PATH=$1
 BACKUP_PATH=${PATH}/backup_fedora
+RSYNC=/usr/bin/rsync
 
 BACKUP_DIRS=(
     "Documents"
@@ -11,13 +12,13 @@ BACKUP_DIRS=(
     "Pictures"
 )
 
+
 for dir in "${BACKUP_DIRS[@]}"; do
     echo \"rsync -aP "${HOME}/${dir}" "${BACKUP_PATH}"/\"
-    rsync -aP "${HOME}/${dir}" "${BACKUP_PATH}/"
+    ${RSYNC} -aP "${HOME}/${dir}" "${BACKUP_PATH}/"
 done
 
-rsync -aP "${HOME}/.config/zsh/.history" "${BACKUP_PATH}/zsh/"
-rsync -aP "${HOME}/.config/zsh/zsh-custom-conf" "${BACKUP_PATH}/zsh/"
-
-rsync -aP "${HOME}/Videos/Movies/" "${PATH}/Entertainment/Movies/"
-rsync -aP "${HOME}/Videos/TV/" "${PATH}/Entertainment/TV Series/"
+${RSYNC} -aP "${HOME}/.config/zsh/.history" "${BACKUP_PATH}/zsh/"
+${RSYNC} -aP "${HOME}/.config/zsh/zsh-custom-conf" "${BACKUP_PATH}/zsh/"
+${RSYNC} -aP "${HOME}/Videos/Movies/" "${PATH}/Entertainment/Movies/"
+${RSYNC} -aP "${HOME}/Videos/TV/" "${PATH}/Entertainment/TV Series/"
