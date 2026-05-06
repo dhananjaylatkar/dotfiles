@@ -1,0 +1,18 @@
+#!/bin/env bash
+
+INP=$1
+OUTDIR=compressed
+OUT=${OUTDIR}/${INP}
+
+mkdir -p ${OUTDIR}
+
+echo ffmpeg -i ${INP} -vcodec libx265 -crf 28 ${OUT}
+ffmpeg -i ${INP} -vcodec libx265 -crf 28 ${OUT}
+
+echo touch -r ${INP} ${OUT}
+touch -r ${INP} ${OUT}
+
+echo exiftool -P "-AllDates<FileModifyDate" ${OUT}
+exiftool -P "-AllDates<FileModifyDate" ${OUT}
+
+rm -f ${OUT}_original
