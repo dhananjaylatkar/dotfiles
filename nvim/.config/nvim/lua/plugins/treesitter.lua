@@ -12,9 +12,12 @@ return {
       -- enable TS
       vim.api.nvim_create_autocmd("FileType", {
         pattern = langs,
-        callback = function()
+        callback = function(ev)
           vim.treesitter.start()
-          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+          if ev.match ~= "c" and ev.match ~= "cpp" then
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
         end,
       })
     end,
