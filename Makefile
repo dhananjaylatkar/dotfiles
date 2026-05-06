@@ -8,7 +8,8 @@ STOW_DIRS = \
 	wezterm \
 	rg \
 	systemd \
-	niri
+	niri \
+	kitty
 
 ZSH_DIR=${HOME}/.config/zsh
 NVIM_DIR=${HOME}/.config/nvim
