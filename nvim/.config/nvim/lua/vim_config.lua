@@ -32,10 +32,11 @@ local vim_defaults = {
   wrap = true,
   termguicolors = true,
   colorcolumn = "80",
-  completeopt = "menuone,noinsert",
+  completeopt = "menuone,noinsert,fuzzy",
   spell = true,
   spelllang = { "en_us" },
   pumheight = 5, -- height of popup menu
+  complete = ".,w,b,u,kspell",
 }
 
 -- apply vim config
