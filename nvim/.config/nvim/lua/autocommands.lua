@@ -97,3 +97,17 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+autocmd("FileType", {
+  pattern = {"c", "cpp", "h", "hpp" },
+  callback = function ()
+    vim.g.sleuth_c_heuristics = 0
+    vim.g.sleuth_cpp_heuristics = 0
+    vim.g.sleuth_h_heuristics = 0
+    vim.g.sleuth_hpp_heuristics = 0
+
+    vim.opt_local.shiftwidth = 8
+    vim.opt_local.tabstop = 8
+    vim.opt_local.expandtab = false
+  end
+})
+
