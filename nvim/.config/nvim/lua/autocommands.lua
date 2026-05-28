@@ -36,25 +36,6 @@ autocmd("BufWritePost", {
   group = group,
 })
 
--- Show relative numbers only when they matter (linewise and blockwise
--- selection) and 'number' is set (avoids horizontal flickering)
--- autocmd("ModeChanged", {
---   pattern = "*:[V\x16]*",
---   callback = function()
---     vim.wo.relativenumber = vim.wo.number
---   end,
---   desc = "Show relative line numbers",
--- })
-
--- -- Hide relative numbers when neither linewise/blockwise mode is on
--- autocmd("ModeChanged", {
---   pattern = "[V\x16]*:*",
---   callback = function()
---     vim.wo.relativenumber = string.find(vim.fn.mode(), "^[V\22]") ~= nil
---   end,
---   desc = "Hide relative line numbers",
--- })
-
 -- Show whitespace chars only in insert mode
 autocmd("InsertEnter", {
   pattern = "*",
@@ -76,30 +57,17 @@ autocmd("InsertLeave", {
 -- auto resize splits when the terminal's window is resized
 autocmd("VimResized", { command = "wincmd =" })
 
--- show cursorline only in active window
--- autocmd({ "WinEnter", "BufEnter" }, {
---   group = group,
---   callback = function()
---     vim.opt_local.cursorline = true
---   end,
--- })
--- autocmd({ "WinLeave", "BufLeave" }, {
---   group = group,
---   callback = function()
---     vim.opt_local.cursorline = false
---   end,
--- })
-
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
   pattern = { "git" },
   callback = function()
     vim.opt_local.spell = false
   end,
+  group = group,
 })
 
 autocmd("FileType", {
-  pattern = {"c", "cpp", "h", "hpp" },
-  callback = function ()
+  pattern = { "c", "cpp", "h", "hpp" },
+  callback = function()
     vim.g.sleuth_c_heuristics = 0
     vim.g.sleuth_cpp_heuristics = 0
     vim.g.sleuth_h_heuristics = 0
@@ -108,7 +76,8 @@ autocmd("FileType", {
     vim.opt_local.shiftwidth = 8
     vim.opt_local.tabstop = 8
     vim.opt_local.expandtab = false
-  end
+  end,
+  group = group,
 })
 
 autocmd("FileType", {
@@ -116,4 +85,5 @@ autocmd("FileType", {
   callback = function()
     vim.b.dha_force_hjkl = false
   end,
+  group = group,
 })
