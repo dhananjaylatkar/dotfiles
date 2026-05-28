@@ -180,13 +180,6 @@ map("v", "<leader>r", '"hy:%s/<C-r>h//g<left><left>')
 
 map("n", "<leader>id", "<cmd>DocGen<cr>", { desc = "Insert func doc" })
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "Neogit*", "minifiles" },
-  callback = function()
-    vim.b.dha_force_hjkl = false
-  end,
-})
-
 local force_hjkl_disabled = function()
   return vim.b.dha_force_hjkl == false or vim.g.dha_force_hjkl == false
 end

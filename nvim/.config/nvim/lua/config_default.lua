@@ -139,6 +139,8 @@ M.enable = {
   mini_git = true,
 }
 
+vim.g.dha_force_hjkl = true
+
 M.custom = function()
   -- additional user specific config
 end
