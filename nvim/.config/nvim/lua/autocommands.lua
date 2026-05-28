@@ -111,3 +111,9 @@ autocmd("FileType", {
   end
 })
 
+autocmd("FileType", {
+  pattern = { "Neogit*", "minifiles" },
+  callback = function()
+    vim.b.dha_force_hjkl = false
+  end,
+})

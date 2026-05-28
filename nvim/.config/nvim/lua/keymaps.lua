@@ -180,8 +180,26 @@ map("v", "<leader>r", '"hy:%s/<C-r>h//g<left><left>')
 
 map("n", "<leader>id", "<cmd>DocGen<cr>", { desc = "Insert func doc" })
 
--- force use of hjkl
-map("n", "<right>", [[<cmd>echo "use h"<cr>]])
-map("n", "<down>", [[<cmd>echo "use j"<cr>]])
-map("n", "<up>", [[<cmd>echo "use k"<cr>]])
-map("n", "<left>", [[<cmd>echo "use l"<cr>]])
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "Neogit*", "minifiles" },
+  callback = function()
+    vim.b.dha_force_hjkl = false
+  end,
+})
+
+local force_hjkl_disabled = function()
+  return vim.b.dha_force_hjkl == false or vim.g.dha_force_hjkl == false
+end
+
+map("n", "<right>", function()
+  if force_hjkl_disabled() then vim.cmd("normal! l") end
+end)
+map("n", "<down>", function()
+  if force_hjkl_disabled() then vim.cmd("normal! j") end
+end)
+map("n", "<up>", function()
+  if force_hjkl_disabled() then vim.cmd("normal! k") end
+end)
+map("n", "<left>", function()
+  if force_hjkl_disabled() then vim.cmd("normal! h") end
+end)
