@@ -80,6 +80,8 @@ return {
           scroll_one_line_down = { char = "<C-y>", func = pick_scroll_one_line("down") },
           scroll_one_line_up = { char = "<C-e>", func = pick_scroll_one_line("up") },
           choose_all = { char = "<C-q>", func = choose_all },
+          move_down = "<C-j>",
+          move_up = "<C-k>",
         },
         source = {
           preview = function(buf_id, item)
