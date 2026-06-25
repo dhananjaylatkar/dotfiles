@@ -101,7 +101,7 @@ return {
 
     -- diff signs and keymaps([h,]h) to traverse diff hunks
     if e.mini_diff then
-      require("mini.diff").setup({ view = { style = "sign", signs = { add = "+", change = "~", delete = "-" } } })
+      require("mini.diff").setup()
     end
 
     -- highlight patterns
