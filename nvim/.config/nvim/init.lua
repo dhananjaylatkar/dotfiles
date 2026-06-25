@@ -1,4 +1,5 @@
 vim.loader.enable()
+require('vim._core.ui2').enable()
 require("utils").install_lazy()
 require("utils").update_config()
 require("vim_config")
