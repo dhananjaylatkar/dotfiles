@@ -72,7 +72,7 @@ export ZSH_CACHE_DIR=$ZDOTDIR/.cache
 zstyle ':completion:*' cache-path $ZSH_CACHE_DIR
 
 # Key-bindings
-bindkey -s '^o' 'ranger^M'
+bindkey -s '^o' 'yazi^M'
 bindkey -s '^f' 'fzf_fd^M'
 bindkey -s '^g' 'fzf_rg^M'
 
