@@ -1,6 +1,6 @@
 #!/bin/sh
 
-HISTFILE="$XDG_DATA_HOME"/zsh/.history
+HISTFILE="$XDG_CONFIG_HOME"/zsh/.history
 HISTSIZE=20000000
 SAVEHIST=10000000
 ## History command configuration
