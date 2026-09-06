@@ -111,7 +111,6 @@ M.enable = {
   folds = false, -- kevinhwang91/nvim-ufo
   notes = true, -- dhananjaylatkar/notes.nvim
   docgen = true, -- dhananjaylatkar/docgen.nvim
-  comment = true, -- numToStr/Comment.nvim
   -- echasnovski/mini.nvim modules
   mini_ai = true,
   mini_bracketed = true,
