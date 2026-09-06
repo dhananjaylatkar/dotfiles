@@ -89,7 +89,7 @@ function d () {
 # Git
 alias gst='git status'
 alias glg='git log'
-alias gn='nvim -c "Neogit"'
+alias ngit='nvim -c "Neogit"'
 
 if which diff-so-fancy > /dev/null; then
 	dsf() {
