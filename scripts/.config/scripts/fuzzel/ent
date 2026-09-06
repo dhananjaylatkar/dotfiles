@@ -47,7 +47,7 @@ mkdir -p "${PLAYLIST_DIR}"
 PL="${PLAYLIST_DIR}/$(echo "${NAME_DIR}" | tr ' /\(\)' '_').m3u"
 fd -t f -e mkv -e mp4 . "${NAME_DIR}" >"${PL}"
 
-MPV_OPTS="-fs --save-position-on-quit "
+MPV_OPTS="-fs --save-position-on-quit --write-filename-in-watch-later-config "
 
 case ${OPERATION} in
   Continue)
