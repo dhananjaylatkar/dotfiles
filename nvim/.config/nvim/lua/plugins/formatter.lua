@@ -28,6 +28,15 @@ return {
     require("formatter").setup({
       logging = false,
       filetype = {
+        sh = {
+          function()
+            return {
+              exe = "shfmt",
+              args = {"-i", "2"},
+              stdin = true,
+            }
+          end,
+        },
         javascript = { prettier },
         typescriptp = { prettier },
         jsx = { prettier },
