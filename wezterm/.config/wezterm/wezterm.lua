@@ -15,15 +15,6 @@ config.window_decorations = "NONE"
 -- don't ask when closing
 config.window_close_confirmation = "NeverPrompt"
 
--- Maximize on startup
-wezterm.on("gui-attached", function(_)
-  -- maximize all displayed windows on startup
-  local workspace = mux.get_active_workspace()
-  for _, window in ipairs(mux.all_windows()) do
-    if window:get_workspace() == workspace then window:gui_window():maximize() end
-  end
-end)
-
 config.mouse_bindings = {
   -- Right click to paste
   {
@@ -36,6 +27,14 @@ config.mouse_bindings = {
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
   config.default_prog = { "powershell.exe" }
   config.window_decorations = "RESIZE"
+  -- Maximize on startup
+  wezterm.on("gui-attached", function(_)
+    -- maximize all displayed windows on startup
+    local workspace = mux.get_active_workspace()
+    for _, window in ipairs(mux.all_windows()) do
+      if window:get_workspace() == workspace then window:gui_window():maximize() end
+    end
+  end)
 end
 
 -- Unix domains
