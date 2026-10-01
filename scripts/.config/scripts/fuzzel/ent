@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 
 TYPE=$(echo -en "TV\\nMovies" | fuzzel --dmenu)
+MEDIA_DIR="/media"
 
 if [[ -z ${TYPE} ]]; then
   exit
 fi
 
 if [[ ${TYPE} == "TV" ]]; then
-  DIR=${HOME}/Videos/TV
+  DIR=${MEDIA_DIR}/tv
 fi
 
 if [[ ${TYPE} == "Movies" ]]; then
-  DIR=${HOME}/Videos/Movies
+  DIR=${MEDIA_DIR}/movies
 fi
 
 NAME=$(fd -t d -d 1 -p . "${DIR}" -x realpath -s --relative-to="${DIR}" | sort | fuzzel --dmenu)
