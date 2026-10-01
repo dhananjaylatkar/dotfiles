@@ -3,7 +3,9 @@ local colors = {
   { name = "blue", bg = "#232E3F", fg = "#EEECE3" },
   -- { name = "purple", bg = "#020019", fg = "#FEF1EF" },
   { name = "black", bg = "#121212", fg= "#e0e0e0"},
-  { name = "pink", bg = "#264653", fg= "#FFCAD4"},
+  -- { name = "pink", bg = "#264653", fg= "#FFCAD4"},
+  { name = "doom", bg = "#282c34", fg = "#bbc2cf" },
+  { name = "nvim", bg = "#14161b", fg = "#e0e2ea" },
 }
 
 math.randomseed(vim.uv.hrtime())
