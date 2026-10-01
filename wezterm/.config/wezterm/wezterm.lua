@@ -4,9 +4,9 @@ local mux = wezterm.mux
 
 local config = wezterm.config_builder()
 
-config.color_scheme = 'Selenized Black (Gogh)'
+config.color_scheme = "NvimDark"
 
-config.font = wezterm.font("Iosevka SS15")
+config.font = wezterm.font("IosevkaTerm")
 config.font_size = 18.0
 
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
