@@ -40,6 +40,9 @@ if [[ -n "${terminfo[kcuu1]}" ]]; then
   bindkey -M emacs "${terminfo[kcuu1]}" up-line-or-beginning-search
   bindkey -M viins "${terminfo[kcuu1]}" up-line-or-beginning-search
   bindkey -M vicmd "${terminfo[kcuu1]}" up-line-or-beginning-search
+  bindkey -M emacs "^p" up-line-or-beginning-search
+  bindkey -M viins "^p" up-line-or-beginning-search
+  bindkey -M vicmd "^p" up-line-or-beginning-search
 fi
 # Start typing + [Down-Arrow] - fuzzy find history backward
 if [[ -n "${terminfo[kcud1]}" ]]; then
@@ -49,6 +52,9 @@ if [[ -n "${terminfo[kcud1]}" ]]; then
   bindkey -M emacs "${terminfo[kcud1]}" down-line-or-beginning-search
   bindkey -M viins "${terminfo[kcud1]}" down-line-or-beginning-search
   bindkey -M vicmd "${terminfo[kcud1]}" down-line-or-beginning-search
+  bindkey -M emacs "^n" down-line-or-beginning-search
+  bindkey -M viins "^n" down-line-or-beginning-search
+  bindkey -M vicmd "^n" down-line-or-beginning-search
 fi
 
 # [PageUp] - Up a line of history
