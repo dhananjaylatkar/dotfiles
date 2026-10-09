@@ -6,7 +6,19 @@ local config = wezterm.config_builder()
 
 config.color_scheme = "NvimDark"
 
-config.font = wezterm.font("IosevkaTerm")
+config.font = wezterm.font("Iosevka Term", { weight = "Light" })
+config.font_rules = {
+  {
+    intensity = "Bold",
+    italic = false,
+    font = wezterm.font("Iosevka Term", { weight = "Regular" }),
+  },
+  {
+    intensity = "Normal",
+    italic = true,
+    font = wezterm.font("Iosevka Term", { weight = "Light", style = "Italic" }),
+  },
+}
 config.font_size = 18.0
 
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
