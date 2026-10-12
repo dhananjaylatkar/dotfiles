@@ -7,7 +7,6 @@ STOW_DIRS = \
 	zsh \
 	wezterm \
 	rg \
-	systemd \
 	niri \
 	kitty
 
