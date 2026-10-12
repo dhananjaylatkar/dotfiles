@@ -49,3 +49,21 @@ end
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
+if vim.env.HERDR_ENV == "1" then
+  local osc52 = require("vim.ui.clipboard.osc52")
+  local function internal()
+    return { vim.fn.getreg('"', 1, true), vim.fn.getregtype('"') }
+  end
+  vim.g.clipboard = {
+    name = "osc52-copy-only",
+    copy = {
+      ["+"] = osc52.copy("+"),
+      ["*"] = osc52.copy("*"),
+    },
+    paste = {
+      ["+"] = internal,
+      ["*"] = internal,
+    },
+  }
+end
